@@ -6,21 +6,21 @@ class Sheet:
     record: str
     location: str
     date: int  # 4 digit year only
-    x1: float  # West
-    x2: float  # East
     y1: float  # North
     y2: float  # South
+    x1: float  # West
+    x2: float  # East
 
-    def __init__(self, gdxdict):
-        self.record = gdxdict["record"]
-        self.location = gdxdict["location"]
-        self.date = gdxdict["date"]
-        self.x1 = round(gdxdict["x1"], 6)
-        self.x2 = round(gdxdict["x2"], 6)
-        self.y1 = round(gdxdict["y1"], 6)
-        self.y2 = round(gdxdict["y2"], 6)
+    def __init__(self, sheetdict):
+        self.record = sheetdict["record"]
+        self.location = sheetdict["location"]
+        self.date = sheetdict["date"]
+        self.y1 = round(sheetdict["y1"], 6)
+        self.y2 = round(sheetdict["y2"], 6)
+        self.x1 = round(sheetdict["x1"], 6)
+        self.x2 = round(sheetdict["x2"], 6)
 
-    def toGeoJSON(self):
+    def to_geojson_polygon_feature(self):
         bbox = Polygon(
             [
                 [
@@ -56,12 +56,12 @@ if __name__ == "__main__":
         "record": "14924",
         "location": "LAKE MICHIGAN, MILWAUKEE HARBOR",
         "date": 1991,
-        "x1": -87.95,
-        "x2": -87.85,
         "y1": 43.075,
         "y2": 42.975,
+        "x1": -87.95,
+        "x2": -87.85,
     }
 
     simplegeodexsheet = Sheet(gdxsheet)
-    gdxJSON = simplegeodexsheet.toGeoJSON()
+    gdxJSON = simplegeodexsheet.to_geojson_polygon_feature()
     print(gdxJSON)
