@@ -5,7 +5,6 @@ import geojson
 from geojson import Feature, Polygon, MultiPolygon
 from geojson_rewind import rewind
 
-### Right hand rule: Start with Southwest then go counter-clockwise.
 
 class Sheet:
     record: str
@@ -51,14 +50,13 @@ class Sheet:
             },
         )
 
-        dump = geojson.dumps(feature)
-
-        dump = rewind(dump)
-
-        return dump
+        if feature.is_valid:
+            return rewind(geojson.dumps(feature))
+        else:
+            raise Exception("Non-valid feature")
 
 
 if __name__ == "__main__":
-    sheet = Sheet(gdx.gdx_sheet)
+    sheet = Sheet(gdx.antimeridian_sheet)
     sheetjson = sheet.to_geojson_polygon_feature()
     print(sheetjson)

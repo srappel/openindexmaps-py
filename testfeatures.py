@@ -78,5 +78,3 @@ class SimpleGeodexTestSheets:
         "x1": 25.45,  # East, not West
         "x2": 25.55,  # West, not East
     }
-
-    
