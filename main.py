@@ -1,5 +1,8 @@
+import testfeatures
+from testfeatures import SimpleGeodexTestSheets as gdx
+
 import geojson
-from geojson import Feature, Polygon
+from geojson import Feature, Polygon, MultiPolygon
 
 
 class Sheet:
@@ -52,16 +55,4 @@ class Sheet:
 
 
 if __name__ == "__main__":
-    gdxsheet = {
-        "record": "14924",
-        "location": "LAKE MICHIGAN, MILWAUKEE HARBOR",
-        "date": 1991,
-        "y1": 43.075,
-        "y2": 42.975,
-        "x1": -87.95,
-        "x2": -87.85,
-    }
-
-    simplegeodexsheet = Sheet(gdxsheet)
-    gdxJSON = simplegeodexsheet.to_geojson_polygon_feature()
-    print(gdxJSON)
+    print("Main Function Test")
