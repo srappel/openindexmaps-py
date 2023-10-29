@@ -8,7 +8,6 @@ code style.
 Black is a PEP 8 compliant opinionated formatter with its own style.
 
 ## Task List
-
 - [x] Implement geojson-rewind
 - [ ] Support for anti-meridian cutting
 - [ ] Support for inset maps and extensions
@@ -19,10 +18,11 @@ Black is a PEP 8 compliant opinionated formatter with its own style.
 ## Relevant Links:
 
 ### Packages
-
 * [geojson](https://pypi.org/project/geojson/)
 * [geojson-rewind](https://pypi.org/project/geojson-rewind/)
-* 
+
+### Related Projects
+* [OpenIndexMaps](https://openindexmaps.org/)
 
 ## Known Issues
 * A polygon constructed using the right hand rule crossing the
