@@ -3,7 +3,9 @@ from testfeatures import SimpleGeodexTestSheets as gdx
 
 import geojson
 from geojson import Feature, Polygon, MultiPolygon
+from geojson_rewind import rewind
 
+### Right hand rule: Start with Southwest then go counter-clockwise.
 
 class Sheet:
     record: str
@@ -27,11 +29,11 @@ class Sheet:
         bbox = Polygon(
             [
                 [
-                    (self.x1, self.y1),  # NW
                     (self.x1, self.y2),  # SW
                     (self.x2, self.y2),  # SE
                     (self.x2, self.y1),  # NE
                     (self.x1, self.y1),  # NW
+                    (self.x1, self.y2),  # SW
                 ]
             ]
         )
@@ -51,8 +53,12 @@ class Sheet:
 
         dump = geojson.dumps(feature)
 
+        dump = rewind(dump)
+
         return dump
 
 
 if __name__ == "__main__":
-    print("Main Function Test")
+    sheet = Sheet(gdx.gdx_sheet)
+    sheetjson = sheet.to_geojson_polygon_feature()
+    print(sheetjson)

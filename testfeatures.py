@@ -8,10 +8,10 @@ class SimpleGeodexTestSheets:
         "record": "14924",
         "location": "LAKE MICHIGAN, MILWAUKEE HARBOR",
         "date": 1991,
-        "y1": 43.075,
-        "y2": 42.975,
-        "x1": -87.95,
-        "x2": -87.85,
+        "y1": 43.075,  # North
+        "y2": 42.975,  # South
+        "x1": -87.95,  # West
+        "x2": -87.85,  # East
     }
 
     antimeridian_sheet: dict = {
@@ -68,3 +68,15 @@ class SimpleGeodexTestSheets:
             },
         ],
     }
+
+    nonstandard_gdx_sheet: dict = {
+        "record": "666",
+        "location": "Târgoviște, Județul Dâmbovița, România",
+        "date": 1476,
+        "y1": 44.85,  # South, not North
+        "y2": 44.95,  # North, not South
+        "x1": 25.45,  # East, not West
+        "x2": 25.55,  # West, not East
+    }
+
+    
