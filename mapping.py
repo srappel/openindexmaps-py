@@ -1,7 +1,10 @@
 import folium
+
+from folium.plugins import MousePosition, MiniMap
+
 import requests
 
-m = folium.Map(location=(22, -80), tiles="cartodb positron", zoom_start=7)
+m = folium.Map(location=(22, -80), tiles="cartodb positron")
 
 geojson_data = requests.get(
     "https://raw.githubusercontent.com/UWM-Libraries/OpenIndexMaps/main/233bA62500a.geojson"
@@ -10,24 +13,66 @@ geojson_data = requests.get(
 fgj = folium.GeoJson(
     geojson_data,
     name="Cuba Military Map",
+    zoom_on_click=True,
+    style_function=lambda feature: {
+        "fillColor": "green"
+        if "sheet 6" in feature["properties"]["label"].lower()
+        else "grey",
+        "color": "black",
+        "weight": 2,
+    },
+    highlight_function=lambda feature: {
+        "fillColor": "red",
+        "weight": 4,
+    },
 )
 
-fgj.add_child(folium.Popup("test"))
-
-folium.features.GeoJsonPopup(
+tooltip = folium.GeoJsonTooltip(
     fields=[
         "label",
         "datePub",
         "scale",
         "digHold",
+        "location",
     ],
+    aliases=["Sheet", "Published Date", "Scale", "Link", "Location(s)"],
+    localize=True,
+    sticky=False,
     labels=True,
+    style="""
+        background-color: #F0EFEF;
+        border: 2px solid black;
+        border-radius: 3px;
+        box-shadow: 3px;
+    """,
+    max_width=800,
 ).add_to(fgj)
 
-print()
+# folium.features.GeoJsonPopup(
+#     fields=[
+#         "label",
+#         "datePub",
+#         "scale",
+#         "digHold",
+#     ],
+#     aliases=[
+#         "Sheet",
+#         "Published Date",
+#         "Scale",
+#         "Link"
+#     ],
+#     labels=True,
+#     style="background-color: yellow;"
+# ).add_to(fgj)
 
 fgj.add_to(m)
 
+folium.FitBounds(fgj.get_bounds()).add_to(m)
+
 folium.LayerControl().add_to(m)
+
+MousePosition().add_to(m)
+
+MiniMap(toggle_display=True).add_to(m)
 
 m.save("index.html")
