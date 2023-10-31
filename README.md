@@ -14,12 +14,14 @@ Black is a PEP 8 compliant opinionated formatter with its own style.
 - [ ] Feature Collections
 - [ ] Support for CSV input
 - [ ] Package and list on PyPI
+- [ ] Expand the mapping functions based on folium
 
 ## Relevant Links:
 
 ### Packages
 * [geojson](https://pypi.org/project/geojson/)
 * [geojson-rewind](https://pypi.org/project/geojson-rewind/)
+* [folium docs](https://python-visualization.github.io/folium/latest/user_guide.html)
 
 ### Related Projects
 * [OpenIndexMaps](https://openindexmaps.org/)
