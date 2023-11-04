@@ -10,7 +10,7 @@ geojson_data = requests.get(
     "https://raw.githubusercontent.com/UWM-Libraries/OpenIndexMaps/main/233bA62500a.geojson"
 ).json()
 
-fgj = folium.GeoJson(
+geojson_object = folium.GeoJson(
     geojson_data,
     name="Cuba Military Map",
     zoom_on_click=True,
@@ -46,7 +46,7 @@ tooltip = folium.GeoJsonTooltip(
         box-shadow: 3px;
     """,
     max_width=800,
-).add_to(fgj)
+).add_to(geojson_object)
 
 # folium.features.GeoJsonPopup(
 #     fields=[
@@ -63,11 +63,11 @@ tooltip = folium.GeoJsonTooltip(
 #     ],
 #     labels=True,
 #     style="background-color: yellow;"
-# ).add_to(fgj)
+# ).add_to(geojson_object)
 
-fgj.add_to(m)
+geojson_object.add_to(m)
 
-folium.FitBounds(fgj.get_bounds()).add_to(m)
+folium.FitBounds(geojson_object.get_bounds()).add_to(m)
 
 folium.LayerControl().add_to(m)
 
