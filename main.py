@@ -1,12 +1,21 @@
 import testfeatures
 from testfeatures import SimpleGeodexTestSheets as gdx
+from pathlib import Path
 
 import geojson
 from geojson import Feature, Polygon, MultiPolygon
 from geojson_rewind import rewind
 
 
-class Sheet:
+class MapSet:
+    filename: Path
+    title: str
+    bbox: Polygon
+    maxdate: int
+    mindate: int
+
+
+class Sheet():
     record: str
     location: str
     date: int  # 4 digit year only
@@ -23,6 +32,33 @@ class Sheet:
         self.y2 = round(sheetdict["y2"], 6)
         self.x1 = round(sheetdict["x1"], 6)
         self.x2 = round(sheetdict["x2"], 6)
+
+    @property
+    def __geo_interface__(self):
+        return {
+            "type": "feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [[
+                (self.x1, self.y2),  # SW
+                (self.x2, self.y2),  # SE
+                (self.x2, self.y1),  # NE
+                (self.x1, self.y1),  # NW
+                (self.x1, self.y2),  # SW
+            ]],
+            },
+            "properties": {
+                "label": self.record,
+                "title": self.location,
+                "datepub": self.date,
+                "west": self.x1,
+                "east": self.x2,
+                "north": self.y1,
+                "south": self.y2,
+            }
+        }
+
+    
 
     def to_geojson_polygon_feature(self):
         bbox = Polygon(
@@ -55,8 +91,22 @@ class Sheet:
         else:
             raise Exception("Non-valid feature")
 
+    
+
+
+class MapSheet(Sheet):
+    title: str
+
+
+class PhotoFrame(Sheet):
+    photomos: bool
+    bands: str
+    rectificn: bool
+    rollNo: str
+
 
 if __name__ == "__main__":
     sheet = Sheet(gdx.antimeridian_sheet)
-    sheetjson = sheet.to_geojson_polygon_feature()
-    print(sheetjson)
+
+    print(sheet.__geo_interface__)
+
