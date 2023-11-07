@@ -15,7 +15,7 @@ class MapSet:
     mindate: int
 
 
-class Sheet():
+class Sheet:
     record: str
     location: str
     date: int  # 4 digit year only
@@ -39,13 +39,15 @@ class Sheet():
             "type": "feature",
             "geometry": {
                 "type": "Polygon",
-                "coordinates": [[
-                (self.x1, self.y2),  # SW
-                (self.x2, self.y2),  # SE
-                (self.x2, self.y1),  # NE
-                (self.x1, self.y1),  # NW
-                (self.x1, self.y2),  # SW
-            ]],
+                "coordinates": [
+                    [
+                        (self.x1, self.y2),  # SW
+                        (self.x2, self.y2),  # SE
+                        (self.x2, self.y1),  # NE
+                        (self.x1, self.y1),  # NW
+                        (self.x1, self.y2),  # SW
+                    ]
+                ],
             },
             "properties": {
                 "label": self.record,
@@ -55,10 +57,8 @@ class Sheet():
                 "east": self.x2,
                 "north": self.y1,
                 "south": self.y2,
-            }
+            },
         }
-
-    
 
     def to_geojson_polygon_feature(self):
         bbox = Polygon(
@@ -91,8 +91,6 @@ class Sheet():
         else:
             raise Exception("Non-valid feature")
 
-    
-
 
 class MapSheet(Sheet):
     title: str
@@ -108,5 +106,6 @@ class PhotoFrame(Sheet):
 if __name__ == "__main__":
     sheet = Sheet(gdx.antimeridian_sheet)
 
-    print(sheet.__geo_interface__)
+    print(sheet.to_geojson_polygon_feature())
 
+    print(sheet.__geo_interface__)
