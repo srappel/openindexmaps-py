@@ -1,4 +1,4 @@
-import folium
+import folium, webbrowser
 
 from folium.plugins import MousePosition, MiniMap
 
@@ -76,3 +76,5 @@ MousePosition().add_to(m)
 MiniMap(toggle_display=True).add_to(m)
 
 m.save("index.html")
+
+webbrowser.open("index.html")
