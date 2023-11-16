@@ -156,7 +156,7 @@ class SimpleGeodexTestSheets:
         "x2": 25.55,  # West, not East
     }
 
+
 if __name__ == "__main__":
     sheetdict = SimpleTestMapSheets.sheet
     print(sheetdict["north"].__class__ == float)
-    

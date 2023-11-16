@@ -44,15 +44,14 @@ class Sheet:
     note: str
 
     def __init__(self, sheetdict):
-
         properties_dict = {}
 
         for key, val in sheetdict.items():
             if val.__class__ == float:
-                val = round(val,6)
+                val = round(val, 6)
 
             print(f"Setting atribute... {key}:{val} ({val.__class__})")
-            self.__setattr__(key,val)
+            self.__setattr__(key, val)
 
             properties_dict[key] = val
 
