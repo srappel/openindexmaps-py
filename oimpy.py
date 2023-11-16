@@ -71,11 +71,11 @@ class Sheet:
                 "type": "Polygon",
                 "coordinates": [
                     [
-                        (self.south, self.west),
-                        (self.south, self.east),
-                        (self.north, self.east),
-                        (self.north, self.west),
-                        (self.south, self.west),
+                        (self.west, self.south),
+                        (self.east, self.south),
+                        (self.east, self.north),
+                        (self.west, self.north),
+                        (self.west, self.south),
                     ]
                 ],
             },
@@ -86,11 +86,11 @@ class Sheet:
         bbox = Polygon(
             [
                 [
-                    (self.south, self.west),
-                    (self.south, self.east),
-                    (self.north, self.east),
-                    (self.north, self.west),
-                    (self.south, self.west),
+                    (self.west, self.south),
+                    (self.east, self.south),
+                    (self.east, self.north),
+                    (self.west, self.north),
+                    (self.west, self.south),
                 ]
             ]
         )
