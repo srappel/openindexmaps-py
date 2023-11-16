@@ -43,6 +43,9 @@ class Sheet:
     fileName: str
     note: str
 
+    def test(self):
+        self.available = available
+
     def __init__(self, sheetdict):
         self.label = sheetdict["label"]
         self.title = sheetdict["title"]
@@ -60,6 +63,12 @@ class Sheet:
             "north": self.north,
             "south": self.south,
         }
+
+    def __str__(self) -> str:
+        '''
+        Returns geojson representation as str
+        '''
+        return sheet.to_geojson_polygon_feature()
 
     @property
     def __geo_interface__(self):
@@ -141,7 +150,13 @@ class PhotoFrame(Sheet):
 if __name__ == "__main__":
     sheet = MapSheet(testfeatures.SimpleTestMapSheets.sheet)
     # fmt:off
-    print(f"\nto_geojson_polygon_feature() output:\n{sheet.to_geojson_polygon_feature()}\n")
+    #print(f"\nto_geojson_polygon_feature() output:\n{sheet.to_geojson_polygon_feature()}\n")
 
-    print(f"\n__geo_interface__ output:\n{sheet.__geo_interface__}")
+    #print(f"\n__geo_interface__ output:\n{sheet.__geo_interface__}")
+
+    print(f"\nClass of sheet: {str(sheet.__class__)}")
+
+    print(f"\n__str__ output:\n{str(sheet)}")
+
     # fmt:on
+
