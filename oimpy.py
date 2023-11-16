@@ -43,31 +43,25 @@ class Sheet:
     fileName: str
     note: str
 
-    def test(self):
-        self.available = available
-
     def __init__(self, sheetdict):
-        self.label = sheetdict["label"]
-        self.title = sheetdict["title"]
-        self.datePub = sheetdict["datePub"]
-        self.north = round(sheetdict["north"], 6)
-        self.south = round(sheetdict["south"], 6)
-        self.west = round(sheetdict["west"], 6)
-        self.east = round(sheetdict["east"], 6)
-        self.properties_dict: dict = {
-            "label": self.label,
-            "title": self.title,
-            "datePub": self.datePub,
-            "west": self.west,
-            "east": self.east,
-            "north": self.north,
-            "south": self.south,
-        }
+
+        properties_dict = {}
+
+        for key, val in sheetdict.items():
+            if val.__class__ == float:
+                val = round(val,6)
+
+            print(f"Setting atribute... {key}:{val} ({val.__class__})")
+            self.__setattr__(key,val)
+
+            properties_dict[key] = val
+
+        self.properties_dict = properties_dict
 
     def __str__(self) -> str:
-        '''
+        """
         Returns geojson representation as str
-        '''
+        """
         return sheet.to_geojson_polygon_feature()
 
     @property
@@ -104,15 +98,7 @@ class Sheet:
 
         feature = Feature(
             geometry=bbox,
-            properties={
-                "label": self.label,
-                "title": self.title,
-                "datePub": self.datePub,
-                "west": self.west,
-                "east": self.east,
-                "north": self.north,
-                "south": self.south,
-            },
+            properties=self.properties_dict,
         )
 
         if feature.is_valid:
@@ -152,11 +138,10 @@ if __name__ == "__main__":
     # fmt:off
     #print(f"\nto_geojson_polygon_feature() output:\n{sheet.to_geojson_polygon_feature()}\n")
 
-    #print(f"\n__geo_interface__ output:\n{sheet.__geo_interface__}")
+    print(f"\n__geo_interface__ output:\n{sheet.__geo_interface__}\n")
 
     print(f"\nClass of sheet: {str(sheet.__class__)}")
 
     print(f"\n__str__ output:\n{str(sheet)}")
 
     # fmt:on
-

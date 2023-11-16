@@ -31,7 +31,7 @@ class GeodexSheet:
             "east": self.x2,  # East
         }
         return oimpy.MapSheet(sheetdict)
-        
+
 
 if __name__ == "__main__":
     # fmt:off
