@@ -44,7 +44,6 @@ class Sheet:
     note: str
 
     def __init__(self, sheetdict):
-        properties_dict = {}
 
         for key, val in sheetdict.items():
             if val.__class__ == float:
@@ -52,10 +51,6 @@ class Sheet:
 
             print(f"Setting atribute... {key}:{val} ({val.__class__})")
             self.__setattr__(key, val)
-
-            properties_dict[key] = val
-
-        self.properties_dict = properties_dict
 
     def __str__(self) -> str:
         """
@@ -79,7 +74,7 @@ class Sheet:
                     ]
                 ],
             },
-            "properties": self.properties_dict,
+            "properties": self.__dict__
         }
 
     def to_geojson_polygon_feature(self):
@@ -97,7 +92,7 @@ class Sheet:
 
         feature = Feature(
             geometry=bbox,
-            properties=self.properties_dict,
+            properties=self.__dict__,
         )
 
         if feature.is_valid:
@@ -137,10 +132,8 @@ if __name__ == "__main__":
     # fmt:off
     #print(f"\nto_geojson_polygon_feature() output:\n{sheet.to_geojson_polygon_feature()}\n")
 
-    print(f"\n__geo_interface__ output:\n{sheet.__geo_interface__}\n")
+    print(f"\n__str__ output:\n{str(sheet)}\n")
 
-    print(f"\nClass of sheet: {str(sheet.__class__)}")
-
-    print(f"\n__str__ output:\n{str(sheet)}")
+    print(sheet.__dict__)
 
     # fmt:on
