@@ -1,6 +1,13 @@
 import oimpy
 import testfeatures
+import geojson
+from pathlib import Path
 
+def from_GeoJSON(geojson_file) -> geojson.feature.FeatureCollection:
+        file_data = open(geojson_file, "r")
+        content = file_data.read()
+        geojson_str = geojson.loads(content)
+        return geojson_str
 
 class GeodexSheet:
     record: str
@@ -37,10 +44,10 @@ if __name__ == "__main__":
     # fmt:off
     gdxsheet = GeodexSheet(testfeatures.SimpleGeodexTestSheets.gdx_sheet)
 
-    print(f"Class of gdxsheet is {gdxsheet.__class__}")
+    # print(f"Class of gdxsheet is {gdxsheet.__class__}")
 
-    print(f"\nto_geojson_polygon_feature() output:\n{gdxsheet.to_Sheet().to_geojson_polygon_feature()}\n")
+    # print(f"\nto_geojson_polygon_feature() output:\n{gdxsheet.to_Sheet().to_geojson_polygon_feature()}\n")
 
-    print(f"\n__geo_interface__ output:\n{gdxsheet.to_Sheet().__geo_interface__}\n")
+    # print(f"\n__geo_interface__ output:\n{gdxsheet.to_Sheet().__geo_interface__}\n")
 
-    print("Great Success!")
+    print(from_GeoJSON(Path('C:/Users/srappel/Documents/GitHub/openindexmaps-py/MillionthMap.geojson')).__class__)
