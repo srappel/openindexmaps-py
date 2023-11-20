@@ -58,24 +58,24 @@ class Sheet:
         """
         return sheet.to_geojson_polygon_feature()
 
-    @property
-    def __geo_interface__(self):
-        return {
-            "type": "feature",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        (self.west, self.south),
-                        (self.east, self.south),
-                        (self.east, self.north),
-                        (self.west, self.north),
-                        (self.west, self.south),
-                    ]
-                ],
-            },
-            "properties": self.__dict__
-        }
+    # @property
+    # def __geo_interface__(self):
+    #     return {
+    #         "type": "feature",
+    #         "geometry": {
+    #             "type": "Polygon",
+    #             "coordinates": [
+    #                 [
+    #                     (self.west, self.south),
+    #                     (self.east, self.south),
+    #                     (self.east, self.north),
+    #                     (self.west, self.north),
+    #                     (self.west, self.south),
+    #                 ]
+    #             ],
+    #         },
+    #         "properties": self.__dict__
+    #     }
 
     def to_geojson_polygon_feature(self):
         bbox = Polygon(

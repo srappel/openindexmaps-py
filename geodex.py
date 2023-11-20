@@ -6,8 +6,8 @@ from pathlib import Path
 def from_GeoJSON(geojson_file) -> geojson.feature.FeatureCollection:
         file_data = open(geojson_file, "r")
         content = file_data.read()
-        geojson_str = geojson.loads(content)
-        return geojson_str
+        featurecollection = geojson.loads(content)
+        return featurecollection
 
 class GeodexSheet:
     record: str
@@ -50,4 +50,5 @@ if __name__ == "__main__":
 
     # print(f"\n__geo_interface__ output:\n{gdxsheet.to_Sheet().__geo_interface__}\n")
 
-    print(from_GeoJSON(Path('C:/Users/srappel/Documents/GitHub/openindexmaps-py/MillionthMap.geojson')).__class__)
+    gdx_geojson = from_GeoJSON(Path('C:/Users/srappel/Documents/GitHub/openindexmaps-py/MillionthMap.geojson'))
+    print(gdx_geojson)
