@@ -1,47 +1,34 @@
-from pathlib import Path
 import geojson
-from geojson import Feature, Polygon
-from geojson_rewind import rewind
+from geojson import FeatureCollection, Feature, Polygon
 import logging
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-class Sheet:
+
+class Sheet(Feature):
     """
-    A class to represent a sheet in an OpenIndexMap.
+    A class to represent a map sheet, inheriting from geojson.Feature.
     """
     def __init__(self, sheetdict: dict, **kwargs):
-        # Common attributes
-        self.label = sheetdict.get('label', None)
-        self.labelAlt = sheetdict.get('labelAlt', None)
-        self.labelAlt2 = sheetdict.get('labelAlt2', None)
-        self.datePub = sheetdict.get('datePub', None)
-        self.date = sheetdict.get('date', None)
-        self.west = self._round_if_float(sheetdict.get('west', None))
-        self.east = self._round_if_float(sheetdict.get('east', None))
-        self.north = self._round_if_float(sheetdict.get('north', None))
-        self.south = self._round_if_float(sheetdict.get('south', None))
-        self.location = sheetdict.get('location', None)
-        self.scale = sheetdict.get('scale', None)
-        self.color = sheetdict.get('color', None)
-        self.inst = sheetdict.get('inst', None)
-        self.sheetId = sheetdict.get('sheetId', None)
-        self.available = sheetdict.get('available', None)
-        self.physHold = sheetdict.get('physHold', None)
-        self.digHold = sheetdict.get('digHold', None)
-        self.instCallNo = sheetdict.get('instCallNo', None)
-        self.recId = sheetdict.get('recId', None)
-        self.download = sheetdict.get('download', None)
-        self.websiteUrl = sheetdict.get('websiteUrl', None)
-        self.thumbUrl = sheetdict.get('thumbUrl', None)
-        self.iiifUrl = sheetdict.get('iiifUrl', None)
-        self.fileName = sheetdict.get('fileName', None)
-        self.note = sheetdict.get('note', None)
+        geometry = Polygon(
+            [[
+                (sheetdict.get('west', 0.0), sheetdict.get('south', 0.0)),
+                (sheetdict.get('east', 0.0), sheetdict.get('south', 0.0)),
+                (sheetdict.get('east', 0.0), sheetdict.get('north', 0.0)),
+                (sheetdict.get('west', 0.0), sheetdict.get('north', 0.0)),
+                (sheetdict.get('west', 0.0), sheetdict.get('south', 0.0)),
+            ]]
+        )
+        properties = {k: v for k, v in sheetdict.items() if k not in ['type', 'geometry', 'properties']}
+        properties.update(kwargs)
 
-        # Add any additional attributes from kwargs
-        for key, value in kwargs.items():
+        # Initialize the geojson.Feature
+        super().__init__(geometry=geometry, properties=properties)
+
+        # Set additional attributes directly
+        for key, value in properties.items():
             setattr(self, key, value)
 
     @staticmethod
@@ -49,38 +36,12 @@ class Sheet:
         return round(value, 6) if isinstance(value, float) else value
 
     def __str__(self) -> str:
-        """
-        Returns geojson representation as str.
-        """
-        return self.to_geojson_polygon_feature()
-
-    def to_geojson_polygon_feature(self) -> str:
-        """
-        Converts sheet information to a GeoJSON polygon feature.
-        """
-        bbox = Polygon(
-            [[
-                (self.west, self.south),
-                (self.east, self.south),
-                (self.east, self.north),
-                (self.west, self.north),
-                (self.west, self.south),
-            ]]
-        )
-        feature = Feature(
-            geometry=bbox,
-            properties=self.__dict__,
-        )
-
-        if feature.is_valid:
-            return rewind(geojson.dumps(feature))
-        else:
-            raise ValueError("Non-valid feature")
+        return geojson.dumps(self)
 
 
 class MapSheet(Sheet):
     """
-    A class to represent a map sheet with map-specific attributes.
+    A class to represent a map sheet with additional attributes.
     """
     def __init__(self, sheetdict: dict, **kwargs):
         super().__init__(sheetdict, **kwargs)
@@ -104,7 +65,7 @@ class MapSheet(Sheet):
 
 class PhotoFrame(Sheet):
     """
-    A class to represent a photo frame sheet with air photo-specific attributes.
+    A class to represent a photo frame sheet with additional attributes.
     """
     def __init__(self, sheetdict: dict, **kwargs):
         super().__init__(sheetdict, **kwargs)
@@ -114,9 +75,29 @@ class PhotoFrame(Sheet):
         self.rollNo = sheetdict.get('rollNo', None)
 
 
+class OpenIndexMap(FeatureCollection):
+    """
+    A class to represent an OpenIndexMap, inheriting from geojson.FeatureCollection.
+    Contains multiple Sheet objects.
+    """
+    def __init__(self, sheets: list, **kwargs):
+        features = [sheet for sheet in sheets if isinstance(sheet, Sheet)]
+        super().__init__(features=features, **kwargs)
+
+    def add_sheet(self, sheet: Sheet):
+        if isinstance(sheet, Sheet):
+            self.features.append(sheet)
+        else:
+            raise ValueError("Only Sheet objects can be added.")
+
+    def __str__(self) -> str:
+        return geojson.dumps(self)
+
+
 if __name__ == "__main__":
     import testfeatures
     sheet = MapSheet(testfeatures.SimpleTestMapSheets.sheet)
+    open_index_map = OpenIndexMap(sheets=[sheet])
 
-    logger.info(f"\n__str__ output:\n{str(sheet)}\n")
-    logger.info(sheet.__dict__)
+    logger.info(f"\nOpenIndexMap:\n{str(open_index_map)}\n")
+    logger.info(open_index_map.__dict__)
