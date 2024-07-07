@@ -83,4 +83,4 @@ if __name__ == "__main__":
 
     main(geojson_data)
 
-    webbrowser.open("index.html")
+    webbrowser.open("./index.html")
