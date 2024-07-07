@@ -1,11 +1,11 @@
 import geojson
 from geojson import FeatureCollection, Feature, Polygon
+from geojson_rewind import rewind
 import logging
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 
 class Sheet(Feature):
     """
@@ -35,8 +35,19 @@ class Sheet(Feature):
     def _round_if_float(value):
         return round(value, 6) if isinstance(value, float) else value
 
+    @property
+    def __geo_interface__(self):
+        """
+        Overriding the __geo_interface__ property to ensure "type" is "Feature".
+        """
+        return {
+            "type": "Feature",
+            "geometry": self.geometry,
+            "properties": self.properties
+        }
+
     def __str__(self) -> str:
-        return geojson.dumps(self)
+        return rewind(geojson.dumps(self))
 
 
 class MapSheet(Sheet):
@@ -90,8 +101,18 @@ class OpenIndexMap(FeatureCollection):
         else:
             raise ValueError("Only Sheet objects can be added.")
 
+    @property
+    def __geo_interface__(self):
+        """
+        Overriding the __geo_interface__ property to ensure "type" is "FeatureCollection".
+        """
+        return {
+            "type": "FeatureCollection",
+            "features": [feature.__geo_interface__ for feature in self.features]
+        }
+
     def __str__(self) -> str:
-        return geojson.dumps(self)
+        return rewind(geojson.dumps(self))
 
 
 if __name__ == "__main__":
