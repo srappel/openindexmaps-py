@@ -10,14 +10,6 @@ def from_GeoJSON(geojson_file) -> geojson.feature.FeatureCollection:
         return featurecollection
 
 class GeodexSheet:
-    record: str
-    location: str
-    date: int  # 4 digit year only
-    y1: float  # North
-    y2: float  # South
-    x1: float  # West
-    x2: float  # East
-
     def __init__(self, sheetdict):
         self.record = sheetdict["record"]
         self.location = sheetdict["location"]
@@ -43,12 +35,4 @@ class GeodexSheet:
 if __name__ == "__main__":
     # fmt:off
     gdxsheet = GeodexSheet(testfeatures.SimpleGeodexTestSheets.gdx_sheet)
-
-    # print(f"Class of gdxsheet is {gdxsheet.__class__}")
-
-    # print(f"\nto_geojson_polygon_feature() output:\n{gdxsheet.to_Sheet().to_geojson_polygon_feature()}\n")
-
-    # print(f"\n__geo_interface__ output:\n{gdxsheet.to_Sheet().__geo_interface__}\n")
-
-    gdx_geojson = from_GeoJSON(Path('C:/Users/srappel/Documents/GitHub/openindexmaps-py/MillionthMap.geojson'))
-    print(gdx_geojson)
+    print(str(gdxsheet))
