@@ -35,3 +35,39 @@ polygon which wraps around the world.
     - Just another reason to force the Right Hand Rule
 
     test
+
+# Brainstorming:
+
+* Read a shapefile? Or are we expecting table input only?
+* probably need to do some date/datetype parsing in geodex.py
+* Most often, people will be modifying existing OIMs, not necessarily generating new ones from scratch.
+    * Tools for modifying an existing OIM, looping over records based on a query, etc.
+    * Validating an existing OIM against the JSON Schema
+    * Reconciling OIM against eachother:
+        * Looking for records that appear on both vs one or the other
+        * Generate a union list of two or more OIM
+* Command line interface? Quickly entering new records from a stack of maps? Rapid cataloging
+
+The old geodex had a really interesting way to enter records:
+
+```dos
+>p1984>e2nd>r1980
+```
+Which would translate to:
+
+* Publication Year: 1984
+* 2nd edition
+* Photorevised 1980
+
+Or similiar. Could it be faster than entering a form? Maybe it would be easy to include a simple form GUI? The most common fields could be their own text boxes and less common fields could be added as needed. 
+
+Global and set-level default values
+
+Need to consider how to handle multi-valued fields. Locaiton, for example, is an array of strings. 
+
+* Spatial queries of index maps.
+    * Point query
+    * Polygon Query
+
+
+

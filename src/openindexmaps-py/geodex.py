@@ -4,10 +4,10 @@ import geojson
 from pathlib import Path
 
 
-def from_geojson(geojson_file: Path) -> geojson.feature.FeatureCollection:
+def from_geojson_file(geojson_file: Path) -> geojson.feature.FeatureCollection:
     with geojson_file.open("r") as file:
         content = file.read()
-    return geojson.loads(content)
+        return geojson.loads(content)
 
 
 class GeodexSheet:
