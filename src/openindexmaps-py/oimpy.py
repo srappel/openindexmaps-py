@@ -1,3 +1,4 @@
+from pathlib import Path
 import geojson
 from geojson import FeatureCollection, Feature, Polygon
 from geojson_rewind import rewind
@@ -7,11 +8,13 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class Sheet(Feature):
     """
     A class to represent a map sheet, inheriting from geojson.Feature.
     """
     def __init__(self, sheetdict: dict, **kwargs):
+        # Extract geometry and properties for the GeoJSON Feature
         geometry = Polygon(
             [[
                 (sheetdict.get('west', 0.0), sheetdict.get('south', 0.0)),
@@ -28,7 +31,34 @@ class Sheet(Feature):
         super().__init__(geometry=geometry, properties=properties)
 
         # Set additional attributes directly
-        for key, value in properties.items():
+        self.label = properties.get('label', None)
+        self.labelAlt = properties.get('labelAlt', None)
+        self.labelAlt2 = properties.get('labelAlt2', None)
+        self.datePub = properties.get('datePub', None)
+        self.date = properties.get('date', None)
+        self.west = self._round_if_float(properties.get('west', None))
+        self.east = self._round_if_float(properties.get('east', None))
+        self.north = self._round_if_float(properties.get('north', None))
+        self.south = self._round_if_float(properties.get('south', None))
+        self.location = properties.get('location', None)
+        self.scale = properties.get('scale', None)
+        self.color = properties.get('color', None)
+        self.inst = properties.get('inst', None)
+        self.sheetId = properties.get('sheetId', None)
+        self.available = properties.get('available', None)
+        self.physHold = properties.get('physHold', None)
+        self.digHold = properties.get('digHold', None)
+        self.instCallNo = properties.get('instCallNo', None)
+        self.recId = properties.get('recId', None)
+        self.download = properties.get('download', None)
+        self.websiteUrl = properties.get('websiteUrl', None)
+        self.thumbUrl = properties.get('thumbUrl', None)
+        self.iiifUrl = properties.get('iiifUrl', None)
+        self.fileName = properties.get('fileName', None)
+        self.note = properties.get('note', None)
+
+        # Add any additional attributes from kwargs
+        for key, value in kwargs.items():
             setattr(self, key, value)
 
     @staticmethod
