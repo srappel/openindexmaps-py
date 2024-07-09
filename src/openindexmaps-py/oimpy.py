@@ -1,8 +1,10 @@
 from pathlib import Path
+import json
 import geojson
 from geojson import FeatureCollection, Feature, Polygon
 from geojson_rewind import rewind
 import logging
+from jsonschema import validate, ValidationError
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -132,14 +134,14 @@ class OpenIndexMap(FeatureCollection):
     """
 
     def __init__(self, sheets: list, **kwargs):
-        features = [sheet for sheet in sheets if isinstance(sheet, Sheet)]
+        features = [sheet for sheet in sheets if isinstance(sheet, geojson.Feature)]
         super().__init__(features=features, **kwargs)
 
-    def add_sheet(self, sheet: Sheet):
-        if isinstance(sheet, Sheet):
+    def add_sheet(self, sheet: geojson.Feature):
+        if isinstance(sheet, geojson.Feature):
             self.features.append(sheet)
         else:
-            raise ValueError("Only Sheet objects can be added.")
+            raise ValueError("Only Feature objects can be added.")
 
     @property
     def __geo_interface__(self):
@@ -154,12 +156,45 @@ class OpenIndexMap(FeatureCollection):
     def __str__(self) -> str:
         return rewind(geojson.dumps(self))
 
+    def is_valid(self, schema_path: str) -> bool:
+        """
+        Override the is_valid method to add custom validation logic.
+        First, use the parent class's validation. Then, validate against a JSON Schema.
+        """
+        if super().is_valid:
+            logger.info("The FeatureCollection is valid according to geojson.")
+            try:
+                # Load the schema from the given path
+                with open(schema_path, 'r') as schema_file:
+                    schema = json.load(schema_file)
+                
+                # Validate the FeatureCollection against the schema
+                validate(instance=self.__geo_interface__, schema=schema)
+                logger.info("The FeatureCollection is valid according to the JSON Schema.")
+                return True
+            except ValidationError as e:
+                logger.error(f"JSON Schema validation error: {e.message}")
+                return False
+            except Exception as e:
+                logger.error(f"Error reading schema file: {e}")
+                return False
+        else:
+            logger.error("The FeatureCollection is not valid according to geojson.")
+            return False
+
+
 
 if __name__ == "__main__":
     import testfeatures
 
+    # Example usage
     sheet = MapSheet(testfeatures.SimpleTestMapSheets.sheet)
     open_index_map = OpenIndexMap(sheets=[sheet])
-
     logger.info(f"\nOpenIndexMap:\n{str(open_index_map)}\n")
-    logger.info(open_index_map.__dict__)
+
+    schema_path = "src/openindexmaps-py/1.0.0.schema.json"
+    if open_index_map.is_valid(schema_path):
+        print("The FeatureCollection is valid.")
+    else:
+        print("The FeatureCollection is not valid.")
+    
