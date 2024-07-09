@@ -24,7 +24,7 @@ class GeodexSheet:
         sheetdict = {
             "label": self.record,
             "title": self.location,
-            "datePub": self.date,
+            "datePub": str(self.date),
             "north": self.y1,  # North
             "south": self.y2,  # South
             "west": self.x1,  # West
@@ -34,7 +34,13 @@ class GeodexSheet:
 
 
 if __name__ == "__main__":
+    schema_path = "src/openindexmaps-py/1.0.0.schema.json"
     gdx_sheet = GeodexSheet(testfeatures.SimpleGeodexTestSheets.gdx_sheet)
     gdx_sheet_object = gdx_sheet.to_sheet()
     gdx_oim = oimpy.OpenIndexMap([gdx_sheet_object])
-    print(gdx_oim)
+    
+    if gdx_oim.is_valid(schema_path):
+        print(gdx_oim)
+    else:
+        for error in gdx_oim.errors():
+            print(error)

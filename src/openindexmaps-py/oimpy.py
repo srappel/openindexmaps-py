@@ -7,7 +7,7 @@ import logging
 from jsonschema import validate, ValidationError
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
 

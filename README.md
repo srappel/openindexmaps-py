@@ -15,6 +15,7 @@ Black is a PEP 8 compliant opinionated formatter with its own style.
 - [ ] Support for CSV input
 - [ ] Package and list on PyPI
 - [ ] Expand the mapping functions based on folium
+- [x] JSON Schema validation
 
 ## Relevant Links:
 
