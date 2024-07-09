@@ -184,17 +184,25 @@ class OpenIndexMap(FeatureCollection):
 
 
 
+
 if __name__ == "__main__":
     import testfeatures
 
     # Example usage
-    sheet = MapSheet(testfeatures.SimpleTestMapSheets.sheet)
-    open_index_map = OpenIndexMap(sheets=[sheet])
-    logger.info(f"\nOpenIndexMap:\n{str(open_index_map)}\n")
+    #sheet = MapSheet(testfeatures.SimpleTestMapSheets.sheet)
+    
+    with open("tests/fixture/MillionthMap.geojson") as file:
+        gj = geojson.load(file)
+        features = gj['features']
 
-    schema_path = "src/openindexmaps-py/1.0.0.schema.json"
-    if open_index_map.is_valid(schema_path):
-        print("The FeatureCollection is valid.")
-    else:
-        print("The FeatureCollection is not valid.")
+        open_index_map = OpenIndexMap(features)
+        logger.info(f"\nOpenIndexMap:\n{str(open_index_map)}\n")
+
+        schema_path = "src/openindexmaps-py/1.0.0.schema.json"
+        print(open_index_map)
+
+        if open_index_map.is_valid(schema_path):
+            print("The OpenIndexMap is valid.")
+        else:
+            print("The OpenIndexMap is not valid.")
     
