@@ -3,14 +3,15 @@ import testfeatures
 import geojson
 from pathlib import Path
 
-def from_GeoJSON(geojson_file) -> geojson.feature.FeatureCollection:
-        file_data = open(geojson_file, "r")
-        content = file_data.read()
-        featurecollection = geojson.loads(content)
-        return featurecollection
+
+def from_geojson(geojson_file: Path) -> geojson.feature.FeatureCollection:
+    with geojson_file.open("r") as file:
+        content = file.read()
+    return geojson.loads(content)
+
 
 class GeodexSheet:
-    def __init__(self, sheetdict):
+    def __init__(self, sheetdict: dict):
         self.record = sheetdict["record"]
         self.location = sheetdict["location"]
         self.date = sheetdict["date"]
@@ -19,7 +20,7 @@ class GeodexSheet:
         self.x1 = round(sheetdict["x1"], 6)
         self.x2 = round(sheetdict["x2"], 6)
 
-    def to_Sheet(self) -> oimpy.MapSheet:
+    def to_sheet(self) -> oimpy.MapSheet:
         sheetdict = {
             "label": self.record,
             "title": self.location,
@@ -33,6 +34,7 @@ class GeodexSheet:
 
 
 if __name__ == "__main__":
-    # fmt:off
-    gdxsheet = GeodexSheet(testfeatures.SimpleGeodexTestSheets.gdx_sheet)
-    print(str(gdxsheet))
+    gdx_sheet = GeodexSheet(testfeatures.SimpleGeodexTestSheets.gdx_sheet)
+    gdx_sheet_object = gdx_sheet.to_sheet()
+    gdx_oim = oimpy.OpenIndexMap([gdx_sheet_object])
+    print(gdx_oim)

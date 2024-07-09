@@ -13,9 +13,11 @@ def main(geojson_data):
         name="Cuba Military Map",
         zoom_on_click=True,
         style_function=lambda feature: {
-            "fillColor": "green"
-            if "sheet 6" in feature["properties"]["label"].lower()
-            else "grey",
+            "fillColor": (
+                "green"
+                if "sheet 6" in feature["properties"]["label"].lower()
+                else "grey"
+            ),
             "color": "black",
             "weight": 2,
         },

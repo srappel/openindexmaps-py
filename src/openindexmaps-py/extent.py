@@ -14,7 +14,12 @@ NE = (XMax, YMax)
 
 transformer = Transformer.from_crs(input_crs, crs_4326)
 
-trans = transformer.transform_bounds(XMin, YMin, XMax, YMax,)
+trans = transformer.transform_bounds(
+    XMin,
+    YMin,
+    XMax,
+    YMax,
+)
 
 # This should be a bounding box in this format: ENVELOPE(W,E,N,S).
 envelope = f"ENVELOPE({round(trans[1], 6)},{round(trans[3], 6)},{round(trans[0], 6)},{round(trans[2], 6)})"
