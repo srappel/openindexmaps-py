@@ -199,7 +199,7 @@ if __name__ == "__main__":
         logger.info(f"\nOpenIndexMap:\n{str(open_index_map)}\n")
 
         schema_path = "src/openindexmaps-py/1.0.0.schema.json"
-        print(open_index_map)
+        #print(open_index_map)
 
         if open_index_map.is_valid(schema_path):
             print("The OpenIndexMap is valid.")

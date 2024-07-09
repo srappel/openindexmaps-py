@@ -3,3 +3,4 @@ geojson
 folium
 requests
 geojson_rewind
+jsonschema
