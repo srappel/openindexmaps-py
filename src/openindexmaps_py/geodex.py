@@ -130,12 +130,17 @@ class GeodexDictionary:
 class GeodexSheet:
     """Represents a single geodex sheet with its properties and coordinates."""
     
-    def __init__(self, sheetdict: dict):
+    def __init__(self, sheetdict: dict, FLIP):
         geodex_dict = GeodexDictionary()
         properties = sheetdict.get("properties", {})
 
-        self.record = properties.get("RECORD")
-        self.location = properties.get("LOCATION")
+        if FLIP:
+            self.location = properties.get("RECORD")
+            self.record = properties.get("LOCATION")
+        else:
+            self.record = properties.get("RECORD")
+            self.location = properties.get("LOCATION")
+
         self.date = properties.get("DATE")
         self.y1 = round(properties["Y1"], 6) if properties.get("Y1") is not None else None
         self.y2 = round(properties["Y2"], 6) if properties.get("Y2") is not None else None
@@ -291,13 +296,13 @@ class GeodexGeoJSON:
         self.features = sheets
 
     @classmethod
-    def from_geojson_file(cls, geojson_file: Path) -> 'GeodexGeoJSON':
+    def from_geojson_file(cls, geojson_file: Path, *, FLIP = False) -> 'GeodexGeoJSON':
         geojson_file = Path(geojson_file)
-        geodex_sheets = cls._parse_geojson_file(geojson_file)
+        geodex_sheets = cls._parse_geojson_file(geojson_file, FLIP)
         return cls(geodex_sheets)
 
     @staticmethod
-    def _parse_geojson_file(geojson_file: Path) -> List[GeodexSheet]:
+    def _parse_geojson_file(geojson_file: Path, FLIP) -> List[GeodexSheet]:
         geodex_sheets = []
         with geojson_file.open("r") as file:
             content_geojson = geojson.load(file)
@@ -305,27 +310,30 @@ class GeodexGeoJSON:
                 features = content_geojson.get("features", [])
                 for feature in features:
                     try:
-                        feature_geodex_sheet = GeodexSheet(feature)
+                        feature_geodex_sheet = GeodexSheet(feature, FLIP)
                         geodex_sheets.append(feature_geodex_sheet)
                     except ValueError as e:
                         print(f"Skipping feature due to error: {e}")
         return geodex_sheets
 
-    def to_openindexmap(self) -> 'oimpy.OpenIndexMap':
+    def to_openindexmap(self, *, VALIDATE: bool = True) -> 'oimpy.OpenIndexMap':
         valid_sheets = [sheet.to_sheet() for sheet in self.features if None not in [sheet.y1, sheet.y2, sheet.x1, sheet.x2]]
         oim = oimpy.OpenIndexMap(valid_sheets)
-        return oim if oim.is_valid(schema_path) else None
+        if VALIDATE:
+            return oim if oim.is_valid(schema_path) else None
+        else:
+            return oim
         
 
 if __name__ == "__main__":
     schema_path = "src/openindexmaps_py/1.0.0.schema.json"
-    geodex_geojson_file = Path("QGIS/f0168.geojson")
-    geodex_object = GeodexGeoJSON.from_geojson_file(geodex_geojson_file)
+    geodex_geojson_file = Path("QGIS/f0140_geodex.geojson")
+    geodex_object = GeodexGeoJSON.from_geojson_file(geodex_geojson_file, FLIP=True)
     print(f"validating OpenIndexMap against {schema_path}")
-    oim = geodex_object.to_openindexmap()
+    oim = geodex_object.to_openindexmap(VALIDATE=True)
     if not oim is None:
-        print("oim is valid, writing to file...") 
-        with open("QGIS/output.geojson", "w") as file:
+        print("writing to file...") 
+        with open("QGIS/f0140_OIM.geojson", "w") as file:
             file.write(str(oim))
     else:
         print("Unable to create valid OpenIndexMap...")
