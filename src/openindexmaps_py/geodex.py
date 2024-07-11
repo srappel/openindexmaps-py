@@ -320,20 +320,21 @@ class GeodexGeoJSON:
         valid_sheets = [sheet.to_sheet() for sheet in self.features if None not in [sheet.y1, sheet.y2, sheet.x1, sheet.x2]]
         oim = oimpy.OpenIndexMap(valid_sheets)
         if VALIDATE:
+            print(f"Validating OpenIndexMap....\nTo skip validation set the keyword argument VALIDATE to False when you call to_openindexmap().")
             return oim if oim.is_valid(schema_path) else None
         else:
+            print(f"Skipping validation....\nTo validate set the keyword argument VALIDATE to True when you call to_openindexmap().")
             return oim
         
 
 if __name__ == "__main__":
     schema_path = "src/openindexmaps_py/1.0.0.schema.json"
-    geodex_geojson_file = Path("QGIS/f0140_geodex.geojson")
-    geodex_object = GeodexGeoJSON.from_geojson_file(geodex_geojson_file, FLIP=True)
-    print(f"validating OpenIndexMap against {schema_path}")
+    geodex_geojson_file = Path("QGIS/f0303_geodex.geojson")
+    geodex_object = GeodexGeoJSON.from_geojson_file(geodex_geojson_file, FLIP=False)
     oim = geodex_object.to_openindexmap(VALIDATE=True)
     if not oim is None:
         print("writing to file...") 
-        with open("QGIS/f0140_OIM.geojson", "w") as file:
+        with open("QGIS/f0303_OIM.geojson", "w") as file:
             file.write(str(oim))
     else:
         print("Unable to create valid OpenIndexMap...")
