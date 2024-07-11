@@ -124,7 +124,7 @@ class GeodexDictionary:
         Returns:
             str: The corresponding value if found, else 'Unknown key'.
         """
-        return self.lookup_dict.get(category, {}).get(key, "Unknown key")
+        return self.lookup_dict.get(category, {}).get(key, None)
 
 
 class GeodexSheet:
@@ -142,15 +142,16 @@ class GeodexSheet:
         self.x1 = round(properties["X1"], 6) if properties.get("X1") is not None else None
         self.x2 = round(properties["X2"], 6) if properties.get("X2") is not None else None
         self.scale = properties.get("SCALE", None)
-        self.production = geodex_dict.lookup("production", properties.get("PRODUCTION"))
-        self.holding = "true" if properties.get("HOLD") == 1 else "false"
+        self.production = geodex_dict.lookup("production", properties.get("PRODUCTION", None))
+        self.holding = True if properties.get("HOLD") == 1 else False
         self.catloc = properties.get("CATLOC", None)
-        self.series_tit = properties.get("SERIES_TIT", None)
+        # self.series_tit = properties.get("SERIES_TIT", None)
         self.publisher = properties.get("PUBLISHER", None)
-        self.map_type = properties.get("MAP_TYPE", None)
-        self.map_for = properties.get("MAP_FOR", None)
-        self.project = properties.get("PROJECT", None)
-        self.prime_mer = properties.get("PRIME_MER", None)
+        # self.map_type = geodex_dict.lookup("map_type", properties.get("MAP_TYPE", None))
+        # self.map_for = properties.get("MAP_FOR", None)
+        self.project = geodex_dict.lookup("projection", properties.get("PROJECT", None)) 
+        # TODO: If the Prime Meridian is anything other than 131 (Greenwich), we need to mess with longitude coords
+        self.prime_mer = geodex_dict.lookup("prime_meridian", properties.get("PRIME_MER", None)) 
         self.year1 = properties.get("YEAR1", None)
         self.year1_type = properties.get("YEAR1_TYPE", None)
         self.year2 = properties.get("YEAR2", None)
@@ -172,10 +173,10 @@ class GeodexSheet:
         }
 
         years = [
-            {"year1": (self.year1, self.year1_type)},
-            {"year2": (self.year2, self.year2_type)},
-            {"year3": (self.year3, self.year3_type)},
-            {"year4": (self.year4, self.year4_type)},
+            {"year1": (str(self.year1), self.year1_type)},
+            {"year2": (str(self.year2), self.year2_type)},
+            {"year3": (str(self.year3), self.year3_type)},
+            {"year4": (str(self.year4), self.year4_type)},
         ]
 
         dates = {
@@ -216,23 +217,23 @@ class GeodexSheet:
         }
         geodex_dict = GeodexDictionary()
         if self.iso_type == 4:
-            iso["contLines"] = "true"
+            iso["contLines"] = True
             if self.iso_val != 0:
                 iso["contInterv"] = f"{str(self.iso_val)} feet"
         elif self.iso_type == 5:
-            iso["contLines"] = "true"
+            iso["contLines"] = True
             if self.iso_val != 0:
                 iso["contInterv"] = f"{str(self.iso_val)} meters"
         elif self.iso_type == 1:
-            iso["bathLines"] = "true"
+            iso["bathLines"] = True
             if self.iso_val != 0:
                 iso["bathInterv"] = f"{str(self.iso_val)} feet"
         elif self.iso_type == 2:
-            iso["bathLines"] = "true"
+            iso["bathLines"] = True
             if self.iso_val != 0:
                 iso["bathInterv"] = f"{str(self.iso_val)} fathoms"
         elif self.iso_type == 3:
-            iso["bathLines"] = "true"
+            iso["bathLines"] = True
             if self.iso_val != 0:
                 iso["bathInterv"] = f"{str(self.iso_val)} meters"
         
@@ -243,6 +244,17 @@ class GeodexSheet:
         # Check if all coordinates are valid numbers
         if None in [self.y1, self.y2, self.x1, self.x2]:
             raise ValueError(f"Invalid coordinates for record {self.record}")
+        
+        if self.scale is not None:
+            assert isinstance(self.scale, int), "SCALE IS NOT AN INT!"
+            scale = f"1:{self.scale}"
+
+        if self.edition_no is not None:
+            if self.edition_no == 0:
+                self.edition_no = None
+            else:
+                self.edition_no = str(self.edition_no)
+            
         
         sheetdict = {
             "label": self.record,
@@ -261,11 +273,13 @@ class GeodexSheet:
             "publisher": self.publisher,
             "projection": self.project,
             "primeMer": self.prime_mer,
+            "scale": scale
         }
         dates = self.get_dates()
         sheetdict.update(dates)
         iso = self.get_iso()
         sheetdict.update(iso)
+        # "location" will be an array!
 
         sheetdict = {k: v for k, v in sheetdict.items() if v is not None}
         return oimpy.MapSheet(sheetdict)
