@@ -1,5 +1,5 @@
-import oimpy
-import testfeatures
+from openindexmaps_py import oimpy
+from openindexmaps_py import testfeatures
 import geojson
 from pathlib import Path
 

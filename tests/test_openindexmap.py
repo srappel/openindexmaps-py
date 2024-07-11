@@ -1,6 +1,5 @@
 import geojson
 import logging
-import json
 from pathlib import Path
 from openindexmaps_py.oimpy import OpenIndexMap  # Adjust the import based on your package structure
 

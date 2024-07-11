@@ -182,3 +182,5 @@ class OpenIndexMap(FeatureCollection):
             logger.error("The FeatureCollection is not valid according to geojson.")
             return False
 
+if __name__ == "__main__":
+    print("hello world")
