@@ -5,6 +5,7 @@ from geojson import FeatureCollection, Feature, Polygon
 from geojson_rewind import rewind
 import logging
 from jsonschema import validate, ValidationError
+import antimeridian
 
 # Configure logging
 logging.basicConfig(level=logging.ERROR)
@@ -29,6 +30,7 @@ class Sheet(Feature):
                 ]
             ]
         )
+        geometry = antimeridian.fix_geojson(geometry)
         properties = {
             k: v
             for k, v in sheetdict.items()

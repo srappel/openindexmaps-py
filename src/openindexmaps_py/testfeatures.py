@@ -20,8 +20,8 @@ class SimpleTestMapSheets:
         "datePub": "1989",
         "north": 5.0,  # North
         "south": -5.0,  # South
-        "west": 178,  # West
-        "east": -178,  # East
+        "west": 175,  # West
+        "east": -175,  # East
     }
 
     inset_map_sheet: dict = {

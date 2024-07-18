@@ -9,7 +9,7 @@ Black is a PEP 8 compliant opinionated formatter with its own style.
 
 ## Task List
 - [x] Implement geojson-rewind
-- [ ] Support for anti-meridian cutting
+- [x] Support for anti-meridian cutting
 - [ ] Support for inset maps and extensions
 - [ ] Feature Collections
 - [ ] Support for CSV input
