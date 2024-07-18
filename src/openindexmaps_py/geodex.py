@@ -3,9 +3,10 @@ import geojson
 from pathlib import Path
 from typing import List
 
+
 class GeodexDictionary:
     """A class for looking up various geodex attributes."""
-    
+
     def __init__(self):
         self.lookup_dict = {
             "map_type": {
@@ -33,7 +34,7 @@ class GeodexDictionary:
                 23: "Topo map (form lines)",
                 19: "Topo map (hachures)",
                 25: "Topo map (irr interval)",
-                20: "Topo map (layer tints)"
+                20: "Topo map (layer tints)",
             },
             "production": {
                 38: "Blue line print",
@@ -43,7 +44,7 @@ class GeodexDictionary:
                 34: "Positive photocopy",
                 31: "Printed map - colored",
                 33: "Printed map - monochrome",
-                32: "Printed map - 2 color"
+                32: "Printed map - 2 color",
             },
             "projection": {
                 0: "Not assigned",
@@ -65,7 +66,7 @@ class GeodexDictionary:
                 161: "Not indicated",
                 178: "Sinusoidal",
                 168: "Stereographic",
-                179: "Transverse Mercator"
+                179: "Transverse Mercator",
             },
             "prime_meridian": {
                 0: "Not assigned",
@@ -78,7 +79,7 @@ class GeodexDictionary:
                 146: "Munich PM",
                 142: "Paris PM",
                 138: "Quito PM",
-                147: "Rome PM"
+                147: "Rome PM",
             },
             "iso_type": {
                 1: "Isobars Feet",
@@ -87,40 +88,40 @@ class GeodexDictionary:
                 4: "Contours Feet",
                 5: "Contours Meters",
                 6: "Multiple Isobar Types",
-                7: "No Isobar Indicated"
+                7: "No Isobar Indicated",
             },
-            "year_type": { 
-                97: "Approximate Date", # datePub
-                98: "Publication Date", # datePub
-                99: "Compilation Date", # datePub
-                100: "Base Map Date", # date
-                102: "Field Checked", # dateSurvey
-                103: "Image Year", # datePhoto
-                104: "Photography to", # datePhoto
-                105: "Photo Inspected", # datePhoto
-                106: "Image Date", # datePhoto
-                108: "Preliminary Edition", # date
-                109: "Compiled From Map Dated", # datePSurvey
-                110: "Interim Edition", # date
-                112: "Printed", # datePub
-                113: "Printed Circa", # datePub
-                114: "Revised", # date
-                115: "Situation/Survey", # dateSurvey
-                116: "Transportation Network", # date
-                118: "Provisional Edition", # date
-                120: "Photo Revised", # datePhoto
-                121: "Edition of", # datePub
-                119: "Magnetic Declination Year" # date
-            }
+            "year_type": {
+                97: "Approximate Date",  # datePub
+                98: "Publication Date",  # datePub
+                99: "Compilation Date",  # datePub
+                100: "Base Map Date",  # date
+                102: "Field Checked",  # dateSurvey
+                103: "Image Year",  # datePhoto
+                104: "Photography to",  # datePhoto
+                105: "Photo Inspected",  # datePhoto
+                106: "Image Date",  # datePhoto
+                108: "Preliminary Edition",  # date
+                109: "Compiled From Map Dated",  # datePSurvey
+                110: "Interim Edition",  # date
+                112: "Printed",  # datePub
+                113: "Printed Circa",  # datePub
+                114: "Revised",  # date
+                115: "Situation/Survey",  # dateSurvey
+                116: "Transportation Network",  # date
+                118: "Provisional Edition",  # date
+                120: "Photo Revised",  # datePhoto
+                121: "Edition of",  # datePub
+                119: "Magnetic Declination Year",  # date
+            },
         }
 
     def lookup(self, category: str, key: int) -> str:
         """Lookup a value based on category and key.
-        
+
         Args:
             category (str): The category to lookup (e.g., 'map_type', 'production', 'projection', 'prime_meridian', 'iso_type', 'year_type').
             key (int): The key to lookup within the category.
-            
+
         Returns:
             str: The corresponding value if found, else 'Unknown key'.
         """
@@ -129,7 +130,7 @@ class GeodexDictionary:
 
 class GeodexSheet:
     """Represents a single geodex sheet with its properties and coordinates."""
-    
+
     def __init__(self, sheetdict: dict, FLIP):
         geodex_dict = GeodexDictionary()
         properties = sheetdict.get("properties", {})
@@ -142,21 +143,33 @@ class GeodexSheet:
             self.location = properties.get("LOCATION")
 
         self.date = properties.get("DATE")
-        self.y1 = round(properties["Y1"], 6) if properties.get("Y1") is not None else None
-        self.y2 = round(properties["Y2"], 6) if properties.get("Y2") is not None else None
-        self.x1 = round(properties["X1"], 6) if properties.get("X1") is not None else None
-        self.x2 = round(properties["X2"], 6) if properties.get("X2") is not None else None
+        self.y1 = (
+            round(properties["Y1"], 6) if properties.get("Y1") is not None else None
+        )
+        self.y2 = (
+            round(properties["Y2"], 6) if properties.get("Y2") is not None else None
+        )
+        self.x1 = (
+            round(properties["X1"], 6) if properties.get("X1") is not None else None
+        )
+        self.x2 = (
+            round(properties["X2"], 6) if properties.get("X2") is not None else None
+        )
         self.scale = properties.get("SCALE", None)
-        self.production = geodex_dict.lookup("production", properties.get("PRODUCTION", None))
+        self.production = geodex_dict.lookup(
+            "production", properties.get("PRODUCTION", None)
+        )
         self.holding = True if properties.get("HOLD") == 1 else False
         self.catloc = properties.get("CATLOC", None)
         # self.series_tit = properties.get("SERIES_TIT", None)
         self.publisher = properties.get("PUBLISHER", None)
         # self.map_type = geodex_dict.lookup("map_type", properties.get("MAP_TYPE", None))
         # self.map_for = properties.get("MAP_FOR", None)
-        self.project = geodex_dict.lookup("projection", properties.get("PROJECT", None)) 
+        self.project = geodex_dict.lookup("projection", properties.get("PROJECT", None))
         # TODO: If the Prime Meridian is anything other than 131 (Greenwich), we need to mess with longitude coords
-        self.prime_mer = geodex_dict.lookup("prime_meridian", properties.get("PRIME_MER", None)) 
+        self.prime_mer = geodex_dict.lookup(
+            "prime_meridian", properties.get("PRIME_MER", None)
+        )
         self.year1 = properties.get("YEAR1", None)
         self.year1_type = properties.get("YEAR1_TYPE", None)
         self.year2 = properties.get("YEAR2", None)
@@ -204,7 +217,7 @@ class GeodexSheet:
 
         # Remove keys with None values
         return {k: v for k, v in dates.items() if v is not None}
-    
+
     def get_iso(self) -> dict:
         # "iso_type": {
         #         1: "Isobars Feet",
@@ -241,15 +254,15 @@ class GeodexSheet:
             iso["bathLines"] = True
             if self.iso_val != 0:
                 iso["bathInterv"] = f"{str(self.iso_val)} meters"
-        
+
         # Remove keys with None values
         return {k: v for k, v in iso.items() if v is not None}
-        
+
     def to_sheet(self) -> oimpy.MapSheet:
         # Check if all coordinates are valid numbers
         if None in [self.y1, self.y2, self.x1, self.x2]:
             raise ValueError(f"Invalid coordinates for record {self.record}")
-        
+
         if self.scale is not None:
             assert isinstance(self.scale, int), "SCALE IS NOT AN INT!"
             scale = f"1:{self.scale}"
@@ -259,8 +272,7 @@ class GeodexSheet:
                 self.edition_no = None
             else:
                 self.edition_no = str(self.edition_no)
-            
-        
+
         sheetdict = {
             "label": self.record,
             "title": self.location,
@@ -278,7 +290,7 @@ class GeodexSheet:
             "publisher": self.publisher,
             "projection": self.project,
             "primeMer": self.prime_mer,
-            "scale": scale
+            "scale": scale,
         }
         dates = self.get_dates()
         sheetdict.update(dates)
@@ -288,7 +300,8 @@ class GeodexSheet:
 
         sheetdict = {k: v for k, v in sheetdict.items() if v is not None}
         return oimpy.MapSheet(sheetdict)
-    
+
+
 class GeodexGeoJSON:
     """This class represents a raw geodex feature class that has been exported to GeoJSON in QGIS"""
 
@@ -296,7 +309,7 @@ class GeodexGeoJSON:
         self.features = sheets
 
     @classmethod
-    def from_geojson_file(cls, geojson_file: Path, *, FLIP = False) -> 'GeodexGeoJSON':
+    def from_geojson_file(cls, geojson_file: Path, *, FLIP=False) -> "GeodexGeoJSON":
         geojson_file = Path(geojson_file)
         geodex_sheets = cls._parse_geojson_file(geojson_file, FLIP)
         return cls(geodex_sheets)
@@ -316,16 +329,24 @@ class GeodexGeoJSON:
                         print(f"Skipping feature due to error: {e}")
         return geodex_sheets
 
-    def to_openindexmap(self, *, VALIDATE: bool = True) -> 'oimpy.OpenIndexMap':
-        valid_sheets = [sheet.to_sheet() for sheet in self.features if None not in [sheet.y1, sheet.y2, sheet.x1, sheet.x2]]
+    def to_openindexmap(self, *, VALIDATE: bool = True) -> "oimpy.OpenIndexMap":
+        valid_sheets = [
+            sheet.to_sheet()
+            for sheet in self.features
+            if None not in [sheet.y1, sheet.y2, sheet.x1, sheet.x2]
+        ]
         oim = oimpy.OpenIndexMap(valid_sheets)
         if VALIDATE:
-            print(f"Validating OpenIndexMap....\nTo skip validation set the keyword argument VALIDATE to False when you call to_openindexmap().")
+            print(
+                f"Validating OpenIndexMap....\nTo skip validation set the keyword argument VALIDATE to False when you call to_openindexmap()."
+            )
             return oim if oim.is_valid(schema_path) else None
         else:
-            print(f"Skipping validation....\nTo validate set the keyword argument VALIDATE to True when you call to_openindexmap().")
+            print(
+                f"Skipping validation....\nTo validate set the keyword argument VALIDATE to True when you call to_openindexmap()."
+            )
             return oim
-        
+
 
 if __name__ == "__main__":
     schema_path = "src/openindexmaps_py/1.0.0.schema.json"
@@ -333,7 +354,7 @@ if __name__ == "__main__":
     geodex_object = GeodexGeoJSON.from_geojson_file(geodex_geojson_file, FLIP=False)
     oim = geodex_object.to_openindexmap(VALIDATE=True)
     if not oim is None:
-        print("writing to file...") 
+        print("writing to file...")
         with open("QGIS/f0303_OIM.geojson", "w") as file:
             file.write(str(oim))
     else:

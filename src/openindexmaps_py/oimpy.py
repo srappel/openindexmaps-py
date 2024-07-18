@@ -167,12 +167,14 @@ class OpenIndexMap(FeatureCollection):
             logger.info("The FeatureCollection is valid according to geojson.")
             try:
                 # Load the schema from the given path
-                with open(schema_path, 'r') as schema_file:
+                with open(schema_path, "r") as schema_file:
                     schema = json.load(schema_file)
-                
+
                 # Validate the FeatureCollection against the schema
                 validate(instance=self.__geo_interface__, schema=schema)
-                logger.info("The FeatureCollection is valid according to the JSON Schema.")
+                logger.info(
+                    "The FeatureCollection is valid according to the JSON Schema."
+                )
                 return True
             except ValidationError as e:
                 logger.error(f"JSON Schema validation error: {e.message}")
@@ -183,6 +185,7 @@ class OpenIndexMap(FeatureCollection):
         else:
             logger.error("The FeatureCollection is not valid according to geojson.")
             return False
+
 
 if __name__ == "__main__":
     print("hello world")

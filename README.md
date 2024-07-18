@@ -10,8 +10,6 @@ Black is a PEP 8 compliant opinionated formatter with its own style.
 ## Task List
 - [x] Implement geojson-rewind
 - [x] Support for anti-meridian cutting
-- [ ] Support for inset maps and extensions
-- [ ] Feature Collections
 - [ ] Support for CSV input
 - [ ] Package and list on PyPI
 - [ ] Expand the mapping functions based on folium
@@ -28,14 +26,9 @@ Black is a PEP 8 compliant opinionated formatter with its own style.
 * [OpenIndexMaps](https://openindexmaps.org/)
 
 ## Known Issues
-* A polygon constructed using the right hand rule crossing the
+* ~~A polygon constructed using the right hand rule crossing the
 anti-meridian (180 degrees longitude) will instead render a 
-polygon which wraps around the world.  
-    - The GeoJSON spec says it should be represented as two polygons
-    in a multipolygon
-    - Just another reason to force the Right Hand Rule
-
-    test
+polygon which wraps around the world.~~
 
 # Brainstorming:
 
@@ -62,7 +55,7 @@ Which would translate to:
 
 Or similiar. Could it be faster than entering a form? Maybe it would be easy to include a simple form GUI? The most common fields could be their own text boxes and less common fields could be added as needed. 
 
-Global and set-level default values
+Global and set-level default values, config files? yaml?
 
 Need to consider how to handle multi-valued fields. Locaiton, for example, is an array of strings. 
 
