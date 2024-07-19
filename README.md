@@ -26,9 +26,8 @@ Black is a PEP 8 compliant opinionated formatter with its own style.
 - [ ] Documentation
 - [ ] Package and list on PyPI
 
-## Relevant Links:
+## Dependencies
 
-### Packages
 * [geojson](https://pypi.org/project/geojson/)
     - Since OpenIndexMaps must be valid GeoJSON, this package makes it easy to create and validate GeoJSON
 Objects like 
@@ -42,15 +41,11 @@ Objects like
 * [folium](https://python-visualization.github.io/folium/latest/user_guide.html)
     - Make quick leaflet.js maps 
 
-### Related Projects
+## Related Projects
+
 * [OpenIndexMaps](https://openindexmaps.org/)
 
-## Known Issues
-* ~~A polygon constructed using the right hand rule crossing the
-anti-meridian (180 degrees longitude) will instead render a 
-polygon which wraps around the world.~~
-
-# Brainstorming:
+# Brainstorming Space:
 
 * Read a shapefile? Or are we expecting table input only?
 * probably need to do some date/datetype parsing in geodex.py
