@@ -1,26 +1,46 @@
 # openindexmaps-py
 A python package for OpenIndexMaps
 
-Messing around with the geojson package.
+## Goals:
+
+* Create OpenIndexMaps from other formats, like Geodex or Shapefiles
+* Edit existing OpenIndexMaps by adding or modifying records in the CLI
+* Create new OpenIndexMaps with the CLI
+* Reconcile/Compare/Diff two OpenIndexMaps from different institutions
+* Validate geometries (Antimeridian cutting, polar coverage), Validate GeoJSON
+* Enforce best practices like the right-hand rule
+* Validate against JSON Schema files
+* Make quick web maps with OpenIndexMaps
 
 This package uses [Black]([Black](https://black.readthedocs.io))
 code style.
 Black is a PEP 8 compliant opinionated formatter with its own style.
 
 ## Task List
-- [x] Implement geojson-rewind
+- [x] Impliment geojson-rewind
+- [x] JSON Schema validation
 - [x] Support for anti-meridian cutting
 - [ ] Support for CSV input
+- [ ] Expand the mapping functions based on foliu
+- [ ] Command Line Interface
+- [ ] Documentation
 - [ ] Package and list on PyPI
-- [ ] Expand the mapping functions based on folium
-- [x] JSON Schema validation
 
 ## Relevant Links:
 
 ### Packages
 * [geojson](https://pypi.org/project/geojson/)
+    - Since OpenIndexMaps must be valid GeoJSON, this package makes it easy to create and validate GeoJSON
+Objects like 
 * [geojson-rewind](https://pypi.org/project/geojson-rewind/)
-* [folium docs](https://python-visualization.github.io/folium/latest/user_guide.html)
+    - Enforces the Right-hand Rule
+* [antimeridian](https://antimeridian.readthedocs.io/en/stable/)
+    - Fix GeoJSON geometries that cross the antimeridian and/or the poles
+* [jsonschema](https://python-jsonschema.readthedocs.io/en/stable/)
+    - Validate (Geo)JSON against a JSON Schema file
+    - e.g. confirm output is a valid OpenIndexMap
+* [folium](https://python-visualization.github.io/folium/latest/user_guide.html)
+    - Make quick leaflet.js maps 
 
 ### Related Projects
 * [OpenIndexMaps](https://openindexmaps.org/)
