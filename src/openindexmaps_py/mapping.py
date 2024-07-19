@@ -22,8 +22,8 @@ def create_map(geojson_data):
     )
 
     tooltip = folium.GeoJsonTooltip(
-        fields=["label", "datePub", "scale", "digHold", "location"],
-        aliases=["Sheet", "Published Date", "Scale", "Link", "Location(s)"],
+        fields=["label", "datePub"],
+        aliases=["Sheet", "Published Date"],
         localize=True,
         sticky=False,
         labels=True,

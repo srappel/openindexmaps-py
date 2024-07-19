@@ -6,3 +6,4 @@ geojson_rewind
 jsonschema
 antimeridian
 pytest
+click
