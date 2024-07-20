@@ -43,14 +43,14 @@ def create_map(geojson_data):
     MousePosition().add_to(m)
     MiniMap(toggle_display=True).add_to(m)
 
-    m.save("index.html")
+    m.save("html/index.html")
 
 
 def main():
     geojson_url = "https://raw.githubusercontent.com/UWM-Libraries/OpenIndexMaps/main/233bA62500a.geojson"
     geojson_data = requests.get(geojson_url).json()
     create_map(geojson_data)
-    webbrowser.open("index.html")
+    webbrowser.open("html/index.html")
 
 
 if __name__ == "__main__":
