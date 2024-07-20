@@ -88,7 +88,7 @@ class Sheet(Feature):
         }
 
     def __str__(self) -> str:
-        return rewind(geojson.dumps(self))
+        return rewind(geojson.dumps(self, indent=4))
 
 
 class MapSheet(Sheet):

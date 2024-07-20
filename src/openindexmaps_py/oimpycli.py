@@ -3,7 +3,7 @@
 import click
 import json
 import geojson
-from openindexmaps_py import mapping
+from openindexmaps_py import mapping, oimpy
 import webbrowser
 
 @click.group()
@@ -19,6 +19,7 @@ def cli():
 )
 @click.option("--indent", "-i", type=int, default=2, help="Define the JSON indentation level")
 @click.option("--aquery", "-q", nargs=2, type=(str, str), default=("", None), help=r"Query the file by key-value pair. e.g. label=Sheet 1")
+#@click.option("--schema", "-s", type=click.Path(exists=True), help="Path to JSON schema for validation")
 def print_json(file, indent, aquery):
     """Print (Geo)JSON files"""
     content = json.load(file)
@@ -34,11 +35,15 @@ def print_json(file, indent, aquery):
         for feature in content.get("features"):
             feature_properties = feature.get("properties")
             if str(feature_properties.get(k, "")) == v:
-                output_features.append(feature)
+                feature_sheet = oimpy.Sheet(feature_properties)
+                assert isinstance(feature_sheet, oimpy.Sheet)
+                output_features.append(feature_sheet)
 
-        content.update({"features":output_features})
-
-    content_JSON = json.dumps(content, indent=indent)
+        output_OIM = oimpy.OpenIndexMap(output_features)
+        content_JSON = json.dumps(output_OIM.__geo_interface__, indent=indent)
+    else:
+        content_JSON = json.dumps(content, indent=indent)
+        
     click.echo(content_JSON)
 
 # map:
