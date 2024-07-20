@@ -6,6 +6,17 @@ from openindexmaps_py import mapping, oimpy
 from jsonschema import validate, ValidationError
 
 
+def handle_output(content_JSON, print_to_file):
+    """Handle output to console or file"""
+    if print_to_file:
+        with open(print_to_file, "w") as output_file:
+            output_file.write(content_JSON)
+            click.echo(content_JSON)
+            click.echo(f"Written to {output_file.name}")
+    else:
+        click.echo(content_JSON)
+
+
 @click.group()
 def cli():
     pass
@@ -50,7 +61,7 @@ def query(file, indent, aquery, schema, print_to_file):
             for feature in content.get("features", [])
             if str(feature.get("properties", {}).get(k, "")) == v
         ]
-        if len(output_features) == 0:
+        if not output_features:
             click.echo("No features returned in query. Aborting.")
             return
 
@@ -68,13 +79,7 @@ def query(file, indent, aquery, schema, print_to_file):
                 click.echo(f"Validation error: {e.message}\n")
                 return
 
-    if print_to_file:
-        with open(print_to_file, "w") as output_file:
-            output_file.write(content_JSON)
-            click.echo(content_JSON)
-            click.echo(f"Written to {output_file.name}")
-    else:
-        click.echo(content_JSON)
+    handle_output(content_JSON, print_to_file)
 
 
 @cli.command()
@@ -126,13 +131,7 @@ def merge(files, print_to_file):
     output_oim = oimpy.OpenIndexMap(output_feature_sheets)
     content_JSON = json.dumps(output_oim.__geo_interface__, indent=4)
 
-    if print_to_file:
-        with open(print_to_file, "w") as output_file:
-            output_file.write(content_JSON)
-            click.echo(content_JSON)
-            click.echo(f"Written to {output_file.name}")
-    else:
-        click.echo(content_JSON)
+    handle_output(content_JSON, print_to_file)
 
 
 if __name__ == "__main__":
