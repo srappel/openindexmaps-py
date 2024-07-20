@@ -1,0 +1,55 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              19.33333,
+              48.0
+            ],
+            [
+              20.0,
+              48.0
+            ],
+            [
+              20.0,
+              48.33333
+            ],
+            [
+              19.33333,
+              48.33333
+            ],
+            [
+              19.33333,
+              48.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "available": true,
+        "color": "Printed map - colored",
+        "contInterv": "10 meters",
+        "contLines": true,
+        "datePub": "1985",
+        "east": 20.0,
+        "edition": "1",
+        "inst": "AGSL",
+        "instCallNo": "646-b  A-1:100,000",
+        "label": "46-2",
+        "north": 48.33333,
+        "primeMer": "Greenwich PM",
+        "projection": "Not indicated",
+        "publisher": "Czechoslovakia.  Slovensky Urad Geod\u201azie a Kartografie",
+        "scale": "1:100000",
+        "south": 48.0,
+        "title": "Lucenec",
+        "west": 19.33333
+      }
+    }
+  ]
+}
