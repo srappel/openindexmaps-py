@@ -6,15 +6,17 @@ from openindexmaps_py import mapping, oimpy
 from jsonschema import validate, ValidationError
 
 
-def handle_output(content_JSON, print_to_file):
+def handle_output(content_JSON, print_to_file, quiet):
     """Handle output to console or file"""
     if print_to_file:
         with open(print_to_file, "w") as output_file:
             output_file.write(content_JSON)
-            click.echo(content_JSON)
+            if not quiet:
+                click.echo(content_JSON)
             click.echo(f"Written to {output_file.name}")
     else:
-        click.echo(content_JSON)
+        if not quiet:
+            click.echo(content_JSON)
 
 
 @click.group()
@@ -47,7 +49,14 @@ def cli():
     type=click.Path(),
     help="Write output to (geo)json file. e.g. `-f f0303_queryResult.geojson`",
 )
-def query(file, indent, aquery, schema, print_to_file):
+@click.option(
+    "--quiet",
+    is_flag=True,
+    type=bool,
+    default=False,
+    help="Flag. Do not write results to console.",
+)
+def query(file, indent, aquery, schema, print_to_file, quiet):
     """Query and print OpenIndexMap files to console or to an output file"""
     content = json.load(file)
     assert isinstance(content, dict)
@@ -79,7 +88,7 @@ def query(file, indent, aquery, schema, print_to_file):
                 click.echo(f"Validation error: {e.message}\n")
                 return
 
-    handle_output(content_JSON, print_to_file)
+    handle_output(content_JSON, print_to_file, quiet)
 
 
 @cli.command()
@@ -105,6 +114,7 @@ def map(file, schema):
 
     try:
         mapping.create_map(json.dumps(json_data))
+        click.echo("Map created at QGIS/index.html")
     except Exception as e:
         click.echo(f"Error creating the map: {e}\n")
 
@@ -117,7 +127,14 @@ def map(file, schema):
     type=click.Path(),
     help="Write output to (geo)json file. e.g. `-f f0303_queryResult.geojson`",
 )
-def merge(files, print_to_file):
+@click.option(
+    "--quiet",
+    is_flag=True,
+    type=bool,
+    default=False,
+    help="Flag. Do not write results to console.",
+)
+def merge(files, print_to_file, quiet):
     """Merge multiple OpenIndexMaps into a single OpenIndexMap."""
     output_feature_sheets = []
 
@@ -131,7 +148,7 @@ def merge(files, print_to_file):
     output_oim = oimpy.OpenIndexMap(output_feature_sheets)
     content_JSON = json.dumps(output_oim.__geo_interface__, indent=4)
 
-    handle_output(content_JSON, print_to_file)
+    handle_output(content_JSON, print_to_file, quiet)
 
 
 if __name__ == "__main__":
