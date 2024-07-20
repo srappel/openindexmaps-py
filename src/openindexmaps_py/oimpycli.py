@@ -2,9 +2,7 @@
 
 import click
 import json
-import geojson
 from openindexmaps_py import mapping, oimpy
-import webbrowser
 from jsonschema import validate, ValidationError
 
 
@@ -13,13 +11,8 @@ def cli():
     pass
 
 
-# print-json:
 @cli.command()
-@click.argument(
-    "file",
-    nargs=1,
-    type=click.File(mode="r"),
-)
+@click.argument("file", type=click.File(mode="r"))
 @click.option(
     "--indent", "-i", type=int, default=2, help="Define the JSON indentation level"
 )
@@ -43,24 +36,23 @@ def cli():
     type=click.Path(),
     help="Write output to (geo)json file. e.g. `-f f0303_queryResult.geojson`",
 )
-def print_json(file, indent, aquery, schema, print_to_file):
-    """Print (Geo)JSON files"""
+def query(file, indent, aquery, schema, print_to_file):
+    """Query and print OpenIndexMap files to console or to an output file"""
     content = json.load(file)
     assert isinstance(content, dict)
 
-    # Check if there's a query
-    if aquery[0] != "":
+    if aquery[0]:
         k, v = aquery
-        assert isinstance(k, str)
-        click.echo(f"Query: {k}=={v} ({v.__class__})...\n")
+        click.echo(f"Query: {k}=={v}...\n")
 
-        output_features = []
-        for feature in content.get("features"):
-            feature_properties = feature.get("properties")
-            if str(feature_properties.get(k, "")) == v:
-                feature_sheet = oimpy.Sheet(feature_properties)
-                assert isinstance(feature_sheet, oimpy.Sheet)
-                output_features.append(feature_sheet)
+        output_features = [
+            oimpy.Sheet(feature["properties"])
+            for feature in content.get("features", [])
+            if str(feature.get("properties", {}).get(k, "")) == v
+        ]
+        if len(output_features) == 0:
+            click.echo("No features returned in query. Aborting.")
+            return
 
         output_OIM = oimpy.OpenIndexMap(output_features)
         content_JSON = json.dumps(output_OIM.__geo_interface__, indent=indent)
@@ -77,23 +69,16 @@ def print_json(file, indent, aquery, schema, print_to_file):
                 return
 
     if print_to_file:
-        try:
-            with open(print_to_file, "w") as output_file:
-                output_file.write(content_JSON)
-        except Exception as e:
-            click.echo(e)
-            return
-
-    click.echo(content_JSON)
+        with open(print_to_file, "w") as output_file:
+            output_file.write(content_JSON)
+            click.echo(content_JSON)
+            click.echo(f"Written to {output_file.name}")
+    else:
+        click.echo(content_JSON)
 
 
-# map:
 @cli.command()
-@click.argument(
-    "file",
-    nargs=1,
-    type=click.File(mode="r"),
-)
+@click.argument("file", type=click.File(mode="r"))
 @click.option(
     "--schema",
     "-s",
@@ -111,14 +96,14 @@ def map(file, schema):
                 validate(instance=json_data, schema=schema_data)
             except ValidationError as e:
                 click.echo(f"Validation error: {e.message}\n")
+                return
 
     try:
         mapping.create_map(json.dumps(json_data))
     except Exception as e:
-        click.echo(f"Error creating the map: {e.message}\n")
+        click.echo(f"Error creating the map: {e}\n")
 
 
-# merge
 @cli.command()
 @click.argument("files", nargs=-1, type=click.File(mode="r"))
 @click.option(
@@ -133,29 +118,22 @@ def merge(files, print_to_file):
 
     for file in files:
         json_data = json.load(file)
-        oim_features = json_data.get("features", [])
-        for feature in oim_features:
-            assert isinstance(feature, dict)
+        for feature in json_data.get("features", []):
             feature["properties"]["note"] = f"From source file {file.name}"
-            feature_sheet = oimpy.Sheet(feature.get("properties"))
+            feature_sheet = oimpy.Sheet(feature["properties"])
             output_feature_sheets.append(feature_sheet)
 
     output_oim = oimpy.OpenIndexMap(output_feature_sheets)
-
     content_JSON = json.dumps(output_oim.__geo_interface__, indent=4)
 
     if print_to_file:
-        try:
-            with open(print_to_file, "w") as output_file:
-                output_file.write(content_JSON)
-        except Exception as e:
-            click.echo(e)
-            return
+        with open(print_to_file, "w") as output_file:
+            output_file.write(content_JSON)
+            click.echo(content_JSON)
+            click.echo(f"Written to {output_file.name}")
+    else:
+        click.echo(content_JSON)
 
-    click.echo(content_JSON)
-
-
-# TODO: diff
 
 if __name__ == "__main__":
     cli()
