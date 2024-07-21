@@ -20,7 +20,7 @@ This package uses [Black](https://black.readthedocs.io) code style. Black is a P
 - [x] Support for anti-meridian cutting
 - [ ] Support for CSV input
 - [ ] Expand the mapping functions based on folium
-- [ ] Command Line Interface
+- [-] Command Line Interface (In progress)
 - [ ] Documentation
 - [ ] Package and list on PyPI
 
@@ -30,6 +30,7 @@ This package uses [Black](https://black.readthedocs.io) code style. Black is a P
 * [antimeridian](https://antimeridian.readthedocs.io/en/stable/) - Fix GeoJSON geometries that cross the antimeridian and/or the poles
 * [jsonschema](https://python-jsonschema.readthedocs.io/en/stable/) - Validate (Geo)JSON against a JSON Schema file - e.g., confirm output is a valid OpenIndexMap
 * [folium](https://python-visualization.github.io/folium/latest/user_guide.html) - Make quick leaflet.js maps
+* [click](https://click.palletsprojects.com/en/8.1.x/) - Create a command line interface with automatic help docs
 
 ## Related Projects
 * [OpenIndexMaps](https://openindexmaps.org/)
