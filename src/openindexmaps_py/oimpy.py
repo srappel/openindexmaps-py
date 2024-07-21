@@ -8,7 +8,7 @@ from jsonschema import validate, ValidationError
 import antimeridian
 
 # Configure logging
-logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
@@ -179,6 +179,8 @@ class OpenIndexMap(FeatureCollection):
             except ValidationError as e:
                 logger.error(f"JSON Schema validation error: {e.message}")
                 return False
+            except DeprecationWarning as e:
+                logger.error("JSON Schema Reference Error (TODO!)")
             except Exception as e:
                 logger.error(f"Error reading schema file: {e}")
                 return False
