@@ -20,7 +20,7 @@ This package uses [Black](https://black.readthedocs.io) code style. Black is a P
 - [x] Support for anti-meridian cutting
 - [ ] Support for CSV input
 - [ ] Expand the mapping functions based on folium
-- [-] Command Line Interface (In progress)
+- [ ] Command Line Interface *In progress*
 - [ ] Documentation
 - [ ] Package and list on PyPI
 
