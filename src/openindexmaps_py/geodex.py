@@ -349,7 +349,7 @@ class GeodexGeoJSON:
 
 
 if __name__ == "__main__":
-    schema_path = "src/openindexmaps_py/1.0.0.schema.json"
+    schema_path = "schemas/1.0.0.schema.json"
     geodex_geojson_file = Path("QGIS/f0303_geodex.geojson")
     geodex_object = GeodexGeoJSON.from_geojson_file(geodex_geojson_file, FLIP=False)
     oim = geodex_object.to_openindexmap(VALIDATE=True)

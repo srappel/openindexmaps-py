@@ -158,7 +158,7 @@ class OpenIndexMap(FeatureCollection):
     def __str__(self) -> str:
         return rewind(geojson.dumps(self))
 
-    def is_valid(self, schema_path: str) -> bool:
+    def is_valid(self, schema_path: str = "schemas/1.0.0.schema.json") -> bool:
         """
         Override the is_valid method to add custom validation logic.
         First, use the parent class's validation. Then, validate against a JSON Schema.

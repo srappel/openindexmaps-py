@@ -21,7 +21,7 @@ def test_openindexmap_validation():
         open_index_map = OpenIndexMap(features)
         logger.info(f"\nOpenIndexMap:\n{str(open_index_map)}\n")
 
-        schema_path = Path("src/openindexmaps_py/1.0.0.schema.json")
+        schema_path = Path("schemas/1.0.0.schema.json")
         assert schema_path.exists(), "Schema file does not exist."
 
         print(open_index_map)
