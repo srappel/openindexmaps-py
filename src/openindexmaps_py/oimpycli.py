@@ -114,7 +114,7 @@ def map(file, schema):
 
     try:
         mapping.create_map(json.dumps(json_data))
-        click.echo("Map created at QGIS/index.html")
+        click.echo("Map created at html/index.html")
     except Exception as e:
         click.echo(f"Error creating the map: {e}\n")
 
