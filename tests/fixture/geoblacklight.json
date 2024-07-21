@@ -1,0 +1,9 @@
+{
+  "id": "12345",
+  "dct_title_s": "Example Title",
+  "gbl_resourceClass_sm": [
+    "Datasets"
+  ],
+  "dct_accessRights_s": "Public",
+  "gbl_mdVersion_s": "Aardvark"
+}

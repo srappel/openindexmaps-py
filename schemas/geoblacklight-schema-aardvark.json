@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/schema#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Schema for GeoBlacklight. See https://opengeometadata.github.io/aardvark/aardvarkMetadata.html for more details.",
     "id": "http://geoblacklight.org/schema/aardvark",
     "title": "GeoBlacklight Schema - Aardvark",
