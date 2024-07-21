@@ -2,7 +2,8 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://openindexmaps.org/openindexmap.schema.json",
     "title": "OpenIndexMap",
-    "description": "Describes an OpenIndexMap according to specification version 1.0.0.",
+    "description": 
+    "Describes an OpenIndexMap according to specification version 1.0.0. (remote reference to GeoJSON Geometry removed but included in /schemas/Geometry.json for reference.)",
     "type": "object",
     "properties": {
         "type": {
