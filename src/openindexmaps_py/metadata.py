@@ -3,6 +3,7 @@
 import json
 from jsonschema import validate, ValidationError
 from openindexmaps_py.oimpy import OpenIndexMap
+from datetime import datetime, timezone
 
 # SCHEMA_PATH_GBL1 = "schemas/geoblacklight-schema-1.0.json"
 SCHEMA_PATH_AARDVARK = "schemas/geoblacklight-schema-aardvark.json"
@@ -58,6 +59,7 @@ class GeoBlacklight_Metadata:
             self.set_attribute("gbl_indexYear_im", index_years)
 
         self.set_attribute("locn_geometry", get_locn_geometry(oim))
+        self.timestamp()
 
     def load_schema(self):
         """Loads the JSON schema from the specified schema file."""
@@ -91,11 +93,24 @@ class GeoBlacklight_Metadata:
                 f"Attribute {attribute} is not valid according to the schema."
             )
 
+    def set_references(self, oim_url: str):
+        references = {
+            "https://openindexmaps.org/": oim_url,
+            "http://schema.org/downloadUrl/": oim_url,
+        }
+        json_refs = json.dumps(references, separators=(',', ':'))
+        self.set_attribute("dct_references_s", json_refs)
+        self.timestamp()
+
     def generate_metadata_file(self, filename):
         """Validates and generates the metadata file in JSON format."""
         self.validate_metadata()
         with open(filename, "w") as file:
             json.dump(self.metadata, file, indent=2)
+
+    def timestamp(self):
+        current_datetime = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        self.set_attribute("gbl_mdModified_dt", current_datetime)
 
 
 if __name__ == "__main__":
