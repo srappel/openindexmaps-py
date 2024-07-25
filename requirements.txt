@@ -7,3 +7,4 @@ jsonschema
 antimeridian
 pytest
 click
+shapely
