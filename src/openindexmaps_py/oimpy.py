@@ -188,20 +188,26 @@ class OpenIndexMap(FeatureCollection):
         else:
             logger.error("The FeatureCollection is not valid according to geojson.")
             return False
-        
+
     def compute_bbox(self) -> list[float]:
         # Initialize variables to store min and max coordinates
-        minx, miny, maxx, maxy = float('inf'), float('inf'), float('-inf'), float('-inf')
+        minx, miny, maxx, maxy = (
+            float("inf"),
+            float("inf"),
+            float("-inf"),
+            float("-inf"),
+        )
 
         # Iterate through each feature in the GeoJSON
-        for feature in self.__geo_interface__['features']:
-            geom = shape(feature['geometry'])
+        for feature in self.__geo_interface__["features"]:
+            geom = shape(feature["geometry"])
             bbox = geom.bounds
             minx, miny = min(minx, bbox[0]), min(miny, bbox[1])
             maxx, maxy = max(maxx, bbox[2]), max(maxy, bbox[3])
 
         # Return the bounding box in the format [minx, miny, maxx, maxy]
         return [float(minx), float(miny), float(maxx), float(maxy)]
+
 
 if __name__ == "__main__":
     print("hello world")
