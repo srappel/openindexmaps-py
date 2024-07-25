@@ -2,6 +2,7 @@
 
 import json
 from jsonschema import validate, ValidationError
+from openindexmaps_py.oimpy import OpenIndexMap
 
 # SCHEMA_PATH_GBL1 = "schemas/geoblacklight-schema-1.0.json"
 SCHEMA_PATH_AARDVARK = "schemas/geoblacklight-schema-aardvark.json"
@@ -21,6 +22,42 @@ class GeoBlacklight_Metadata:
         """Initializes the GeoBlacklight_Metadata class with default or provided metadata."""
         self.schema = self.load_schema()
         self.metadata = metadata if metadata else self.default_metadata()
+
+    @classmethod
+    def from_file(cls, file_path: str):
+        """Creates an instance of GeoBlacklight_Metadata from a JSON file."""
+        metadata = None
+        with open(file_path, "r") as file:
+            metadata = json.load(file)
+            assert isinstance(metadata, dict)
+        return cls(metadata)
+
+    def compute_details_from_oim(self, oim: OpenIndexMap):
+        """Uses an OpenIndexMaps GeoJSON file to calculate an ordered set of index years and a bbox geometry for the whole file"""
+        assert isinstance(oim, OpenIndexMap)
+
+        def get_index_years(oim: OpenIndexMap) -> list[int]:
+            index_years = set()
+            for sheet in oim.get("features", []):
+                try:
+                    date_pub = sheet.get("properties", {}).get("datePub")
+                    if date_pub is not None:
+                        index_years.add(int(date_pub))
+                except ValueError:
+                    print(
+                        f"Invalid datePub value: {sheet.get('properties', {}).get('datePub')}"
+                    )
+            return sorted(index_years)
+
+        def get_locn_geometry(oim: OpenIndexMap) -> str:
+            west, south, east, north = oim.compute_bbox()
+            return f"ENVELOPE({west},{east},{north},{south})"
+
+        index_years = get_index_years(oim)
+        if index_years:
+            self.set_attribute("gbl_indexYear_im", index_years)
+
+        self.set_attribute("locn_geometry", get_locn_geometry(oim))
 
     def load_schema(self):
         """Loads the JSON schema from the specified schema file."""
