@@ -1,0 +1,3895 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "id": "am023172",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -85,
+                                22.5
+                            ],
+                            [
+                                -85,
+                                22
+                            ],
+                            [
+                                -84.5,
+                                22
+                            ],
+                            [
+                                -84.5,
+                                22.5
+                            ],
+                            [
+                                -85,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 1",
+                "datePub": "1913",
+                "west": -85,
+                "east": -84.5,
+                "north": 22.5,
+                "south": 22,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28195",
+                "recId": "am023172"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023173",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -85,
+                                22
+                            ],
+                            [
+                                -85,
+                                21.5
+                            ],
+                            [
+                                -84.5,
+                                21.5
+                            ],
+                            [
+                                -84.5,
+                                22
+                            ],
+                            [
+                                -85,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 2",
+                "datePub": "1913",
+                "west": -85,
+                "east": -84.5,
+                "north": 22,
+                "south": 21.5,
+                "location": ["CALETA LARGA"],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28196",
+                "recId": "am023173"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023174",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -84.5,
+                                23
+                            ],
+                            [
+                                -84.5,
+                                22.5
+                            ],
+                            [
+                                -84,
+                                22.5
+                            ],
+                            [
+                                -84,
+                                23
+                            ],
+                            [
+                                -84.5,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 3",
+                "datePub": "1913",
+                "west": -84.5,
+                "east": -84,
+                "north": 23,
+                "south": 22.5,
+                "location": ["RIO DEL MEDIO"],
+                "scale": "62500",
+                "color": "Printed Map (2-color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28197",
+                "recId": "am023174"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023175",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -84.5,
+                                22.5
+                            ],
+                            [
+                                -84.5,
+                                22
+                            ],
+                            [
+                                -84,
+                                22
+                            ],
+                            [
+                                -84,
+                                22.5
+                            ],
+                            [
+                                -84.5,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 4",
+                "datePub": "1913",
+                "west": -84.5,
+                "east": -84,
+                "north": 22.5,
+                "south": 22,
+                "location": [
+                    "LA FE",
+                    "KIS ARROYOS",
+                    "DIMAS",
+                    "GUANE",
+                    "MANTUA",
+                    "OCEAN BEACH",
+                    "PUEBLO NEUVO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28198",
+                "recId": "am023175"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023176",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -84.5,
+                                22
+                            ],
+                            [
+                                -84.5,
+                                21.5
+                            ],
+                            [
+                                -84,
+                                21.5
+                            ],
+                            [
+                                -84,
+                                22
+                            ],
+                            [
+                                -84.5,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 5",
+                "datePub": "1913",
+                "west": -84.5,
+                "east": -84,
+                "north": 22,
+                "south": 21.5,
+                "location": [
+                    "EL CAYUCO",
+                    "LA GRIFA",
+                    "LAS MARTINAS"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28199",
+                "recId": "am023176"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023177",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -84,
+                                23
+                            ],
+                            [
+                                -84,
+                                22.5
+                            ],
+                            [
+                                -83.5,
+                                22.5
+                            ],
+                            [
+                                -83.5,
+                                23
+                            ],
+                            [
+                                -84,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 6",
+                "datePub": "1913",
+                "west": -84,
+                "east": -83.5,
+                "north": 23,
+                "south": 22.5,
+                "location": [
+                    "CONSOLACION DEL NORTE",
+                    "LA PALMA",
+                    "CONSOLACION DEL SUR",
+                    "LA ESPERANZA",
+                    "PILOTOS",
+                    "SAN CAYETANO",
+                    "VIÑALES"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28200",
+                "recId": "am023177"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023178",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -84,
+                                22.5
+                            ],
+                            [
+                                -84,
+                                22
+                            ],
+                            [
+                                -83.5,
+                                22
+                            ],
+                            [
+                                -83.5,
+                                22.5
+                            ],
+                            [
+                                -84,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 7",
+                "datePub": "1913",
+                "west": -84,
+                "east": -83.5,
+                "north": 22.5,
+                "south": 22,
+                "location": [
+                    "PINAR DEL RIO",
+                    "SAN JUAN Y MARTINEZ",
+                    "SAN LUIS",
+                    "SUMIDERO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28201",
+                "recId": "am023178"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023179",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -84,
+                                22
+                            ],
+                            [
+                                -84,
+                                21.5
+                            ],
+                            [
+                                -83.5,
+                                21.5
+                            ],
+                            [
+                                -83.5,
+                                22
+                            ],
+                            [
+                                -84,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 8",
+                "datePub": "1913",
+                "west": -84,
+                "east": -83.5,
+                "north": 22,
+                "south": 21.5,
+                "location": ["CORTES"],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28202",
+                "recId": "am023179"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023180",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -83.5,
+                                23
+                            ],
+                            [
+                                -83.5,
+                                22.5
+                            ],
+                            [
+                                -83,
+                                22.5
+                            ],
+                            [
+                                -83,
+                                23
+                            ],
+                            [
+                                -83.5,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 9",
+                "datePub": "1913",
+                "west": -83.5,
+                "east": -83,
+                "north": 23,
+                "south": 22.5,
+                "location": [
+                    "BAHIA HONDA",
+                    "HERRADURA",
+                    "LOS PALACIOS",
+                    "PASO REAL",
+                    "SAN CRISTOBAL",
+                    "SAN DIEGO DE LOS BANOS",
+                    "TACO TACO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28203",
+                "recId": "am023180"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023181",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -83.5,
+                                22.5
+                            ],
+                            [
+                                -83.5,
+                                22
+                            ],
+                            [
+                                -83,
+                                22
+                            ],
+                            [
+                                -83,
+                                22.5
+                            ],
+                            [
+                                -83.5,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 10",
+                "datePub": "1913",
+                "west": -83.5,
+                "east": -83,
+                "north": 22.5,
+                "south": 22,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28204",
+                "recId": "am023181"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023182",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -83.5,
+                                22
+                            ],
+                            [
+                                -83.5,
+                                21.5
+                            ],
+                            [
+                                -83,
+                                21.5
+                            ],
+                            [
+                                -83,
+                                22
+                            ],
+                            [
+                                -83.5,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 11",
+                "datePub": "1913",
+                "west": -83.5,
+                "east": -83,
+                "north": 22,
+                "south": 21.5,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28205",
+                "recId": "am023182"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023185",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -83,
+                                23.5
+                            ],
+                            [
+                                -83,
+                                23
+                            ],
+                            [
+                                -82.5,
+                                23
+                            ],
+                            [
+                                -82.5,
+                                23.5
+                            ],
+                            [
+                                -83,
+                                23.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 12",
+                "datePub": "1913",
+                "west": -83,
+                "east": -82.5,
+                "north": 23.5,
+                "south": 23,
+                "location": [
+                    "PUNTA BRAVA",
+                    "CANGREJERAS",
+                    "TINAJA",
+                    "BAHIA DE MARIEL",
+                    "STO. CRISTO",
+                    "CATALINA",
+                    "CALATRA",
+                    "FRANCES",
+                    "VICTORIA",
+                    "BANES",
+                    "LA UNION",
+                    "PALOMINO",
+                    "GOVIN",
+                    "SAN FRANCISCO",
+                    "LA PETORIA",
+                    "SAN TERNO",
+                    "DOCTOR",
+                    "ALTA ORO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28207",
+                "recId": "am023185"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023187",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -83,
+                                23
+                            ],
+                            [
+                                -83,
+                                22.5
+                            ],
+                            [
+                                -82.5,
+                                22.5
+                            ],
+                            [
+                                -82.5,
+                                23
+                            ],
+                            [
+                                -83,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 13",
+                "datePub": "1913",
+                "west": -83,
+                "east": -82.5,
+                "north": 23,
+                "south": 22.5,
+                "location": [
+                    "ALQUIZAR",
+                    "ARTEMISA",
+                    "CABANAS",
+                    "CAIMITO",
+                    "CANDELARIA",
+                    "CANAS",
+                    "CAYAJABOS",
+                    "CEIBA DEL AGUA",
+                    "CORRALIO",
+                    "GUANAJAY",
+                    "GUIRA DE MELENA",
+                    "HOYO COLORADO",
+                    "MARIEL",
+                    "PIJIRIGUA",
+                    "PLAYAS DE GUANIMAR",
+                    "QUIEBRA HACHA",
+                    "SAN ANTONIO DE LOS BANOS",
+                    "VEREDA NUEVA"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28208",
+                "recId": "am023187"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023189",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -83,
+                                22
+                            ],
+                            [
+                                -83,
+                                21.5
+                            ],
+                            [
+                                -82.5,
+                                21.5
+                            ],
+                            [
+                                -82.5,
+                                22
+                            ],
+                            [
+                                -83,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 14",
+                "datePub": "1913",
+                "west": -83,
+                "east": -82.5,
+                "north": 22,
+                "south": 21.5,
+                "location": [
+                    "NUEVA GERONA",
+                    "SANTA FE",
+                    "COLUMBIA",
+                    "MCKINLEY",
+                    "LOS INDIOS"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28209",
+                "recId": "am023189"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023191",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -82.5,
+                                23.5
+                            ],
+                            [
+                                -82.5,
+                                23
+                            ],
+                            [
+                                -82,
+                                23
+                            ],
+                            [
+                                -82,
+                                23.5
+                            ],
+                            [
+                                -82.5,
+                                23.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 15",
+                "datePub": "1913",
+                "west": -82.5,
+                "east": -82,
+                "north": 23.5,
+                "south": 23,
+                "location": [
+                    "ARROYO ARENAS",
+                    "CALABAZAR",
+                    "CAMPO FLORIDO",
+                    "COJIMAR",
+                    "COTORRO",
+                    "EL CANO",
+                    "GUANABACOA",
+                    "GUAJAY",
+                    "HAVANA",
+                    "MARIANAO",
+                    "PLAYA DE MARIANAO",
+                    "SAN FRANCISCO DE PAULA",
+                    "SANTA MARIA DEL ROSARIO",
+                    "TAPASTE"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28210",
+                "recId": "am023191"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023192",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -82.5,
+                                23
+                            ],
+                            [
+                                -82.5,
+                                22.5
+                            ],
+                            [
+                                -82,
+                                22.5
+                            ],
+                            [
+                                -82,
+                                23
+                            ],
+                            [
+                                -82.5,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 16",
+                "datePub": "1913",
+                "west": -82.5,
+                "east": -82,
+                "north": 23,
+                "south": 22.5,
+                "location": [
+                    "BATABANO",
+                    "BEJUCAL",
+                    "EL GABRIEL",
+                    "GUARA",
+                    "GUINES",
+                    "LA SALUD",
+                    "MANAGUA",
+                    "MELENA DEL SUR",
+                    "QUIVICAN",
+                    "RINCON",
+                    "SAN ANTONIO DE LAS VEGAS",
+                    "SAN FELIPE",
+                    "SAN JOSE DE LAS LAJAS",
+                    "SANTIAGO DE LAS VEGAS",
+                    "SURGIDERO DE BATABANO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28211",
+                "recId": "am023192"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023193",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -82.5,
+                                22.5
+                            ],
+                            [
+                                -82.5,
+                                22
+                            ],
+                            [
+                                -82,
+                                22
+                            ],
+                            [
+                                -82,
+                                22.5
+                            ],
+                            [
+                                -82.5,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 17",
+                "datePub": "1913",
+                "west": -82.5,
+                "east": -82,
+                "north": 22.5,
+                "south": 22,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28212",
+                "recId": "am023193"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023194",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -82,
+                                23.5
+                            ],
+                            [
+                                -82,
+                                23
+                            ],
+                            [
+                                -81.5,
+                                23
+                            ],
+                            [
+                                -81.5,
+                                23.5
+                            ],
+                            [
+                                -82,
+                                23.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 18",
+                "datePub": "1913",
+                "west": -82,
+                "east": -81.5,
+                "north": 23.5,
+                "south": 23,
+                "location": [
+                    "CORRAL NUEVO",
+                    "CANASI",
+                    "CARABALLO",
+                    "JARUCO",
+                    "JIBACOA",
+                    "MATANZAS",
+                    "SAN ANTONIO",
+                    "SANTA CRUZ"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28213",
+                "recId": "am023194"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023195",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -82,
+                                23
+                            ],
+                            [
+                                -82,
+                                22.5
+                            ],
+                            [
+                                -81.5,
+                                22.5
+                            ],
+                            [
+                                -81.5,
+                                23
+                            ],
+                            [
+                                -82,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 19",
+                "datePub": "1913",
+                "west": -82,
+                "east": -81.5,
+                "north": 23,
+                "south": 22.5,
+                "location": [
+                    "AGUACATE",
+                    "ALACRANES",
+                    "BERMEJA",
+                    "CABEZAS",
+                    "CATALINA",
+                    "CEIBA MOCHA",
+                    "CIDRA",
+                    "GUANÁBANA",
+                    "MADRUGA",
+                    "NUEVA PAZ",
+                    "LOS PALOS",
+                    "PIPIAN",
+                    "SABANILLA",
+                    "SAN NICOLÁS",
+                    "UNION DE REYES",
+                    "LAS VEGAS"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28214",
+                "recId": "am023195"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023196",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -82,
+                                22.5
+                            ],
+                            [
+                                -82,
+                                22
+                            ],
+                            [
+                                -81.5,
+                                22
+                            ],
+                            [
+                                -81.5,
+                                22.5
+                            ],
+                            [
+                                -82,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 20",
+                "datePub": "1913",
+                "west": -82,
+                "east": -81.5,
+                "north": 22.5,
+                "south": 22,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28215",
+                "recId": "am023196"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023197",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -81.5,
+                                23.5
+                            ],
+                            [
+                                -81.5,
+                                23
+                            ],
+                            [
+                                -81,
+                                23
+                            ],
+                            [
+                                -81,
+                                23.5
+                            ],
+                            [
+                                -81.5,
+                                23.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 21",
+                "datePub": "1913",
+                "west": -81.5,
+                "east": -81,
+                "north": 23.5,
+                "south": 23,
+                "location": [
+                    "CARDEBAS",
+                    "VARADERO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28216",
+                "recId": "am023197"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023198",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -81.5,
+                                23
+                            ],
+                            [
+                                -81.5,
+                                22.5
+                            ],
+                            [
+                                -81,
+                                22.5
+                            ],
+                            [
+                                -81,
+                                23
+                            ],
+                            [
+                                -81.5,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 22",
+                "datePub": "1913",
+                "west": -81.5,
+                "east": -81,
+                "north": 23,
+                "south": 22.5,
+                "location": [
+                    "AGRAMONTE",
+                    "CUEVITAS",
+                    "BOLONDRON",
+                    "CARLOS ROJAS",
+                    "CIMARRONES",
+                    "COLISEO",
+                    "JAGUEY GRANDE",
+                    "JOVELLANOS",
+                    "BEMBA",
+                    "LIMONAR",
+                    "NAVAJAS",
+                    "PEDRO BETANCOURT",
+                    "CORRAL FALSO",
+                    "PERICO",
+                    "RECREO",
+                    "MAXIMO GOMEZ"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28217",
+                "recId": "am023198"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023199",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -81.5,
+                                22.5
+                            ],
+                            [
+                                -81.5,
+                                22
+                            ],
+                            [
+                                -81,
+                                22
+                            ],
+                            [
+                                -81,
+                                22.5
+                            ],
+                            [
+                                -81.5,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 23",
+                "datePub": "1913",
+                "west": -81.5,
+                "east": -81,
+                "north": 22.5,
+                "south": 22,
+                "location": [
+                    "MAQUINA",
+                    "RIO NEGRO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28218",
+                "recId": "am023199"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023200",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -81,
+                                23.5
+                            ],
+                            [
+                                -81,
+                                23
+                            ],
+                            [
+                                -80.5,
+                                23
+                            ],
+                            [
+                                -80.5,
+                                23.5
+                            ],
+                            [
+                                -81,
+                                23.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 24",
+                "datePub": "1913",
+                "west": -81,
+                "east": -80.5,
+                "north": 23.5,
+                "south": 23,
+                "location": ["RIO CANA"],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28219",
+                "recId": "am023200"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023201",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -81,
+                                23
+                            ],
+                            [
+                                -81,
+                                22.5
+                            ],
+                            [
+                                -80.5,
+                                22.5
+                            ],
+                            [
+                                -80.5,
+                                23
+                            ],
+                            [
+                                -81,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 25",
+                "datePub": "1913",
+                "west": -81,
+                "east": -80.5,
+                "north": 23,
+                "south": 22.5,
+                "location": [
+                    "COLON",
+                    "ALVAREZ(CASCAJAL)",
+                    "BANAGUISES",
+                    "CALIMETE",
+                    "CORRALILLO",
+                    "ECHEVERRIA",
+                    "GUAREIRAS(COLUMBIA)",
+                    "ITABO(LACRET)",
+                    "MACAGUA(ARABOS)",
+                    "MACAGUA VIEJA",
+                    "MANGUITO",
+                    "MARTI(HATO NUEVO)",
+                    "PALMILLAS",
+                    "SAN PEDRO MAYABON",
+                    "SIERRA MORENA"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28220",
+                "recId": "am023201"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023202",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -81,
+                                22.5
+                            ],
+                            [
+                                -81,
+                                22
+                            ],
+                            [
+                                -80.5,
+                                22
+                            ],
+                            [
+                                -80.5,
+                                22.5
+                            ],
+                            [
+                                -81,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 26",
+                "datePub": "1913",
+                "west": -81,
+                "east": -80.5,
+                "north": 22.5,
+                "south": 22,
+                "location": [
+                    "ABREUS",
+                    "AGUADA DE PASAJEROS",
+                    "AMARILLAS",
+                    "REAL CAMPIÑA",
+                    "RODAS",
+                    "YAGUARAMAS"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28221",
+                "recId": "am023202"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023204",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -80.5,
+                                23
+                            ],
+                            [
+                                -80.5,
+                                22.5
+                            ],
+                            [
+                                -80,
+                                22.5
+                            ],
+                            [
+                                -80,
+                                23
+                            ],
+                            [
+                                -80.5,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 27",
+                "datePub": "1913",
+                "west": -80.5,
+                "east": -80,
+                "north": 23,
+                "south": 22.5,
+                "location": [
+                    "CARAHATAS",
+                    "CIFUENTES",
+                    "JICOTEA",
+                    "MANACAS",
+                    "QUEMADO DE GUINES",
+                    "RANCHO VELOZ",
+                    "RODRIGO",
+                    "SAGUA LA GRANDE",
+                    "SAN DIEGO",
+                    "SANTO DOMINGO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28222",
+                "recId": "am023204"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023207",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -80.5,
+                                22.5
+                            ],
+                            [
+                                -80.5,
+                                22
+                            ],
+                            [
+                                -80,
+                                22
+                            ],
+                            [
+                                -80,
+                                22.5
+                            ],
+                            [
+                                -80.5,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 28",
+                "datePub": "1913",
+                "west": -80.5,
+                "east": -80,
+                "north": 22.5,
+                "south": 22,
+                "location": [
+                    "ARIZA",
+                    "CAMARONES",
+                    "CASTILLO DE JAGUA",
+                    "CARTAGENA",
+                    "CIENFUEGOS",
+                    "CONGOJAS",
+                    "CRUCES",
+                    "CUMANAYAGUA",
+                    "ESPERANZA",
+                    "LAJAS",
+                    "PALMIRA",
+                    "RANCHUELO",
+                    "SAN JUAN DELAS YEARS",
+                    "POTRERILLO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28223",
+                "recId": "am023207"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023209",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -80.5,
+                                22
+                            ],
+                            [
+                                -80.5,
+                                21.5
+                            ],
+                            [
+                                -80,
+                                21.5
+                            ],
+                            [
+                                -80,
+                                22
+                            ],
+                            [
+                                -80.5,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 29",
+                "datePub": "1913",
+                "west": -80.5,
+                "east": -80,
+                "north": 22,
+                "south": 21.5,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28224",
+                "recId": "am023209"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023211",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -80,
+                                23
+                            ],
+                            [
+                                -80,
+                                22.5
+                            ],
+                            [
+                                -79.5,
+                                22.5
+                            ],
+                            [
+                                -79.5,
+                                23
+                            ],
+                            [
+                                -80,
+                                23
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 30",
+                "datePub": "1913",
+                "west": -80,
+                "east": -79.5,
+                "north": 23,
+                "south": 22.5,
+                "location": [
+                    "CAIBARIEN",
+                    "CALABAZAR",
+                    "EL SANTO",
+                    "ENCRUCIJADA",
+                    "VEGA ALTA"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28225",
+                "recId": "am023211"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023213",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -80,
+                                22.5
+                            ],
+                            [
+                                -80,
+                                22
+                            ],
+                            [
+                                -79.5,
+                                22
+                            ],
+                            [
+                                -79.5,
+                                22.5
+                            ],
+                            [
+                                -80,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 31",
+                "datePub": "1913",
+                "west": -80,
+                "east": -79.5,
+                "north": 22.5,
+                "south": 22,
+                "location": [
+                    "BAEZ",
+                    "CAMBAIGUAN",
+                    "CAMAJUANI",
+                    "COLONIA MARIA",
+                    "FOMENTO",
+                    "GUARACABULLA",
+                    "LA QUINTA",
+                    "LAS VUELTAS",
+                    "MANICARAGUA",
+                    "PLACETAS",
+                    "REMEDIOS",
+                    "SAN ANTONIO DE LAS VUELTAS",
+                    "SANTA CLARA",
+                    "SAN ANDRES",
+                    "ZULUETA"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28226",
+                "recId": "am023213"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023215",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -80,
+                                22
+                            ],
+                            [
+                                -80,
+                                21.5
+                            ],
+                            [
+                                -79.5,
+                                21.5
+                            ],
+                            [
+                                -79.5,
+                                22
+                            ],
+                            [
+                                -80,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 32",
+                "datePub": "1913",
+                "west": -80,
+                "east": -79.5,
+                "north": 22,
+                "south": 21.5,
+                "location": [
+                    "SAN PEDRO",
+                    "TRINIDAD",
+                    "TUNAS DE ZAZA"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28227",
+                "recId": "am023215"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023216",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -79.5,
+                                22.5
+                            ],
+                            [
+                                -79.5,
+                                22
+                            ],
+                            [
+                                -79,
+                                22
+                            ],
+                            [
+                                -79,
+                                22.5
+                            ],
+                            [
+                                -79.5,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 33",
+                "datePub": "1913",
+                "west": -79.5,
+                "east": -79,
+                "north": 22.5,
+                "south": 22,
+                "location": [
+                    "ARROYO BLANCO",
+                    "GUAYOS",
+                    "MAYAJIGUA",
+                    "MENESES",
+                    "YAGUAJAY"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28228",
+                "recId": "am023216"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023217",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -79.5,
+                                22
+                            ],
+                            [
+                                -79.5,
+                                21.5
+                            ],
+                            [
+                                -79,
+                                21.5
+                            ],
+                            [
+                                -79,
+                                22
+                            ],
+                            [
+                                -79.5,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 34",
+                "datePub": "1913",
+                "west": -79.5,
+                "east": -79,
+                "north": 22,
+                "south": 21.5,
+                "location": [
+                    "GUASIMAL",
+                    "JATIBONICO",
+                    "JIBARO",
+                    "MAJAGUA",
+                    "PAREDES",
+                    "SANCTI SPIRITUS"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28229",
+                "recId": "am023217"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023219",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -79,
+                                22.5
+                            ],
+                            [
+                                -79,
+                                22
+                            ],
+                            [
+                                -78.5,
+                                22
+                            ],
+                            [
+                                -78.5,
+                                22.5
+                            ],
+                            [
+                                -79,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 35",
+                "datePub": "1913",
+                "west": -79,
+                "east": -78.5,
+                "north": 22.5,
+                "south": 22,
+                "location": [
+                    "HATO VIEJO",
+                    "MORON",
+                    "PUNTA ALEGRE"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28230",
+                "recId": "am023219"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023220",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -79,
+                                22
+                            ],
+                            [
+                                -79,
+                                21.5
+                            ],
+                            [
+                                -78.5,
+                                21.5
+                            ],
+                            [
+                                -78.5,
+                                22
+                            ],
+                            [
+                                -79,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 36",
+                "datePub": "1913",
+                "west": -79,
+                "east": -78.5,
+                "north": 22,
+                "south": 21.5,
+                "location": [
+                    "CEBALLOS",
+                    "CIEGO DE AVILA",
+                    "JICOTEA",
+                    "JUCARO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28231",
+                "recId": "am023220"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023222",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -79,
+                                21.5
+                            ],
+                            [
+                                -79,
+                                21
+                            ],
+                            [
+                                -78.5,
+                                21
+                            ],
+                            [
+                                -78.5,
+                                21.5
+                            ],
+                            [
+                                -79,
+                                21.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 37",
+                "datePub": "1913",
+                "west": -79,
+                "east": -78.5,
+                "north": 21.5,
+                "south": 21,
+                "location": ["VERTIENTES"],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28232",
+                "recId": "am023222"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023223",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -78.5,
+                                22.5
+                            ],
+                            [
+                                -78.5,
+                                22
+                            ],
+                            [
+                                -78,
+                                22
+                            ],
+                            [
+                                -78,
+                                22.5
+                            ],
+                            [
+                                -78.5,
+                                22.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 38",
+                "datePub": "1913",
+                "west": -78.5,
+                "east": -78,
+                "north": 22.5,
+                "south": 22,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28233",
+                "recId": "am023223"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023225",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -78.5,
+                                22
+                            ],
+                            [
+                                -78.5,
+                                21.5
+                            ],
+                            [
+                                -78,
+                                21.5
+                            ],
+                            [
+                                -78,
+                                22
+                            ],
+                            [
+                                -78.5,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 39",
+                "datePub": "1913",
+                "west": -78.5,
+                "east": -78,
+                "north": 22,
+                "south": 21.5,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28234",
+                "recId": "am023225"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023227",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -78.5,
+                                21.5
+                            ],
+                            [
+                                -78.5,
+                                21
+                            ],
+                            [
+                                -78,
+                                21
+                            ],
+                            [
+                                -78,
+                                21.5
+                            ],
+                            [
+                                -78.5,
+                                21.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 40",
+                "datePub": "1913",
+                "west": -78.5,
+                "east": -78,
+                "north": 21.5,
+                "south": 21,
+                "location": ["SAN GERONIMO"],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28235",
+                "recId": "am023227"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023228",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -78.5,
+                                21
+                            ],
+                            [
+                                -78.5,
+                                20.5
+                            ],
+                            [
+                                -78,
+                                20.5
+                            ],
+                            [
+                                -78,
+                                21
+                            ],
+                            [
+                                -78.5,
+                                21
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 41",
+                "datePub": "1913",
+                "west": -78.5,
+                "east": -78,
+                "north": 21,
+                "south": 20.5,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28236",
+                "recId": "am023228"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023229",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -78,
+                                22
+                            ],
+                            [
+                                -78,
+                                21.5
+                            ],
+                            [
+                                -77.5,
+                                21.5
+                            ],
+                            [
+                                -77.5,
+                                22
+                            ],
+                            [
+                                -78,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 42",
+                "datePub": "1913",
+                "west": -78,
+                "east": -77.5,
+                "north": 22,
+                "south": 21.5,
+                "location": [
+                    "GUANAJA",
+                    "LA GLORIA",
+                    "MINAS",
+                    "SENADO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28237",
+                "recId": "am023229"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023231",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -78,
+                                21.5
+                            ],
+                            [
+                                -78,
+                                21
+                            ],
+                            [
+                                -77.5,
+                                21
+                            ],
+                            [
+                                -77.5,
+                                21.5
+                            ],
+                            [
+                                -78,
+                                21.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 43",
+                "datePub": "1913",
+                "west": -78,
+                "east": -77.5,
+                "north": 21.5,
+                "south": 21,
+                "location": [
+                    "CAMAGUEY",
+                    "SIBANICU"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28238",
+                "recId": "am023231"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023232",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -78,
+                                21
+                            ],
+                            [
+                                -78,
+                                20.5
+                            ],
+                            [
+                                -77.5,
+                                20.5
+                            ],
+                            [
+                                -77.5,
+                                21
+                            ],
+                            [
+                                -78,
+                                21
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 44",
+                "datePub": "1913",
+                "west": -78,
+                "east": -77.5,
+                "north": 21,
+                "south": 20.5,
+                "location": [
+                    "GUAYABAL",
+                    "SANTA CRUZ DEL SUR"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28239",
+                "recId": "am023232"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023233",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -78,
+                                20.5
+                            ],
+                            [
+                                -78,
+                                20
+                            ],
+                            [
+                                -77.5,
+                                20
+                            ],
+                            [
+                                -77.5,
+                                20.5
+                            ],
+                            [
+                                -78,
+                                20.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 45",
+                "datePub": "1913",
+                "west": -78,
+                "east": -77.5,
+                "north": 20.5,
+                "south": 20,
+                "location": [
+                    "MANZANILLO",
+                    "NIQUERO",
+                    "GUANITO",
+                    "JAGUA",
+                    "SEVILLA ABAJO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28240",
+                "recId": "am023233"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023234",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -78,
+                                20
+                            ],
+                            [
+                                -78,
+                                19.5
+                            ],
+                            [
+                                -77.5,
+                                19.5
+                            ],
+                            [
+                                -77.5,
+                                20
+                            ],
+                            [
+                                -78,
+                                20
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 46",
+                "datePub": "1913",
+                "west": -78,
+                "east": -77.5,
+                "north": 20,
+                "south": 19.5,
+                "location": [
+                    "COLORADOS",
+                    "CABO CRUZ",
+                    "ENSENADA DE MORA",
+                    "RIO NUEVO",
+                    "ALEGRIA DE PIO",
+                    "OJO DE AGUA DE BELIG",
+                    "SOLEDAD",
+                    "CEIBABO",
+                    "CORRAL VIEJO",
+                    "BELIG",
+                    "OJO DE AGUA DE BELIG",
+                    "JÚCARO",
+                    "MANZANILLO",
+                    "SANTIAGO",
+                    ""
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28241",
+                "recId": "am023234"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023235",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -77.5,
+                                22
+                            ],
+                            [
+                                -77.5,
+                                21.5
+                            ],
+                            [
+                                -77,
+                                21.5
+                            ],
+                            [
+                                -77,
+                                22
+                            ],
+                            [
+                                -77.5,
+                                22
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 47",
+                "datePub": "1913",
+                "west": -77.5,
+                "east": -77,
+                "north": 22,
+                "south": 21.5,
+                "location": ["NUEVITAS"],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28242",
+                "recId": "am023235"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023237",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -77.5,
+                                21.5
+                            ],
+                            [
+                                -77.5,
+                                21
+                            ],
+                            [
+                                -77,
+                                21
+                            ],
+                            [
+                                -77,
+                                21.5
+                            ],
+                            [
+                                -77.5,
+                                21.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 48",
+                "datePub": "1913",
+                "west": -77.5,
+                "east": -77,
+                "north": 21.5,
+                "south": 21,
+                "location": [
+                    "BARTLE",
+                    "CASCORRA",
+                    "GUAIMARO",
+                    "MARTI",
+                    "SAN MIGUEL"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28243",
+                "recId": "am023237"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023239",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -77.5,
+                                21
+                            ],
+                            [
+                                -77.5,
+                                20.5
+                            ],
+                            [
+                                -77,
+                                20.5
+                            ],
+                            [
+                                -77,
+                                21
+                            ],
+                            [
+                                -77.5,
+                                21
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 49",
+                "datePub": "1913",
+                "west": -77.5,
+                "east": -77,
+                "north": 21,
+                "south": 20.5,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28244",
+                "recId": "am023239"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023240",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -77.5,
+                                20.5
+                            ],
+                            [
+                                -77.5,
+                                20
+                            ],
+                            [
+                                -77,
+                                20
+                            ],
+                            [
+                                -77,
+                                20.5
+                            ],
+                            [
+                                -77.5,
+                                20.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 50",
+                "datePub": "1913",
+                "west": -77.5,
+                "east": -77,
+                "north": 20.5,
+                "south": 20,
+                "location": [
+                    "BLANQUIZAL",
+                    "CALCITO",
+                    "CAMPECHUELA",
+                    "CEIBA HUECA",
+                    "MANZANILLO",
+                    "MEDIA LUNA",
+                    "VICANA"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28245",
+                "recId": "am023240"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023241",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -77.5,
+                                20
+                            ],
+                            [
+                                -77.5,
+                                19.5
+                            ],
+                            [
+                                -77,
+                                19.5
+                            ],
+                            [
+                                -77,
+                                20
+                            ],
+                            [
+                                -77.5,
+                                20
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 51",
+                "datePub": "1913",
+                "west": -77.5,
+                "east": -77,
+                "north": 20,
+                "south": 19.5,
+                "location": [
+                    "ENSENADA DE MORA",
+                    "PORTILLO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28246",
+                "recId": "am023241"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023242",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -77,
+                                21.5
+                            ],
+                            [
+                                -77,
+                                21
+                            ],
+                            [
+                                -76.5,
+                                21
+                            ],
+                            [
+                                -76.5,
+                                21.5
+                            ],
+                            [
+                                -77,
+                                21.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 52",
+                "datePub": "1913",
+                "west": -77,
+                "east": -76.5,
+                "north": 21.5,
+                "south": 21,
+                "location": [
+                    "MANATI",
+                    "MANIABON",
+                    "PUERTO PADRE",
+                    "SAN MANUEL"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28247",
+                "recId": "am023242"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023244",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -77,
+                                21
+                            ],
+                            [
+                                -77,
+                                20.5
+                            ],
+                            [
+                                -76.5,
+                                20.5
+                            ],
+                            [
+                                -76.5,
+                                21
+                            ],
+                            [
+                                -77,
+                                21
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 53",
+                "datePub": "1913",
+                "west": -77,
+                "east": -76.5,
+                "north": 21,
+                "south": 20.5,
+                "location": [
+                    "CAUTO EMBARGADERO",
+                    "GUAMO",
+                    "OMAJA",
+                    "SAN AGUSTIN",
+                    "VICTORIA DE LAS TUNAS"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28248",
+                "recId": "am023244"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023246",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -77,
+                                20.5
+                            ],
+                            [
+                                -77,
+                                20
+                            ],
+                            [
+                                -76.5,
+                                20
+                            ],
+                            [
+                                -76.5,
+                                20.5
+                            ],
+                            [
+                                -77,
+                                20.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 54",
+                "datePub": "1913",
+                "west": -77,
+                "east": -76.5,
+                "north": 20.5,
+                "south": 20,
+                "location": [
+                    "BABINEY",
+                    "BARRANCAS",
+                    "BAYAMO",
+                    "BUEICITO",
+                    "CALAMBROSIA",
+                    "CANABACOA",
+                    "CASIBACOA",
+                    "GUISA",
+                    "HUMILLADERO",
+                    "SANTA RITA",
+                    "SAN FERNANDO",
+                    "SOFIA",
+                    "VEGUITAS",
+                    "YARA",
+                    "ZARZAL"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28249",
+                "recId": "am023246"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023248",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -77,
+                                20
+                            ],
+                            [
+                                -77,
+                                19.5
+                            ],
+                            [
+                                -76.5,
+                                19.5
+                            ],
+                            [
+                                -76.5,
+                                20
+                            ],
+                            [
+                                -77,
+                                20
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 55",
+                "datePub": "1913",
+                "west": -77,
+                "east": -76.5,
+                "north": 20,
+                "south": 19.5,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28250",
+                "recId": "am023248"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023250",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -76.5,
+                                21.5
+                            ],
+                            [
+                                -76.5,
+                                21
+                            ],
+                            [
+                                -76,
+                                21
+                            ],
+                            [
+                                -76,
+                                21.5
+                            ],
+                            [
+                                -76.5,
+                                21.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 56",
+                "datePub": "1913",
+                "west": -76.5,
+                "east": -76,
+                "north": 21.5,
+                "south": 21,
+                "location": [
+                    "AURAS",
+                    "LAS BOCAS",
+                    "CARIDAD",
+                    "CHAPARRA",
+                    "FRAY BENITO",
+                    "GIBARA",
+                    "SANTA LUCIA",
+                    "UÑAS",
+                    "VELASCO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28251",
+                "recId": "am023250"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023251",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -76.5,
+                                21
+                            ],
+                            [
+                                -76.5,
+                                20.5
+                            ],
+                            [
+                                -76,
+                                20.5
+                            ],
+                            [
+                                -76,
+                                21
+                            ],
+                            [
+                                -76.5,
+                                21
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 57",
+                "datePub": "1913",
+                "west": -76.5,
+                "east": -76,
+                "north": 21,
+                "south": 20.5,
+                "location": [
+                    "HOLGUIN",
+                    "LEWISTON",
+                    "SAN ANDRES",
+                    "SAN PEDRO DE CACOCUM",
+                    "SAO ARRIBA"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28252",
+                "recId": "am023251"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023253",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -76.5,
+                                20.5
+                            ],
+                            [
+                                -76.5,
+                                20
+                            ],
+                            [
+                                -76,
+                                20
+                            ],
+                            [
+                                -76,
+                                20.5
+                            ],
+                            [
+                                -76.5,
+                                20.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 58",
+                "datePub": "1913",
+                "west": -76.5,
+                "east": -76,
+                "north": 20.5,
+                "south": 20,
+                "location": [
+                    "BAIRE",
+                    "JIGUANI",
+                    "PALMA SORIANO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28253",
+                "recId": "am023253"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023254",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -76.5,
+                                20
+                            ],
+                            [
+                                -76.5,
+                                19.5
+                            ],
+                            [
+                                -76,
+                                19.5
+                            ],
+                            [
+                                -76,
+                                20
+                            ],
+                            [
+                                -76.5,
+                                20
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 59",
+                "datePub": "1913",
+                "west": -76.5,
+                "east": -76,
+                "north": 20,
+                "south": 19.5,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28254",
+                "recId": "am023254"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023256",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -76,
+                                21.5
+                            ],
+                            [
+                                -76,
+                                21
+                            ],
+                            [
+                                -75.5,
+                                21
+                            ],
+                            [
+                                -75.5,
+                                21.5
+                            ],
+                            [
+                                -76,
+                                21.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 60",
+                "datePub": "1913",
+                "west": -76,
+                "east": -75.5,
+                "north": 21.5,
+                "south": 21,
+                "location": ["LOS ANGELES"],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28255",
+                "recId": "am023256"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023257",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -76,
+                                21
+                            ],
+                            [
+                                -76,
+                                20.5
+                            ],
+                            [
+                                -75.5,
+                                20.5
+                            ],
+                            [
+                                -75.5,
+                                21
+                            ],
+                            [
+                                -76,
+                                21
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 61",
+                "datePub": "1913",
+                "west": -76,
+                "east": -75.5,
+                "north": 21,
+                "south": 20.5,
+                "location": [
+                    "BANES",
+                    "EMBARCADERO DE BANES",
+                    "MACABI",
+                    "MAYARI",
+                    "PRESTON"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28256",
+                "recId": "am023257"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023259",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -76,
+                                20.5
+                            ],
+                            [
+                                -76,
+                                20
+                            ],
+                            [
+                                -75.5,
+                                20
+                            ],
+                            [
+                                -75.5,
+                                20.5
+                            ],
+                            [
+                                -76,
+                                20.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 62",
+                "datePub": "1913",
+                "west": -76,
+                "east": -75.5,
+                "north": 20.5,
+                "south": 20,
+                "location": [
+                    "ALTO DE SONGO",
+                    "DOS CAMINOS",
+                    "EL CANEY",
+                    "EL COBRE",
+                    "EL CRISTO",
+                    "LA MAYA",
+                    "SAN LUIS",
+                    "SOCORRO",
+                    "SANTIAGO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (Color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28257",
+                "recId": "am023259"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023260",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -76,
+                                20
+                            ],
+                            [
+                                -76,
+                                19.5
+                            ],
+                            [
+                                -75.5,
+                                19.5
+                            ],
+                            [
+                                -75.5,
+                                20
+                            ],
+                            [
+                                -76,
+                                20
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 63",
+                "datePub": "1913",
+                "west": -76,
+                "east": -75.5,
+                "north": 20,
+                "south": 19.5,
+                "location": ["SIBONEY"],
+                "scale": "62500",
+                "color": "Printed Map (2-color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28258",
+                "recId": "am023260"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023262",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -75.5,
+                                21
+                            ],
+                            [
+                                -75.5,
+                                20.5
+                            ],
+                            [
+                                -75,
+                                20.5
+                            ],
+                            [
+                                -75,
+                                21
+                            ],
+                            [
+                                -75.5,
+                                21
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 64",
+                "datePub": "1913",
+                "west": -75.5,
+                "east": -75,
+                "north": 21,
+                "south": 20.5,
+                "location": [
+                    "SAGUA DEL TANAMO",
+                    "CABONICO",
+                    "TANAMO",
+                    "CAYO MAMBI",
+                    "ESTERÓN",
+                    "BAZAN",
+                    "JUAN DIAS",
+                    ""
+                ],
+                "scale": "62500",
+                "color": "Printed Map (2-color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28259",
+                "recId": "am023262"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023264",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -75.5,
+                                20.5
+                            ],
+                            [
+                                -75.5,
+                                20
+                            ],
+                            [
+                                -75,
+                                20
+                            ],
+                            [
+                                -75,
+                                20.5
+                            ],
+                            [
+                                -75.5,
+                                20.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 65",
+                "datePub": "1913",
+                "west": -75.5,
+                "east": -75,
+                "north": 20.5,
+                "south": 20,
+                "location": [
+                    "GUANTANAMO",
+                    "GUASO",
+                    "JAMAICA",
+                    "RIO SECO"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (2-color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28260",
+                "recId": "am023264"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023265",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -75.5,
+                                20
+                            ],
+                            [
+                                -75.5,
+                                19.5
+                            ],
+                            [
+                                -75,
+                                19.5
+                            ],
+                            [
+                                -75,
+                                20
+                            ],
+                            [
+                                -75.5,
+                                20
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 66",
+                "datePub": "1913",
+                "west": -75.5,
+                "east": -75,
+                "north": 20,
+                "south": 19.5,
+                "location": [
+                    "CAIMANERA",
+                    "GUANTANAMO",
+                    "BOQUERON"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (2-color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28261",
+                "recId": "am023265"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023266",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -75,
+                                21
+                            ],
+                            [
+                                -75,
+                                20.5
+                            ],
+                            [
+                                -74.5,
+                                20.5
+                            ],
+                            [
+                                -74.5,
+                                21
+                            ],
+                            [
+                                -75,
+                                21
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 67",
+                "datePub": "1913",
+                "west": -75,
+                "east": -74.5,
+                "north": 21,
+                "south": 20.5,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (2-color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28262",
+                "recId": "am023266"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023267",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -75,
+                                20.5
+                            ],
+                            [
+                                -75,
+                                20
+                            ],
+                            [
+                                -74.5,
+                                20
+                            ],
+                            [
+                                -74.5,
+                                20.5
+                            ],
+                            [
+                                -75,
+                                20.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 68",
+                "datePub": "1913",
+                "west": -75,
+                "east": -74.5,
+                "north": 20.5,
+                "south": 20,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (2-color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28263",
+                "recId": "am023267"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023268",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -75,
+                                20
+                            ],
+                            [
+                                -75,
+                                19.5
+                            ],
+                            [
+                                -74.5,
+                                19.5
+                            ],
+                            [
+                                -74.5,
+                                20
+                            ],
+                            [
+                                -75,
+                                20
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 69",
+                "datePub": "1913",
+                "west": -75,
+                "east": -74.5,
+                "north": 20,
+                "south": 19.5,
+                "location": null,
+                "scale": "62500",
+                "color": "Printed Map (2-color)",
+                "dateSurvey": "1907",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28264",
+                "recId": "am023268"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "am023270",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -74.5,
+                                20.5
+                            ],
+                            [
+                                -74.5,
+                                20
+                            ],
+                            [
+                                -74,
+                                20
+                            ],
+                            [
+                                -74,
+                                20.5
+                            ],
+                            [
+                                -74.5,
+                                20.5
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "geom",
+            "properties": {
+                "label": "Sheet 70",
+                "datePub": "1913",
+                "west": -74.5,
+                "east": -74,
+                "north": 20.5,
+                "south": 20,
+                "location": [
+                    "BARACOA",
+                    "GUANDAO",
+                    "MAISI",
+                    "SABANA"
+                ],
+                "scale": "62500",
+                "color": "Printed Map (2-color)",
+                "dateSurvey": "1908",
+                "publisher": "War College Division.  Office Chief of Staff, War Department-Washington",
+                "available": true,
+                "digHold": "https://collections.lib.uwm.edu/digital/collection/agdm/id/28265",
+                "recId": "am023270"
+            }
+        }
+    ]
+}
