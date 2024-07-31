@@ -155,6 +155,18 @@ class OpenIndexMap(FeatureCollection):
             "type": "FeatureCollection",
             "features": [feature.__geo_interface__ for feature in self.features],
         }
+    
+    @classmethod
+    def from_file(cls, file_path: str):
+        """Creates an instance of an OpenIndexMap from a GeoJSON file."""
+        with open(file_path, "r") as file:
+            json_data = json.load(file)
+            sheetlist = []
+            for feature in json_data.get("features"):
+                feature_sheet = Sheet(feature.get("properties"))
+                sheetlist.append(feature_sheet)
+
+            return cls(sheetlist)
 
     def __str__(self) -> str:
         return rewind(geojson.dumps(self))
