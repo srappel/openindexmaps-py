@@ -18,8 +18,9 @@ class Sheet(Feature):
     A class to represent a map sheet, inheriting from geojson.Feature.
     """
 
-    def __init__(self, sheetdict: dict, **kwargs):
+    def __init__(self, sheetdict: dict = None, **kwargs):
         # Extract geometry and properties for the GeoJSON Feature
+        sheetdict = sheetdict if sheetdict else self.default_sheet_dict()
         geometry = Polygon(
             [
                 [
@@ -72,6 +73,20 @@ class Sheet(Feature):
         # Add any additional attributes from kwargs
         for key, value in kwargs.items():
             setattr(self, key, value)
+
+    def default_sheet_dict(self) -> dict:
+        """Provides a default metadata structure based on common fields."""
+        return {
+            "label": "",
+            "title": "",
+            "location": [],
+            "datePub": "",
+            "available": "",
+            "west": 0.0,
+            "east": 1.0,
+            "north": 1.0,
+            "south": 0.0,
+        }
 
     @staticmethod
     def _round_if_float(value):
