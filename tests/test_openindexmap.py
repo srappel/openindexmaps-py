@@ -3,12 +3,25 @@ import logging
 from pathlib import Path
 from openindexmaps_py.oimpy import (
     OpenIndexMap,
+    Sheet
 )  # Adjust the import based on your package structure
 
 # Configure logging for tests
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+def test_default_sheet_dict():
+    sheet = Sheet()  # Assume Sheet initializes attributes with default values
+    # Assert that each attribute of the Sheet object matches the expected default
+    assert sheet["properties"]["label"] == "", "Label should be an empty string"
+    assert sheet["properties"]["title"] == "", "Title should be an empty string"
+    assert sheet["properties"]["location"] == [], "Location should be an empty list"
+    assert sheet["properties"]["datePub"] == "", "Date of publication should be an empty string"
+    assert sheet["properties"]["available"] == "", "Availability should be an empty string"
+    assert sheet["properties"]["west"] == 0.0, "West should be 0.0"
+    assert sheet["properties"]["east"] == 1.0, "East should be 1.0"
+    assert sheet["properties"]["north"] == 1.0, "North should be 1.0"
+    assert sheet["properties"]["south"] == 0.0, "South should be 0.0"
 
 def test_openindexmap_validation():
     fixture_path = Path("tests/fixture/MillionthMap.geojson")
