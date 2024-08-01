@@ -98,7 +98,7 @@ class GeoBlacklight_Metadata:
             "https://openindexmaps.org/": oim_url,
             "http://schema.org/downloadUrl/": oim_url,
         }
-        json_refs = json.dumps(references, separators=(',', ':'))
+        json_refs = json.dumps(references, separators=(",", ":"))
         self.set_attribute("dct_references_s", json_refs)
         self.timestamp()
 

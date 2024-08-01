@@ -9,7 +9,7 @@ import antimeridian
 from shapely.geometry import shape
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
 
@@ -73,6 +73,11 @@ class Sheet(Feature):
         # Add any additional attributes from kwargs
         for key, value in kwargs.items():
             setattr(self, key, value)
+
+        if not super().is_valid:
+            logger.warning(
+                f"The sheet \"{self.label if self.label else 'Null'}\" is invalid according to geojson spec."
+            )
 
     def default_sheet_dict(self) -> dict:
         """Provides a default metadata structure based on common fields."""
@@ -170,7 +175,7 @@ class OpenIndexMap(FeatureCollection):
             "type": "FeatureCollection",
             "features": [feature.__geo_interface__ for feature in self.features],
         }
-    
+
     @classmethod
     def from_file(cls, file_path: str):
         """Creates an instance of an OpenIndexMap from a GeoJSON file."""
