@@ -163,3 +163,5 @@ cython_debug/
 #.idea/
 
 .vscode/settings.json
+notebooks/demo.ipynb
+notebooks/files/233bA62500a_test.json
