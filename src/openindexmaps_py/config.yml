@@ -1,0 +1,3 @@
+fix-antimeridian: True
+logging-level: WARNING
+sheet-validation-warn: True

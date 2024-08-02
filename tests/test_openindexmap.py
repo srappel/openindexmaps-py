@@ -10,6 +10,11 @@ from openindexmaps_py.oimpy import (
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+def test_default_oim():
+    # return {"type": "FeatureCollection", "features": []}
+    defaultoim = OpenIndexMap()
+    assert defaultoim.__geo_interface__["type"] == "FeatureCollection"
+    assert defaultoim.__geo_interface__["features"] == []
 
 def test_default_sheet_dict():
     sheet = Sheet()  # Assume Sheet initializes attributes with default values

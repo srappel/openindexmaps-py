@@ -7,9 +7,14 @@ import logging
 from jsonschema import validate, ValidationError
 import antimeridian
 from shapely.geometry import shape
+import yaml
+
+# Load the configuration from the YAML file
+with open("src/openindexmaps_py/config.yml", "r") as f:
+    config = yaml.safe_load(f)
 
 # Configure logging
-logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=config["logging-level"])
 logger = logging.getLogger(__name__)
 
 
@@ -32,7 +37,10 @@ class Sheet(Feature):
                 ]
             ]
         )
-        geometry = antimeridian.fix_geojson(geometry)
+        if config["fix-antimeridian"]:
+            logging.debug(f"Fixing antimeridian for geometry:\n{geometry}")
+            geometry = antimeridian.fix_geojson(geometry)
+
         properties = {
             k: v
             for k, v in sheetdict.items()
@@ -74,10 +82,11 @@ class Sheet(Feature):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        if not super().is_valid:
-            logger.warning(
-                f"The sheet \"{self.label if self.label else 'Null'}\" is invalid according to geojson spec."
-            )
+        if config["sheet-validation-warn"]:
+            if not super().is_valid:
+                logger.warning(
+                    f"The sheet \"{self.label if self.label else 'Null'}\" is invalid according to geojson spec."
+                )
 
     def default_sheet_dict(self) -> dict:
         """Provides a default metadata structure based on common fields."""
@@ -156,9 +165,13 @@ class OpenIndexMap(FeatureCollection):
     Contains multiple Sheet objects.
     """
 
-    def __init__(self, sheets: list, **kwargs):
+    def __init__(self, sheets: list = None, **kwargs):
+        sheets = sheets if sheets else self.default_oim()
         features = [sheet for sheet in sheets if isinstance(sheet, geojson.Feature)]
         super().__init__(features=features, **kwargs)
+
+    def default_oim(self):
+        return {"type": "FeatureCollection", "features": []}
 
     def add_sheet(self, sheet: geojson.Feature):
         if isinstance(sheet, geojson.Feature):
@@ -242,4 +255,4 @@ class OpenIndexMap(FeatureCollection):
 
 
 if __name__ == "__main__":
-    print("hello world")
+    pass
