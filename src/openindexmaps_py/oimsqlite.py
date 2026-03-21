@@ -2,8 +2,8 @@ import sqlite3
 
 
 def initialize_database(db_path):
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
+    connection = sqlite3.connect(db_path)
+    cursor = connection.cursor()
 
     # Create openindexmaps table
     cursor.execute(
@@ -30,13 +30,13 @@ def initialize_database(db_path):
     """
     )
 
-    conn.commit()
-    conn.close()
+    connection.commit()
+    connection.close()
 
 
 def insert_openindexmap(db_path, name, json_data, metadata, defaults):
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
+    connection = sqlite3.connect(db_path)
+    cursor = connection.cursor()
 
     cursor.execute(
         """
@@ -46,18 +46,18 @@ def insert_openindexmap(db_path, name, json_data, metadata, defaults):
         (name, json_data, metadata, defaults),
     )
 
-    conn.commit()
-    conn.close()
+    connection.commit()
+    connection.close()
 
 
 def delete_openindexmap(db_path, name):
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
+    connection = sqlite3.connect(db_path)
+    cursor = connection.cursor()
 
     cursor.execute("DELETE FROM openindexmaps WHERE name = ?", (name,))
 
-    conn.commit()
-    conn.close()
+    connection.commit()
+    connection.close()
 
 
 if __name__ == "__main__":
