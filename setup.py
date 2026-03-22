@@ -6,6 +6,15 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     install_requires=[
-        # List your dependencies here
+        "pyproj",
+        "geojson",
+        "folium",
+        "requests",
+        "geojson_rewind",
+        "jsonschema",
+        "antimeridian",
+        "click",
+        "shapely",
+        "PyYAML",
     ],
 )
