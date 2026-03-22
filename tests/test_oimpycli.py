@@ -16,11 +16,20 @@ def sample_oim_file(tmp_path):
                 "type": "Feature",
                 "properties": {
                     "label": "46-2",
-                    "name": "Test Sheet",
+                    "title": "Test Sheet",
                     "datePub": "2024-01-01",
                     "available": True,
+                    "west": 0.0,
+                    "east": 1.0,
+                    "south": 0.0,
+                    "north": 1.0,
                 },
-                "geometry": {"type": "Point", "coordinates": [0, 0]},
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0], [0.0, 0.0]]
+                    ],
+                },
             }
         ],
     }
@@ -65,7 +74,7 @@ def test_query_command(sample_oim_file):
     )
     assert result.exit_code == 0
     assert '"label": "46-2"' in result.output
-    assert '"name": "Test Sheet"' in result.output
+    assert '"title": "Test Sheet"' in result.output
 
 
 def test_query_with_schema(sample_oim_file, sample_schema_file):
@@ -122,11 +131,20 @@ def test_merge_command(sample_oim_file, tmp_path):
                 "type": "Feature",
                 "properties": {
                     "label": "46-3",
-                    "name": "Additional Test Sheet",
+                    "title": "Additional Test Sheet",
                     "datePub": "2024-02-01",
                     "available": True,
+                    "west": 1.0,
+                    "east": 2.0,
+                    "south": 0.0,
+                    "north": 1.0,
                 },
-                "geometry": {"type": "Point", "coordinates": [1, 1]},
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [[1.0, 0.0], [2.0, 0.0], [2.0, 1.0], [1.0, 1.0], [1.0, 0.0]]
+                    ],
+                },
             }
         ],
     }

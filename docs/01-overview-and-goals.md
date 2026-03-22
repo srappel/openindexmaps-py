@@ -2,7 +2,7 @@
 
 ## What This Repository Is
 
-`openindexmaps-py` is a Python package for working with OpenIndexMaps data. The repository README describes it as "A Python package for OpenIndexMaps," and the codebase currently provides:
+`openindexmaps-py` is a Python package for working with OpenIndexMaps data.
 
 - Python classes for representing sheets and OpenIndexMap feature collections
 - a command-line interface for querying, mapping, and merging JSON files
@@ -13,8 +13,6 @@
 
 Those capabilities are visible in the source files under [`src/openindexmaps_py/`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py).
 
-## What the Code Actually Centers On
-
 The implemented package is organized around a small number of concrete modules:
 
 - [`oimpy.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/oimpy.py): core `Sheet`, `MapSheet`, `PhotoFrame`, and `OpenIndexMap` classes
@@ -22,8 +20,6 @@ The implemented package is organized around a small number of concrete modules:
 - [`metadata.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/metadata.py): GeoBlacklight/Aardvark metadata support
 - [`geodex.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/geodex.py): Geodex lookups and conversion helpers
 - [`mapping.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/mapping.py): quick HTML map generation
-
-From the code alone, the project is best described as a toolkit for creating, validating, transforming, and inspecting OpenIndexMap-like GeoJSON data.
 
 ## The Primary Data Model
 
@@ -53,7 +49,7 @@ Based on the existing modules and tests, the repository currently supports these
 
 These are all directly represented in source files or tests in this repository.
 
-## Project Goals Declared in the Repository
+## Project Goals
 
 The top-level [`README.md`](/Users/srappel/Documents/github/openindexmaps-py/README.md) lists the following goals:
 
@@ -68,7 +64,7 @@ The top-level [`README.md`](/Users/srappel/Documents/github/openindexmaps-py/REA
 
 Some of those goals are already reflected in code. Others are only partially implemented or still aspirational.
 
-## What Appears Implemented Now
+## What's Implemented Now
 
 The codebase clearly shows these implemented areas:
 
@@ -86,22 +82,9 @@ The test suite also exercises the default data model, schema validation, CLI com
 
 The repository also contains goals or hints that are not fully confirmed as complete features from the code alone:
 
-- shapefile input support is suggested in the README, but I did not find a completed shapefile ingestion workflow
-- CSV input is listed as not yet supported
+- shapefile input support is suggested in the README, but there is not a completed shapefile ingestion workflow
+- CSV input is not yet supported
 - CLI-based creation or editing of new records is described as a goal, but the current CLI only exposes `query`, `map`, and `merge`
-- reconcile or diff workflows are mentioned in the README, but I did not find a dedicated compare or diff command
-- the README mentions polar coverage validation, but I only confirmed antimeridian handling directly in code
+- reconcile or diff workflows are not started
+- polar coverage validation in addition to antimeridian
 - the package import and API surface are still fairly low-level and do not expose a polished top-level interface in [`__init__.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/__init__.py)
-
-These are good follow-up items for either implementation or documentation clarification.
-
-## Practical Takeaway
-
-Grounded strictly in the current codebase, `openindexmaps-py` is an early-stage but functional Python toolkit for:
-
-- representing OpenIndexMap-style sheet data as GeoJSON features
-- validating and transforming that data
-- generating related metadata
-- inspecting it through a CLI and a simple web map
-
-It already supports real development and testing workflows, but several broader goals in the README remain in-progress rather than complete.
