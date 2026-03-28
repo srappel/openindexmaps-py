@@ -2,6 +2,7 @@ import pytest
 import json
 import os
 from openindexmaps_py.metadata import GeoBlacklight_Metadata
+from openindexmaps_py.oimpy import OpenIndexMap, Sheet
 
 
 # Helper function to load a JSON file
@@ -63,6 +64,34 @@ def test_generate_metadata_file(tmpdir):
     assert generated_metadata["dct_title_s"] == "Example Title"
     assert generated_metadata["gbl_resourceClass_sm"] == ["Datasets"]
     assert generated_metadata["dct_accessRights_s"] == "Public"
+
+
+def test_compute_details_from_oim_rejects_non_geographic_geometry():
+    metadata = GeoBlacklight_Metadata()
+    feature = {
+        "type": "Feature",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [8905559.2635, 11753184.6153],
+                    [8905559.2635, 15538711.0963],
+                    [13135699.9136, 15538711.0963],
+                    [8905559.2635, 11753184.6153],
+                ]
+            ],
+        },
+        "properties": {
+            "label": "projected-sheet",
+            "datePub": "2024",
+        },
+    }
+    oim = OpenIndexMap(
+        [Sheet.from_feature(feature, collection_crs={"type": "name", "properties": {"name": "EPSG:3857"}})]
+    )
+
+    with pytest.raises(ValueError, match="non-geographic geometry"):
+        metadata.compute_details_from_oim(oim)
 
 
 if __name__ == "__main__":

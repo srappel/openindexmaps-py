@@ -1,12 +1,17 @@
 # metadata.py
 
 import json
+import logging
+from pathlib import Path
 from jsonschema import validate, ValidationError
 from openindexmaps_py.oimpy import OpenIndexMap
 from datetime import datetime, timezone
 
 # SCHEMA_PATH_GBL1 = "schemas/geoblacklight-schema-1.0.json"
-SCHEMA_PATH_AARDVARK = "schemas/geoblacklight-schema-aardvark.json"
+PACKAGE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = PACKAGE_DIR.parent.parent
+SCHEMA_PATH_AARDVARK = PROJECT_ROOT / "schemas" / "geoblacklight-schema-aardvark.json"
+logger = logging.getLogger(__name__)
 
 
 class GeoBlacklight_Metadata:
@@ -45,12 +50,14 @@ class GeoBlacklight_Metadata:
                     if date_pub is not None:
                         index_years.add(int(date_pub))
                 except ValueError:
-                    print(
-                        f"Invalid datePub value: {sheet.get('properties', {}).get('datePub')}"
+                    logger.warning(
+                        "Skipping invalid datePub value for metadata generation: %s",
+                        sheet.get("properties", {}).get("datePub"),
                     )
             return sorted(index_years)
 
         def get_locn_geometry(oim: OpenIndexMap) -> str:
+            logger.warning("Computing locn_geometry from OpenIndexMap geographic bbox")
             west, south, east, north = oim.compute_bbox()
             return f"ENVELOPE({west},{east},{north},{south})"
 

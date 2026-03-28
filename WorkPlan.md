@@ -137,7 +137,7 @@
    - **Objective**: Create a schema to store OpenIndexMaps, Sheets, and any necessary relationships.
    - **Tasks**:
      - Define tables for `OpenIndexMaps` and `Sheets`, focusing on the core metadata fields.
-     - Implement columns for JSON data (using `TEXT` or `BLOB` fields for storing complex data).
+     - Implement columns for JSON data (using `TEXT`)
      - Add any foreign key relationships needed (e.g., linking Sheets to an OpenIndexMap).
    - **Output**: SQLite schema that is ready for implementation.
 

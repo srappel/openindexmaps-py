@@ -6,7 +6,16 @@ setup(
     package_dir={"": "src"},  # Points to the src directory
     packages=find_packages(where="src"),  # Looks for packages in src/
     install_requires=[
-        # List your dependencies here
+        "pyproj",
+        "geojson",
+        "folium",
+        "requests",
+        "geojson_rewind",
+        "jsonschema",
+        "antimeridian",
+        "click",
+        "shapely",
+        "PyYAML",
     ],
     include_package_data=True,  # Ensures non-code files are included
     package_data={
