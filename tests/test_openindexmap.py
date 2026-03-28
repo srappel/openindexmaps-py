@@ -1,6 +1,7 @@
 import geojson
 import logging
 from pathlib import Path
+import pytest
 from openindexmaps_py.oimpy import (
     OpenIndexMap,
     Sheet,
@@ -67,6 +68,51 @@ def test_sheet_from_feature_preserves_geometry():
     assert sheet["properties"]["label"] == "complex-sheet"
 
 
+def test_sheet_from_feature_fixes_antimeridian_for_geographic_geometry():
+    feature = {
+        "type": "Feature",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [[175.0, -5.0], [-175.0, -5.0], [-175.0, 5.0], [175.0, 5.0], [175.0, -5.0]]
+            ],
+        },
+        "properties": {
+            "label": "dateline-sheet",
+        },
+    }
+
+    sheet = Sheet.from_feature(feature)
+
+    assert sheet["geometry"]["type"] == "MultiPolygon"
+
+
+def test_sheet_from_feature_skips_non_geographic_crs():
+    feature = {
+        "type": "Feature",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [8905559.2635, 11753184.6153],
+                    [8905559.2635, 15538711.0963],
+                    [13135699.9136, 15538711.0963],
+                    [8905559.2635, 11753184.6153],
+                ]
+            ],
+        },
+        "properties": {
+            "label": "projected-sheet",
+        },
+    }
+    crs = {"type": "name", "properties": {"name": "EPSG:3857"}}
+
+    sheet = Sheet.from_feature(feature, collection_crs=crs)
+
+    assert sheet["geometry"] == feature["geometry"]
+    assert sheet.spatially_geographic is False
+
+
 def test_openindexmap_from_file_preserves_fixture_geometry():
     fixture_path = Path("tests/fixture/233bA62500a.geojson")
 
@@ -74,6 +120,32 @@ def test_openindexmap_from_file_preserves_fixture_geometry():
     first_feature = open_index_map.__geo_interface__["features"][0]
 
     assert first_feature["geometry"]["type"] == "MultiPolygon"
+
+
+def test_compute_bbox_rejects_non_geographic_geometry():
+    feature = {
+        "type": "Feature",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [8905559.2635, 11753184.6153],
+                    [8905559.2635, 15538711.0963],
+                    [13135699.9136, 15538711.0963],
+                    [8905559.2635, 11753184.6153],
+                ]
+            ],
+        },
+        "properties": {
+            "label": "projected-sheet",
+        },
+    }
+    open_index_map = OpenIndexMap(
+        [Sheet.from_feature(feature, collection_crs={"type": "name", "properties": {"name": "EPSG:3857"}})]
+    )
+
+    with pytest.raises(ValueError, match="non-geographic geometry"):
+        open_index_map.compute_bbox()
 
 
 def test_openindexmap_validation():

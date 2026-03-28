@@ -1,4 +1,5 @@
 from pathlib import Path
+from copy import deepcopy
 import json
 import geojson
 from geojson import FeatureCollection, Feature, Polygon
@@ -28,11 +29,19 @@ class Sheet(Feature):
     A class to represent a map sheet, inheriting from geojson.Feature.
     """
 
-    def __init__(self, sheetdict: dict = None, **kwargs):
+    def __init__(self, sheetdict: dict = None, collection_crs: dict | None = None, **kwargs):
         feature = sheetdict if self._looks_like_feature(sheetdict) else None
         sheetdict = sheetdict if sheetdict else self.default_sheet_dict()
+        spatially_geographic, spatial_reason = self._is_spatially_geographic(
+            feature if feature is not None else sheetdict,
+            collection_crs=collection_crs,
+        )
         geometry = (
-            feature.get("geometry")
+            self._normalize_feature_geometry(
+                feature.get("geometry"),
+                spatially_geographic=spatially_geographic,
+                spatial_reason=spatial_reason,
+            )
             if feature is not None
             else self._geometry_from_bbox(sheetdict)
         )
@@ -50,6 +59,9 @@ class Sheet(Feature):
 
         # Initialize the geojson.Feature
         super().__init__(geometry=geometry, properties=properties)
+        self.collection_crs = collection_crs
+        self.spatially_geographic = spatially_geographic
+        self.spatial_reason = spatial_reason
 
         # Set additional attributes directly
         self.label = properties.get("label", None)
@@ -89,8 +101,8 @@ class Sheet(Feature):
                 )
 
     @classmethod
-    def from_feature(cls, feature: dict, **kwargs):
-        return cls(feature, **kwargs)
+    def from_feature(cls, feature: dict, collection_crs: dict | None = None, **kwargs):
+        return cls(feature, collection_crs=collection_crs, **kwargs)
 
     def default_sheet_dict(self) -> dict:
         """Provides a default metadata structure based on common fields."""
@@ -132,6 +144,101 @@ class Sheet(Feature):
         if config["fix-antimeridian"]:
             logging.debug(f"Fixing antimeridian for geometry:\n{geometry}")
             geometry = antimeridian.fix_geojson(geometry)
+        return geometry
+
+    @staticmethod
+    def _crs_name(crs: dict | None) -> str | None:
+        if not isinstance(crs, dict):
+            return None
+        properties = crs.get("properties", {})
+        if isinstance(properties, dict):
+            name = properties.get("name")
+            if isinstance(name, str):
+                return name
+        return None
+
+    @classmethod
+    def _is_wgs84_crs(cls, crs: dict | None) -> bool:
+        crs_name = cls._crs_name(crs)
+        if crs_name is None:
+            return False
+
+        normalized_name = crs_name.upper()
+        return any(
+            token in normalized_name
+            for token in ("EPSG:4326", "CRS84", "WGS84", "WGS 84")
+        )
+
+    @classmethod
+    def _iter_positions(cls, coordinates):
+        if not isinstance(coordinates, list):
+            return
+        if coordinates and all(
+            isinstance(value, (int, float)) for value in coordinates[:2]
+        ):
+            yield coordinates
+            return
+        for item in coordinates:
+            yield from cls._iter_positions(item)
+
+    @classmethod
+    def _geometry_looks_geographic(cls, geometry: dict | None) -> bool:
+        if not isinstance(geometry, dict):
+            return False
+        coordinates = geometry.get("coordinates")
+        if coordinates is None:
+            return False
+
+        found_position = False
+        for position in cls._iter_positions(coordinates):
+            found_position = True
+            lon, lat = position[:2]
+            if not (-180 <= lon <= 180 and -90 <= lat <= 90):
+                return False
+        return found_position
+
+    @classmethod
+    def _is_spatially_geographic(
+        cls, sheetdict: dict, collection_crs: dict | None = None
+    ) -> tuple[bool, str]:
+        crs = sheetdict.get("crs") if isinstance(sheetdict, dict) else None
+        crs = crs if crs is not None else collection_crs
+
+        if crs is not None:
+            if cls._is_wgs84_crs(crs):
+                return True, "WGS84-like CRS"
+            return False, f"non-geographic CRS declared: {cls._crs_name(crs) or crs}"
+
+        geometry = sheetdict.get("geometry") if isinstance(sheetdict, dict) else None
+        if geometry is None:
+            return True, "bbox-generated geometry"
+
+        if cls._geometry_looks_geographic(geometry):
+            return True, "coordinate ranges look geographic"
+
+        return False, "coordinate ranges are outside lon/lat bounds"
+
+    @staticmethod
+    def _normalize_feature_geometry(
+        geometry: dict | None, *, spatially_geographic: bool, spatial_reason: str
+    ) -> dict | None:
+        if geometry is None:
+            return None
+
+        geometry = deepcopy(geometry)
+        geometry_type = geometry.get("type")
+
+        if not spatially_geographic:
+            logger.warning(
+                "Skipping geographic normalization for feature geometry: %s",
+                spatial_reason,
+            )
+            return geometry
+
+        if config["fix-antimeridian"] and geometry_type in {"Polygon", "MultiPolygon"}:
+            logging.debug(f"Fixing antimeridian for geometry:\n{geometry}")
+            geometry = antimeridian.fix_geojson(geometry)
+
         return geometry
 
     @property
@@ -193,10 +300,11 @@ class OpenIndexMap(FeatureCollection):
     Contains multiple Sheet objects.
     """
 
-    def __init__(self, sheets: list = None, **kwargs):
+    def __init__(self, sheets: list = None, crs: dict | None = None, **kwargs):
         sheets = sheets if sheets else self.default_oim()
         features = [sheet for sheet in sheets if isinstance(sheet, geojson.Feature)]
         super().__init__(features=features, **kwargs)
+        self.crs = crs
 
     def default_oim(self):
         return {"type": "FeatureCollection", "features": []}
@@ -224,10 +332,12 @@ class OpenIndexMap(FeatureCollection):
             json_data = json.load(file)
             sheetlist = []
             for feature in json_data.get("features"):
-                feature_sheet = Sheet.from_feature(feature)
+                feature_sheet = Sheet.from_feature(
+                    feature, collection_crs=json_data.get("crs")
+                )
                 sheetlist.append(feature_sheet)
 
-            return cls(sheetlist)
+            return cls(sheetlist, crs=json_data.get("crs"))
 
     def __str__(self) -> str:
         return rewind(geojson.dumps(self))
@@ -276,8 +386,29 @@ class OpenIndexMap(FeatureCollection):
         )
 
         # Iterate through each feature in the GeoJSON
-        for feature in self.__geo_interface__["features"]:
-            geom = shape(feature["geometry"])
+        for feature in self.features:
+            if isinstance(feature, Sheet) and not feature.spatially_geographic:
+                raise ValueError(
+                    f"Cannot compute a geographic bbox for non-geographic geometry: {feature.spatial_reason}"
+                )
+
+            feature_geo_interface = (
+                feature.__geo_interface__
+                if hasattr(feature, "__geo_interface__")
+                else feature
+            )
+
+            if not isinstance(feature, Sheet):
+                spatially_geographic, spatial_reason = Sheet._is_spatially_geographic(
+                    feature_geo_interface,
+                    collection_crs=self.crs,
+                )
+                if not spatially_geographic:
+                    raise ValueError(
+                        f"Cannot compute a geographic bbox for non-geographic geometry: {spatial_reason}"
+                    )
+
+            geom = shape(feature_geo_interface["geometry"])
             bbox = geom.bounds
             minx, miny = min(minx, bbox[0]), min(miny, bbox[1])
             maxx, maxy = max(maxx, bbox[2]), max(maxy, bbox[3])

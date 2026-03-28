@@ -66,7 +66,7 @@ def query(file, indent, aquery, schema, print_to_file, quiet):
         click.echo(f"Query: {k}=={v}...\n")
 
         output_features = [
-            oimpy.Sheet.from_feature(feature)
+            oimpy.Sheet.from_feature(feature, collection_crs=content.get("crs"))
             for feature in content.get("features", [])
             if str(feature.get("properties", {}).get(k, "")) == v
         ]
@@ -147,7 +147,8 @@ def merge(files, print_to_file, quiet):
                 {
                     **feature,
                     "properties": feature_properties,
-                }
+                },
+                collection_crs=json_data.get("crs"),
             )
             output_feature_sheets.append(feature_sheet)
 
