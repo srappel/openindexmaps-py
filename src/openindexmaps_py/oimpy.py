@@ -9,14 +9,14 @@ from jsonschema import validate, ValidationError
 import antimeridian
 from shapely.geometry import shape
 import yaml
+import importlib.resources as pkg_resources
 
 PACKAGE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = PACKAGE_DIR.parent.parent
-CONFIG_PATH = PACKAGE_DIR / "config.yml"
 DEFAULT_SCHEMA_PATH = PROJECT_ROOT / "schemas" / "1.0.0.schema.json"
 
 # Load the configuration from the YAML file
-with open(CONFIG_PATH, "r") as f:
+with pkg_resources.files("openindexmaps_py").joinpath("config.yml").open("r") as f:
     config = yaml.safe_load(f)
 
 # Configure logging

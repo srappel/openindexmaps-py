@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+include requirements.txt
+include src/openindexmaps_py/config.yml
+include src/openindexmaps_py/schemas/*.json
+include src/openindexmaps_py/tests/*.py
