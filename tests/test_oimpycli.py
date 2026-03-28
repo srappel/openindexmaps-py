@@ -248,4 +248,6 @@ def test_merge_preserves_complex_geometry(complex_oim_file, tmp_path):
 
     output = json.loads(result.output)
     assert output["features"][0]["geometry"] == COMPLEX_GEOMETRY
-    assert output["features"][1]["geometry"] == additional_data["features"][0]["geometry"]
+    assert (
+        output["features"][1]["geometry"] == additional_data["features"][0]["geometry"]
+    )

@@ -5,7 +5,8 @@ import pytest
 from openindexmaps_py.oimpy import (
     OpenIndexMap,
     Sheet,
-) 
+)
+
 logger = logging.getLogger(__name__)
 
 
@@ -71,7 +72,13 @@ def test_sheet_from_feature_fixes_antimeridian_for_geographic_geometry():
         "geometry": {
             "type": "Polygon",
             "coordinates": [
-                [[175.0, -5.0], [-175.0, -5.0], [-175.0, 5.0], [175.0, 5.0], [175.0, -5.0]]
+                [
+                    [175.0, -5.0],
+                    [-175.0, -5.0],
+                    [-175.0, 5.0],
+                    [175.0, 5.0],
+                    [175.0, -5.0],
+                ]
             ],
         },
         "properties": {
@@ -138,7 +145,12 @@ def test_compute_bbox_rejects_non_geographic_geometry():
         },
     }
     open_index_map = OpenIndexMap(
-        [Sheet.from_feature(feature, collection_crs={"type": "name", "properties": {"name": "EPSG:3857"}})]
+        [
+            Sheet.from_feature(
+                feature,
+                collection_crs={"type": "name", "properties": {"name": "EPSG:3857"}},
+            )
+        ]
     )
 
     with pytest.raises(ValueError, match="non-geographic geometry"):

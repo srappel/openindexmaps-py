@@ -87,7 +87,12 @@ def test_compute_details_from_oim_rejects_non_geographic_geometry():
         },
     }
     oim = OpenIndexMap(
-        [Sheet.from_feature(feature, collection_crs={"type": "name", "properties": {"name": "EPSG:3857"}})]
+        [
+            Sheet.from_feature(
+                feature,
+                collection_crs={"type": "name", "properties": {"name": "EPSG:3857"}},
+            )
+        ]
     )
 
     with pytest.raises(ValueError, match="non-geographic geometry"):

@@ -25,7 +25,9 @@ class Sheet(Feature):
     A class to represent a map sheet, inheriting from geojson.Feature.
     """
 
-    def __init__(self, sheetdict: dict = None, collection_crs: dict | None = None, **kwargs):
+    def __init__(
+        self, sheetdict: dict = None, collection_crs: dict | None = None, **kwargs
+    ):
         feature = sheetdict if self._looks_like_feature(sheetdict) else None
         sheetdict = sheetdict if sheetdict else self.default_sheet_dict()
         spatially_geographic, spatial_reason = self._is_spatially_geographic(
@@ -125,7 +127,9 @@ class Sheet(Feature):
             return "Unknown"
         properties = feature.get("properties", {})
         if isinstance(properties, dict):
-            return str(properties.get("label") or properties.get("sheetId") or "Unknown")
+            return str(
+                properties.get("label") or properties.get("sheetId") or "Unknown"
+            )
         return "Unknown"
 
     @staticmethod
@@ -347,7 +351,9 @@ class OpenIndexMap(FeatureCollection):
         with open(file_path, "r") as file:
             json_data = json.load(file)
             if json_data.get("crs") is not None:
-                crs_name = Sheet._crs_name(json_data.get("crs")) or str(json_data.get("crs"))
+                crs_name = Sheet._crs_name(json_data.get("crs")) or str(
+                    json_data.get("crs")
+                )
                 logger.warning("Loaded GeoJSON with declared CRS: %s", crs_name)
             sheetlist = []
             for feature in json_data.get("features"):
@@ -369,7 +375,9 @@ class OpenIndexMap(FeatureCollection):
         if super().is_valid:
             logger.info("The FeatureCollection is valid according to geojson.")
             try:
-                schema_resource = resolve_schema_resource(schema_path, DEFAULT_SCHEMA_NAME)
+                schema_resource = resolve_schema_resource(
+                    schema_path, DEFAULT_SCHEMA_NAME
+                )
 
                 # Load the schema from the given path
                 with schema_resource.open("r", encoding="utf-8") as schema_file:
