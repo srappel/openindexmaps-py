@@ -2,15 +2,11 @@
 
 import json
 import logging
-from pathlib import Path
 from jsonschema import validate, ValidationError
 from openindexmaps_py.oimpy import OpenIndexMap
+from openindexmaps_py.resources import load_package_json
 from datetime import datetime, timezone
 
-# SCHEMA_PATH_GBL1 = "schemas/geoblacklight-schema-1.0.json"
-PACKAGE_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = PACKAGE_DIR.parent.parent
-SCHEMA_PATH_AARDVARK = PROJECT_ROOT / "schemas" / "geoblacklight-schema-aardvark.json"
 logger = logging.getLogger(__name__)
 
 
@@ -70,8 +66,7 @@ class GeoBlacklight_Metadata:
 
     def load_schema(self):
         """Loads the JSON schema from the specified schema file."""
-        with open(SCHEMA_PATH_AARDVARK, "r") as schema_file:
-            return json.load(schema_file)
+        return load_package_json("schemas", "geoblacklight-schema-aardvark.json")
 
     def default_metadata(self):
         """Provides a default metadata structure based on the required fields."""

@@ -159,14 +159,9 @@ def test_openindexmap_validation():
         open_index_map = OpenIndexMap(features)
         logger.info(f"\nOpenIndexMap:\n{str(open_index_map)}\n")
 
-        schema_path = Path("schemas/1.0.0.schema.json")
-        assert schema_path.exists(), "Schema file does not exist."
-
         print(open_index_map)
 
-        assert open_index_map.is_valid(
-            str(schema_path)
-        ), "The OpenIndexMap is not valid."
+        assert open_index_map.is_valid(), "The OpenIndexMap is not valid."
 
 
 if __name__ == "__main__":

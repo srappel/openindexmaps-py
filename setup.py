@@ -19,10 +19,9 @@ setup(
     ],
     include_package_data=True,  # Ensures non-code files are included
     package_data={
-        'openindexmaps_py': [
-            'config.yml',  # Include config.yml
-            'schemas/*.json',  # Include all JSON schema files in the schemas directory
-            'tests/*.py',  # Include test files
+        "openindexmaps_py": [
+            "config.yml",
+            "schemas/*.json",
         ],
     },
 )
