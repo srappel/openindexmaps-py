@@ -51,7 +51,7 @@ The repository includes metadata generation code in [`metadata.py`](/Users/srapp
 
 ### `GeoBlacklight_Metadata`
 
-`GeoBlacklight_Metadata` loads the Aardvark schema from [`schemas/geoblacklight-schema-aardvark.json`](/Users/srappel/Documents/github/openindexmaps-py/schemas/geoblacklight-schema-aardvark.json) and manages a metadata dictionary.
+`GeoBlacklight_Metadata` loads the Aardvark schema from the packaged resource [`src/openindexmaps_py/schemas/geoblacklight-schema-aardvark.json`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/schemas/geoblacklight-schema-aardvark.json) and manages a metadata dictionary.
 
 The default metadata includes:
 
@@ -85,5 +85,4 @@ This is the clearest implemented bridge between collection geometry and discover
 A few conversion and metadata details are not fully settled from the code alone:
 
 - Geodex conversion is present in code but not covered by the tests reviewed
-- `to_openindexmap()` in [`geodex.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/geodex.py) relies on `schema_path` that is only defined in the module's `__main__` block, so its validation path may need cleanup
 - the README mentions shapefile input, but I did not find an implemented shapefile conversion module

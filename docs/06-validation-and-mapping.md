@@ -6,7 +6,7 @@ The codebase validates data at more than one level.
 
 ### GeoJSON and JSON Schema Validation
 
-`OpenIndexMap.is_valid()` in [`oimpy.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/oimpy.py) first checks whether the feature collection is valid according to the parent `geojson.FeatureCollection` behavior. If that passes, it validates the collection against a JSON Schema file, defaulting to [`schemas/1.0.0.schema.json`](/Users/srappel/Documents/github/openindexmaps-py/schemas/1.0.0.schema.json).
+`OpenIndexMap.is_valid()` in [`oimpy.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/oimpy.py) first checks whether the feature collection is valid according to the parent `geojson.FeatureCollection` behavior. If that passes, it validates the collection against a packaged default JSON Schema, [`src/openindexmaps_py/schemas/1.0.0.schema.json`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/schemas/1.0.0.schema.json), unless an explicit schema path is provided.
 
 The CLI commands `query` and `map` also allow a schema file to be provided at runtime.
 

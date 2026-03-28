@@ -78,13 +78,15 @@ class GeoBlacklight_Metadata:
             "gbl_mdVersion_s": "Aardvark",
         }
 
-    def validate_metadata(self):
+    def validate_metadata(self) -> bool:
         """Validates the current metadata against the JSON schema."""
         try:
             validate(instance=self.metadata, schema=self.schema)
-            print("Metadata is valid.")
+            logger.info("Metadata is valid.")
+            return True
         except ValidationError as e:
-            print(f"Metadata validation error: {e.message}")
+            logger.error("Metadata validation error: %s", e.message)
+            return False
 
     def set_attribute(self, attribute, value):
         """Sets an attribute in the metadata if it is valid according to the schema."""
@@ -113,12 +115,3 @@ class GeoBlacklight_Metadata:
     def timestamp(self):
         current_datetime = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         self.set_attribute("gbl_mdModified_dt", current_datetime)
-
-
-if __name__ == "__main__":
-    metadata = GeoBlacklight_Metadata()
-    metadata.set_attribute("id", "12345")
-    metadata.set_attribute("dct_title_s", "Example Title")
-    metadata.set_attribute("gbl_resourceClass_sm", ["Datasets"])
-    metadata.set_attribute("dct_accessRights_s", "Public")
-    metadata.generate_metadata_file("tests/fixture/geoblacklight.json")

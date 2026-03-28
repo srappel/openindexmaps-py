@@ -1,16 +1,17 @@
 # openindexmaps-py
 
-A Python package for OpenIndexMaps
+A Python package for OpenIndexMaps.
 
 ## Goals:
 * Create OpenIndexMaps from other formats, like Geodex or Shapefiles
 * Edit existing OpenIndexMaps by adding or modifying records in the CLI
 * Create new OpenIndexMaps with the CLI
 * Reconcile/Compare/Diff two OpenIndexMaps from different institutions
-* Validate geometries (Antimeridian cutting, polar coverage), Validate GeoJSON
+* Validate geometries (antimeridian cutting, polar coverage) and validate GeoJSON
 * Enforce best practices like the right-hand rule
 * Validate against JSON Schema files
 * Make quick web maps with OpenIndexMaps
+* Preserve complex feature geometries while still supporting bbox-based sheet creation
 
 This package uses [Black](https://black.readthedocs.io) code style. Black is a PEP 8 compliant opinionated formatter with its own style.
 
@@ -31,6 +32,10 @@ This package uses [Black](https://black.readthedocs.io) code style. Black is a P
 * [jsonschema](https://python-jsonschema.readthedocs.io/en/stable/) - Validate (Geo)JSON against a JSON Schema file - e.g., confirm output is a valid OpenIndexMap
 * [folium](https://python-visualization.github.io/folium/latest/user_guide.html) - Make quick leaflet.js maps
 * [click](https://click.palletsprojects.com/en/8.1.x/) - Create a command line interface with automatic help docs
+* [pyproj](https://pyproj4.github.io/pyproj/stable/) - Coordinate reference system and bounds transformation support
+* [shapely](https://shapely.readthedocs.io/en/stable/) - Geometry bounds and geometry handling
+* [PyYAML](https://pyyaml.org/wiki/PyYAMLDocumentation) - Load package configuration
+* [requests](https://requests.readthedocs.io/en/latest/) - HTTP requests used by parts of the codebase
 
 ## Related Projects
 * [OpenIndexMaps](https://openindexmaps.org/)
@@ -67,6 +72,4 @@ Need to consider how to handle multi-valued fields. Locaiton, for example, is an
 * Spatial queries of index maps.
     * Point query
     * Polygon Query
-
-
 

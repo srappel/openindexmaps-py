@@ -2,6 +2,10 @@ from openindexmaps_py import oimpy
 import geojson
 from pathlib import Path
 from typing import List
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 class GeodexDictionary:
@@ -326,7 +330,7 @@ class GeodexGeoJSON:
                         feature_geodex_sheet = GeodexSheet(feature, FLIP)
                         geodex_sheets.append(feature_geodex_sheet)
                     except ValueError as e:
-                        print(f"Skipping feature due to error: {e}")
+                        logger.warning("Skipping feature due to error: %s", e)
         return geodex_sheets
 
     def to_openindexmap(self, *, VALIDATE: bool = True) -> "oimpy.OpenIndexMap":
@@ -337,19 +341,18 @@ class GeodexGeoJSON:
         ]
         oim = oimpy.OpenIndexMap(valid_sheets)
         if VALIDATE:
-            print(
-                f"Validating OpenIndexMap....\nTo skip validation set the keyword argument VALIDATE to False when you call to_openindexmap()."
+            logger.info(
+                "Validating OpenIndexMap. Set VALIDATE=False to skip schema validation."
             )
-            return oim if oim.is_valid(schema_path) else None
-        else:
-            print(
-                f"Skipping validation....\nTo validate set the keyword argument VALIDATE to True when you call to_openindexmap()."
-            )
-            return oim
+            return oim if oim.is_valid() else None
+
+        logger.info(
+            "Skipping validation. Set VALIDATE=True to validate the generated OpenIndexMap."
+        )
+        return oim
 
 
 if __name__ == "__main__":
-    schema_path = "schemas/1.0.0.schema.json"
     geodex_geojson_file = Path("QGIS/f0303_geodex.geojson")
     geodex_object = GeodexGeoJSON.from_geojson_file(geodex_geojson_file, FLIP=False)
     oim = geodex_object.to_openindexmap(VALIDATE=True)

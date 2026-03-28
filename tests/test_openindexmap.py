@@ -5,10 +5,7 @@ import pytest
 from openindexmaps_py.oimpy import (
     OpenIndexMap,
     Sheet,
-)  # Adjust the import based on your package structure
-
-# Configure logging for tests
-logging.basicConfig(level=logging.INFO)
+) 
 logger = logging.getLogger(__name__)
 
 
@@ -159,12 +156,4 @@ def test_openindexmap_validation():
         open_index_map = OpenIndexMap(features)
         logger.info(f"\nOpenIndexMap:\n{str(open_index_map)}\n")
 
-        print(open_index_map)
-
         assert open_index_map.is_valid(), "The OpenIndexMap is not valid."
-
-
-if __name__ == "__main__":
-    import pytest
-
-    pytest.main()

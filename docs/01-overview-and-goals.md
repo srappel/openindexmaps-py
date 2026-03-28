@@ -23,7 +23,7 @@ The implemented package is organized around a small number of concrete modules:
 
 ## The Primary Data Model
 
-The central unit in the codebase is a `Sheet`, implemented as a subclass of `geojson.Feature`. In this package, a sheet's geometry is currently generated from bounding coordinates:
+The central unit in the codebase is a `Sheet`, implemented as a subclass of `geojson.Feature`. The package still supports generating a sheet geometry from bounding coordinates:
 
 - `west`
 - `east`
@@ -32,7 +32,7 @@ The central unit in the codebase is a `Sheet`, implemented as a subclass of `geo
 
 Those sheets can be collected into an `OpenIndexMap`, implemented as a subclass of `geojson.FeatureCollection`.
 
-OpenIndexMaps as a format can store more complex geometries than rectangles. The current code in this repository is narrower: it is oriented toward rectangular sheet footprints described by metadata fields, largely because the implemented workflows are driven by Geodex-style source data. Supporting more complex geometries in this package will require additional work beyond the current bounding-box-based model.
+The current code can also preserve incoming GeoJSON feature geometry, including more complex polygon and multipolygon footprints, when loading existing OpenIndexMaps or moving features through CLI workflows. Geographic normalization paths remain intentionally narrower: they only run for geometries that appear to be lon/lat data or explicitly declare a WGS84-like CRS.
 
 ## What You Can Do with the Current Code
 

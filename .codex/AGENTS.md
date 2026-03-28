@@ -8,7 +8,7 @@ The project is a Python package for creating, editing, validating, comparing, an
 
 - Core GeoJSON/OpenIndexMap models in `src/openindexmaps_py/oimpy.py`
 - CLI commands in `src/openindexmaps_py/oimpycli.py`
-- Schema files in `schemas/`
+- Schema files in `src/openindexmaps_py/schemas/`
 - Tests in `tests/`
 - Example data and exploratory work in `tests/fixture/`, `notebooks/`, and `db/`
 
@@ -16,7 +16,7 @@ The project is a Python package for creating, editing, validating, comparing, an
 
 - Package source lives under `src/openindexmaps_py/`
 - Tests live under `tests/`
-- Schemas live under `schemas/`
+- Schemas live under `src/openindexmaps_py/schemas/`
 - Top-level docs include `README.md` and `WorkPlan.md`
 - GitHub Actions workflows live under `.github/workflows/`
 - Packaging is still `setup.py`-based, with `MANIFEST.in` now present
@@ -59,7 +59,7 @@ The project is a Python package for creating, editing, validating, comparing, an
 - `src/openindexmaps_py/oimpy.py` now distinguishes geographic vs. non-geographic feature inputs and preserves incoming feature geometry through `Sheet.from_feature(...)`
 - `src/openindexmaps_py/oimpycli.py` currently exposes `query`, `map`, and `merge`, and query/merge should preserve feature geometry and collection CRS context
 - `src/openindexmaps_py/config.yml` influences runtime behavior such as logging and antimeridian handling
-- `schemas/1.0.0.schema.json` is the default schema used by `OpenIndexMap.is_valid()`
+- `src/openindexmaps_py/schemas/1.0.0.schema.json` is the packaged default schema used by `OpenIndexMap.is_valid()`
 - `src/openindexmaps_py/metadata.py` computes GeoBlacklight details from OIMs and now rejects non-geographic bbox derivation
 - `src/openindexmaps_py/oimsqlite.py` is present for initial SQLite storage helpers
 

@@ -17,8 +17,6 @@ DEFAULT_SCHEMA_NAME = "1.0.0.schema.json"
 with pkg_resources.files("openindexmaps_py").joinpath("config.yml").open("r") as f:
     config = yaml.safe_load(f)
 
-# Configure logging
-logging.basicConfig(level=config["logging-level"])
 logger = logging.getLogger(__name__)
 
 
@@ -443,7 +441,3 @@ class OpenIndexMap(FeatureCollection):
 
         # Return the bounding box in the format [minx, miny, maxx, maxy]
         return [float(minx), float(miny), float(maxx), float(maxy)]
-
-
-if __name__ == "__main__":
-    pass

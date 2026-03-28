@@ -92,7 +92,3 @@ def test_compute_details_from_oim_rejects_non_geographic_geometry():
 
     with pytest.raises(ValueError, match="non-geographic geometry"):
         metadata.compute_details_from_oim(oim)
-
-
-if __name__ == "__main__":
-    pytest.main()

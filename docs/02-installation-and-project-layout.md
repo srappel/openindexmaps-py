@@ -5,7 +5,7 @@
 The project uses a `src/` layout with package code under [`src/openindexmaps_py/`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py). Other important top-level directories are:
 
 - [`tests/`](/Users/srappel/Documents/github/openindexmaps-py/tests): unit tests and fixture-driven tests
-- [`schemas/`](/Users/srappel/Documents/github/openindexmaps-py/schemas): JSON Schema files
+- [`src/openindexmaps_py/schemas/`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/schemas): packaged JSON Schema files used at runtime
 - [`notebooks/`](/Users/srappel/Documents/github/openindexmaps-py/notebooks): notebook experiments and sample files
 - [`db/`](/Users/srappel/Documents/github/openindexmaps-py/db): a SQLite database used in experimentation
 
@@ -25,6 +25,7 @@ The package has a minimal [`setup.py`](/Users/srappel/Documents/github/openindex
 - `pytest`
 - `click`
 - `shapely`
+- `PyYAML`
 
 The repository does not include fuller installation instructions beyond those files, so the safest documented assumption is a source install in a Python environment where those dependencies are available.
 
@@ -46,7 +47,7 @@ The file [`config.yml`](/Users/srappel/Documents/github/openindexmaps-py/src/ope
 - `logging-level`
 - `sheet-validation-warn`
 
-Because the code opens this config file using a relative path, the repository root appears to be the expected working directory when running the package directly from source.
+The package loads this config file via package resources, so it does not depend on the current working directory.
 
 ## Files to Understand First
 
@@ -64,7 +65,7 @@ If you are orienting yourself in the repository, these files provide the cleares
 The repository leaves a few installation-related details unclear:
 
 - no Python version is specified in the files reviewed
-- `setup.py` does not declare install requirements yet
+- `setup.py` is still minimal, although it now does declare install requirements and packaged resource files
 - there is no documented console-script entry point for the CLI
 
 Those are worth clarifying in the package configuration later.
