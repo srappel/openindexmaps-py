@@ -10,7 +10,7 @@ The project is a Python package for creating, editing, validating, comparing, an
 - CLI commands in `src/openindexmaps_py/oimpycli.py`
 - Schema files in `src/openindexmaps_py/schemas/`
 - Tests in `tests/`
-- Example data and exploratory work in `tests/fixture/`, `notebooks/`, and `db/`
+- Example data and exploratory work in `tests/fixture/` and `notebooks/`
 
 ## Current Repo Shape
 
@@ -28,6 +28,7 @@ The project is a Python package for creating, editing, validating, comparing, an
 - Treat `notebooks/` as exploratory unless the task specifically targets notebook work.
 - Prefer changes in package code and tests over quick fixes in notebooks or fixture data.
 - Keep edits consistent with the existing code style. The README explicitly states Black formatting.
+- Run `black src tests` after Python code edits when practical, and keep formatting changes scoped to files you touched.
 - When changing behavior, add or update tests in `tests/` when practical.
 - Favor focused patches over broad refactors unless the task clearly calls for structural cleanup.
 - Keep CLI changes aligned with the current Click-based interface in `src/openindexmaps_py/oimpycli.py`.

@@ -1,5 +1,6 @@
 .DS_Store
 html/index.html
+db/datastore.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -7,9 +7,8 @@ The project uses a `src/` layout with package code under [`src/openindexmaps_py/
 - [`tests/`](/Users/srappel/Documents/github/openindexmaps-py/tests): unit tests and fixture-driven tests
 - [`src/openindexmaps_py/schemas/`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/schemas): packaged JSON Schema files used at runtime
 - [`notebooks/`](/Users/srappel/Documents/github/openindexmaps-py/notebooks): notebook experiments and sample files
-- [`db/`](/Users/srappel/Documents/github/openindexmaps-py/db): a SQLite database used in experimentation
 
-This layout supports both library-style development and ad hoc experimentation.
+This layout supports both library-style development and ad hoc experimentation. SQLite helpers exist in the package code, but the repository no longer tracks a sample database artifact.
 
 ## Installation from Source
 
