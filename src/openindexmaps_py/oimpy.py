@@ -41,6 +41,7 @@ class Sheet(Feature):
                 feature.get("geometry"),
                 spatially_geographic=spatially_geographic,
                 spatial_reason=spatial_reason,
+                feature_label=self._feature_label(feature),
             )
             if feature is not None
             else self._geometry_from_bbox(sheetdict)
@@ -121,6 +122,15 @@ class Sheet(Feature):
     @staticmethod
     def _round_if_float(value):
         return round(value, 6) if isinstance(value, float) else value
+
+    @staticmethod
+    def _feature_label(feature: dict | None) -> str:
+        if not isinstance(feature, dict):
+            return "Unknown"
+        properties = feature.get("properties", {})
+        if isinstance(properties, dict):
+            return str(properties.get("label") or properties.get("sheetId") or "Unknown")
+        return "Unknown"
 
     @staticmethod
     def _looks_like_feature(sheetdict: dict | None) -> bool:
@@ -220,7 +230,11 @@ class Sheet(Feature):
 
     @staticmethod
     def _normalize_feature_geometry(
-        geometry: dict | None, *, spatially_geographic: bool, spatial_reason: str
+        geometry: dict | None,
+        *,
+        spatially_geographic: bool,
+        spatial_reason: str,
+        feature_label: str = "Unknown",
     ) -> dict | None:
         if geometry is None:
             return None
@@ -230,12 +244,18 @@ class Sheet(Feature):
 
         if not spatially_geographic:
             logger.warning(
-                "Skipping geographic normalization for feature geometry: %s",
+                'Skipping geographic normalization for sheet "%s": %s',
+                feature_label,
                 spatial_reason,
             )
             return geometry
 
         if config["fix-antimeridian"] and geometry_type in {"Polygon", "MultiPolygon"}:
+            logger.warning(
+                'Applying antimeridian normalization to sheet "%s" (%s)',
+                feature_label,
+                geometry_type,
+            )
             logging.debug(f"Fixing antimeridian for geometry:\n{geometry}")
             geometry = antimeridian.fix_geojson(geometry)
 
@@ -330,6 +350,9 @@ class OpenIndexMap(FeatureCollection):
         """Creates an instance of an OpenIndexMap from a GeoJSON file."""
         with open(file_path, "r") as file:
             json_data = json.load(file)
+            if json_data.get("crs") is not None:
+                crs_name = Sheet._crs_name(json_data.get("crs")) or str(json_data.get("crs"))
+                logger.warning("Loaded GeoJSON with declared CRS: %s", crs_name)
             sheetlist = []
             for feature in json_data.get("features"):
                 feature_sheet = Sheet.from_feature(
@@ -388,6 +411,11 @@ class OpenIndexMap(FeatureCollection):
         # Iterate through each feature in the GeoJSON
         for feature in self.features:
             if isinstance(feature, Sheet) and not feature.spatially_geographic:
+                logger.warning(
+                    'Refusing geographic bbox computation for sheet "%s": %s',
+                    feature.label if feature.label else "Unknown",
+                    feature.spatial_reason,
+                )
                 raise ValueError(
                     f"Cannot compute a geographic bbox for non-geographic geometry: {feature.spatial_reason}"
                 )
@@ -404,6 +432,10 @@ class OpenIndexMap(FeatureCollection):
                     collection_crs=self.crs,
                 )
                 if not spatially_geographic:
+                    logger.warning(
+                        "Refusing geographic bbox computation for feature without Sheet wrapper: %s",
+                        spatial_reason,
+                    )
                     raise ValueError(
                         f"Cannot compute a geographic bbox for non-geographic geometry: {spatial_reason}"
                     )
