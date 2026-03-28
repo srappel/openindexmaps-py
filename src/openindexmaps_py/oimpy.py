@@ -9,8 +9,13 @@ import antimeridian
 from shapely.geometry import shape
 import yaml
 
+PACKAGE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = PACKAGE_DIR.parent.parent
+CONFIG_PATH = PACKAGE_DIR / "config.yml"
+DEFAULT_SCHEMA_PATH = PROJECT_ROOT / "schemas" / "1.0.0.schema.json"
+
 # Load the configuration from the YAML file
-with open("src/openindexmaps_py/config.yml", "r") as f:
+with open(CONFIG_PATH, "r") as f:
     config = yaml.safe_load(f)
 
 # Configure logging
@@ -204,7 +209,7 @@ class OpenIndexMap(FeatureCollection):
     def __str__(self) -> str:
         return rewind(geojson.dumps(self))
 
-    def is_valid(self, schema_path: str = "schemas/1.0.0.schema.json") -> bool:
+    def is_valid(self, schema_path: str = str(DEFAULT_SCHEMA_PATH)) -> bool:
         """
         Override the is_valid method to add custom validation logic.
         First, use the parent class's validation. Then, validate against a JSON Schema.
@@ -212,8 +217,12 @@ class OpenIndexMap(FeatureCollection):
         if super().is_valid:
             logger.info("The FeatureCollection is valid according to geojson.")
             try:
+                schema_file_path = Path(schema_path)
+                if not schema_file_path.is_absolute():
+                    schema_file_path = PROJECT_ROOT / schema_file_path
+
                 # Load the schema from the given path
-                with open(schema_path, "r") as schema_file:
+                with open(schema_file_path, "r") as schema_file:
                     schema = json.load(schema_file)
 
                 # Validate the FeatureCollection against the schema

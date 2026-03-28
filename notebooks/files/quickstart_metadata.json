@@ -1,0 +1,16 @@
+{
+  "id": "quickstart-demo",
+  "dct_title_s": "OpenIndexMap: Quickstart Demo",
+  "gbl_resourceClass_sm": [
+    "Maps"
+  ],
+  "dct_accessRights_s": "Public",
+  "gbl_mdVersion_s": "Aardvark",
+  "gbl_indexYear_im": [
+    1950,
+    1962
+  ],
+  "locn_geometry": "ENVELOPE(-89.5,-89.0,43.25,43.0)",
+  "gbl_mdModified_dt": "2026-03-28T14:34:25Z",
+  "dct_references_s": "{\"https://openindexmaps.org/\":\"https://example.org/quickstart_oim.geojson\",\"http://schema.org/downloadUrl/\":\"https://example.org/quickstart_oim.geojson\"}"
+}

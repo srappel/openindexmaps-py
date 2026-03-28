@@ -1,12 +1,15 @@
 # metadata.py
 
 import json
+from pathlib import Path
 from jsonschema import validate, ValidationError
 from openindexmaps_py.oimpy import OpenIndexMap
 from datetime import datetime, timezone
 
 # SCHEMA_PATH_GBL1 = "schemas/geoblacklight-schema-1.0.json"
-SCHEMA_PATH_AARDVARK = "schemas/geoblacklight-schema-aardvark.json"
+PACKAGE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = PACKAGE_DIR.parent.parent
+SCHEMA_PATH_AARDVARK = PROJECT_ROOT / "schemas" / "geoblacklight-schema-aardvark.json"
 
 
 class GeoBlacklight_Metadata:
