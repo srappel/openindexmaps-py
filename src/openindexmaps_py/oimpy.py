@@ -29,28 +29,23 @@ class Sheet(Feature):
     """
 
     def __init__(self, sheetdict: dict = None, **kwargs):
-        # Extract geometry and properties for the GeoJSON Feature
+        feature = sheetdict if self._looks_like_feature(sheetdict) else None
         sheetdict = sheetdict if sheetdict else self.default_sheet_dict()
-        geometry = Polygon(
-            [
-                [
-                    (sheetdict.get("west", 0.0), sheetdict.get("south", 0.0)),
-                    (sheetdict.get("east", 0.0), sheetdict.get("south", 0.0)),
-                    (sheetdict.get("east", 0.0), sheetdict.get("north", 0.0)),
-                    (sheetdict.get("west", 0.0), sheetdict.get("north", 0.0)),
-                    (sheetdict.get("west", 0.0), sheetdict.get("south", 0.0)),
-                ]
-            ]
+        geometry = (
+            feature.get("geometry")
+            if feature is not None
+            else self._geometry_from_bbox(sheetdict)
         )
-        if config["fix-antimeridian"]:
-            logging.debug(f"Fixing antimeridian for geometry:\n{geometry}")
-            geometry = antimeridian.fix_geojson(geometry)
 
-        properties = {
-            k: v
-            for k, v in sheetdict.items()
-            if k not in ["type", "geometry", "properties"]
-        }
+        properties = (
+            dict(feature.get("properties", {}))
+            if feature is not None
+            else {
+                k: v
+                for k, v in sheetdict.items()
+                if k not in ["type", "geometry", "properties"]
+            }
+        )
         properties.update(kwargs)
 
         # Initialize the geojson.Feature
@@ -93,6 +88,10 @@ class Sheet(Feature):
                     f"The sheet \"{self.label if self.label else 'Null'}\" is invalid according to geojson spec."
                 )
 
+    @classmethod
+    def from_feature(cls, feature: dict, **kwargs):
+        return cls(feature, **kwargs)
+
     def default_sheet_dict(self) -> dict:
         """Provides a default metadata structure based on common fields."""
         return {
@@ -110,6 +109,30 @@ class Sheet(Feature):
     @staticmethod
     def _round_if_float(value):
         return round(value, 6) if isinstance(value, float) else value
+
+    @staticmethod
+    def _looks_like_feature(sheetdict: dict | None) -> bool:
+        return isinstance(sheetdict, dict) and (
+            "geometry" in sheetdict or "properties" in sheetdict
+        )
+
+    @staticmethod
+    def _geometry_from_bbox(sheetdict: dict) -> dict:
+        geometry = Polygon(
+            [
+                [
+                    (sheetdict.get("west", 0.0), sheetdict.get("south", 0.0)),
+                    (sheetdict.get("east", 0.0), sheetdict.get("south", 0.0)),
+                    (sheetdict.get("east", 0.0), sheetdict.get("north", 0.0)),
+                    (sheetdict.get("west", 0.0), sheetdict.get("north", 0.0)),
+                    (sheetdict.get("west", 0.0), sheetdict.get("south", 0.0)),
+                ]
+            ]
+        )
+        if config["fix-antimeridian"]:
+            logging.debug(f"Fixing antimeridian for geometry:\n{geometry}")
+            geometry = antimeridian.fix_geojson(geometry)
+        return geometry
 
     @property
     def __geo_interface__(self):
@@ -201,7 +224,7 @@ class OpenIndexMap(FeatureCollection):
             json_data = json.load(file)
             sheetlist = []
             for feature in json_data.get("features"):
-                feature_sheet = Sheet(feature.get("properties"))
+                feature_sheet = Sheet.from_feature(feature)
                 sheetlist.append(feature_sheet)
 
             return cls(sheetlist)

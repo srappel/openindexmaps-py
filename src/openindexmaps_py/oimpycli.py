@@ -66,7 +66,7 @@ def query(file, indent, aquery, schema, print_to_file, quiet):
         click.echo(f"Query: {k}=={v}...\n")
 
         output_features = [
-            oimpy.Sheet(feature["properties"])
+            oimpy.Sheet.from_feature(feature)
             for feature in content.get("features", [])
             if str(feature.get("properties", {}).get(k, "")) == v
         ]
@@ -141,8 +141,14 @@ def merge(files, print_to_file, quiet):
     for file in files:
         json_data = json.load(file)
         for feature in json_data.get("features", []):
-            feature["properties"]["note"] = f"From source file {file.name}"
-            feature_sheet = oimpy.Sheet(feature["properties"])
+            feature_properties = dict(feature.get("properties", {}))
+            feature_properties["note"] = f"From source file {file.name}"
+            feature_sheet = oimpy.Sheet.from_feature(
+                {
+                    **feature,
+                    "properties": feature_properties,
+                }
+            )
             output_feature_sheets.append(feature_sheet)
 
     output_oim = oimpy.OpenIndexMap(output_feature_sheets)

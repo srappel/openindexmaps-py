@@ -36,6 +36,46 @@ def test_default_sheet_dict():
     assert sheet["properties"]["south"] == 0.0, "South should be 0.0"
 
 
+def test_sheet_from_feature_preserves_geometry():
+    feature = {
+        "type": "Feature",
+        "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+                [
+                    [
+                        [0.0, 0.0],
+                        [2.0, 0.0],
+                        [1.0, 1.0],
+                        [0.0, 0.0],
+                    ]
+                ]
+            ],
+        },
+        "properties": {
+            "label": "complex-sheet",
+            "west": 0.0,
+            "east": 2.0,
+            "south": 0.0,
+            "north": 1.0,
+        },
+    }
+
+    sheet = Sheet.from_feature(feature)
+
+    assert sheet["geometry"] == feature["geometry"]
+    assert sheet["properties"]["label"] == "complex-sheet"
+
+
+def test_openindexmap_from_file_preserves_fixture_geometry():
+    fixture_path = Path("tests/fixture/233bA62500a.geojson")
+
+    open_index_map = OpenIndexMap.from_file(str(fixture_path))
+    first_feature = open_index_map.__geo_interface__["features"][0]
+
+    assert first_feature["geometry"]["type"] == "MultiPolygon"
+
+
 def test_openindexmap_validation():
     fixture_path = Path("tests/fixture/MillionthMap.geojson")
     assert fixture_path.exists(), "Fixture file does not exist."
