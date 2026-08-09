@@ -8,8 +8,6 @@ The project uses a `src/` layout with package code under [`src/openindexmaps_py/
 - [`src/openindexmaps_py/schemas/`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/schemas): packaged JSON Schema files used at runtime
 - [`notebooks/`](/Users/srappel/Documents/github/openindexmaps-py/notebooks): notebook experiments and sample files
 
-This layout supports both library-style development and ad hoc experimentation. SQLite helpers exist in the package code, but the repository no longer tracks a sample database artifact.
-
 ## Installation from Source
 
 The package has a minimal [`setup.py`](/Users/srappel/Documents/github/openindexmaps-py/setup.py) that defines the package name, version, and `src/` package directory. The code imports dependencies that are listed in [`requirements.txt`](/Users/srappel/Documents/github/openindexmaps-py/requirements.txt), including:
@@ -25,8 +23,6 @@ The package has a minimal [`setup.py`](/Users/srappel/Documents/github/openindex
 - `click`
 - `shapely`
 - `PyYAML`
-
-The repository does not include fuller installation instructions beyond those files, so the safest documented assumption is a source install in a Python environment where those dependencies are available.
 
 ## Package Entry Points
 
@@ -58,13 +54,3 @@ If you are orienting yourself in the repository, these files provide the cleares
 - [`tests/test_openindexmap.py`](/Users/srappel/Documents/github/openindexmaps-py/tests/test_openindexmap.py): default collection and schema-validation behavior
 - [`tests/test_oimpycli.py`](/Users/srappel/Documents/github/openindexmaps-py/tests/test_oimpycli.py): exercised CLI workflows
 - [`tests/test_metadata.py`](/Users/srappel/Documents/github/openindexmaps-py/tests/test_metadata.py): exercised metadata behavior
-
-## Follow-Up Items
-
-The repository leaves a few installation-related details unclear:
-
-- no Python version is specified in the files reviewed
-- `setup.py` is still minimal, although it now does declare install requirements and packaged resource files
-- there is no documented console-script entry point for the CLI
-
-Those are worth clarifying in the package configuration later.

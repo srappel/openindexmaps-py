@@ -42,23 +42,9 @@ The repository README says the project uses Black formatting. The repository als
 
 Taken together, that suggests the project is under active development and uses tests plus fixtures to pin down current behavior.
 
-## Areas Not Confirmed by Tests Reviewed
-
-I did not find tests in the reviewed files for:
+## Areas Not Confirmed by Tests
 
 - Geodex conversion paths
 - antimeridian edge cases
 - `compute_details_from_oim()` metadata derivation
 - the experimental code in [`extent.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/extent.py)
-
-Those are reasonable follow-up areas if the package is going to rely on them more heavily.
-
-## Follow-Up Items
-
-Some development details remain unclear from the codebase files reviewed:
-
-- no documented Python version target
-- no declared install requirements in `setup.py`
-- no packaged CLI entry point
-
-Those gaps do not prevent local development, but they are worth tightening as the package moves toward broader use.

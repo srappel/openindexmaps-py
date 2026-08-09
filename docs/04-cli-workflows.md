@@ -50,20 +50,14 @@ It supports:
 
 The merge behavior is also covered by [`tests/test_oimpycli.py`](/Users/srappel/Documents/github/openindexmaps-py/tests/test_oimpycli.py).
 
-## What the CLI Does Not Yet Show
-
-The README mentions several CLI goals that are not represented by implemented commands:
+## What needs to be done
 
 - creating new OpenIndexMaps from scratch
 - editing existing records
 - reconciling or diffing two collections
 
-Those should be treated as goals, not current CLI features.
-
 ## Follow-Up Items
 
-There are a few details worth confirming or improving later:
-
-- there is no console-script packaging entry point in the files reviewed
+- there is no console-script packaging entry point
 - `query` validates the original input content, not the filtered output content
 - the docstring for `map` says it will open a browser, but the current command only writes output and echoes a path

@@ -43,11 +43,11 @@ Its helper methods:
 
 `GeodexGeoJSON` parses a GeoJSON feature collection from disk into `GeodexSheet` objects and can convert them into an `OpenIndexMap` with `to_openindexmap()`.
 
-That conversion path is present in code, although it is not covered by the current tests reviewed.
+That conversion path is not covered by the current tests.
 
 ## Metadata Support
 
-The repository includes metadata generation code in [`metadata.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/metadata.py).
+The repository includes metadata generation in `metadata.py`
 
 ### `GeoBlacklight_Metadata`
 
@@ -77,12 +77,3 @@ The class also provides methods to:
 - `gbl_indexYear_im` from `datePub` values found in the collection
 - `locn_geometry` from `OpenIndexMap.compute_bbox()`
 - `gbl_mdModified_dt` via `timestamp()`
-
-This is the clearest implemented bridge between collection geometry and discovery metadata in the repository.
-
-## Follow-Up Items
-
-A few conversion and metadata details are not fully settled from the code alone:
-
-- Geodex conversion is present in code but not covered by the tests reviewed
-- the README mentions shapefile input, but I did not find an implemented shapefile conversion module

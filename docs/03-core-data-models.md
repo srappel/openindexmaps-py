@@ -38,9 +38,34 @@ The `properties` dictionary is still the underlying GeoJSON representation, but 
 
 ## Geometry Handling
 
-The geometry for a `Sheet` is always built as a rectangular polygon from its coordinate bounds. When `fix-antimeridian` is enabled in configuration, that geometry is passed through `antimeridian.fix_geojson()`.
+`Sheet` supports two geometry workflows:
 
-The class also uses `geojson-rewind` when converting the object to a string.
+- creating a new sheet from bounding fields
+- rebuilding a sheet from an existing GeoJSON feature
+
+For new sheet dictionaries, `Sheet.__init__()` calls `_geometry_from_bbox()`. This function builds a rectangular `geojson.Polygon` from `west`, `east`, `south`, and `north` in this coordinate order:
+
+1. southwest
+2. southeast
+3. northeast
+4. northwest
+5. southwest again to close the ring
+
+If a coordinate field is missing, `_geometry_from_bbox()` falls back to `0.0` for that coordinate. After the rectangle is built, the function checks the package configuration. When `fix-antimeridian` is enabled in [`config.yml`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/config.yml), the rectangle is passed through `antimeridian.fix_geojson()`. This allows a bounding-box sheet that crosses the antimeridian to be normalized into valid GeoJSON, usually by splitting it into a `MultiPolygon`.
+
+For existing GeoJSON features, `Sheet.from_feature()` passes the feature into the regular constructor. The constructor detects feature-like dictionaries with `_looks_like_feature()`, copies the feature `properties`, and sends the existing `geometry` to `_normalize_feature_geometry()` instead of rebuilding it from `west`, `east`, `south`, and `north`. This preserves non-rectangular footprints such as detailed `Polygon` or `MultiPolygon` sheet outlines.
+
+Before normalizing an existing feature geometry, the class checks whether the coordinates look geographic. `_is_spatially_geographic()` uses a declared feature CRS, a collection-level CRS passed from `OpenIndexMap.from_file()`, or coordinate ranges from `_geometry_looks_geographic()`:
+
+- WGS84-like CRS names such as `EPSG:4326`, `CRS84`, or `WGS 84` are treated as geographic.
+- Non-geographic CRS declarations are preserved but skipped for geographic normalization.
+- Features without CRS metadata are treated as geographic only when all coordinate positions look like longitude and latitude values.
+
+`_normalize_feature_geometry()` only applies `antimeridian.fix_geojson()` when the geometry is geographic, `fix-antimeridian` is enabled, and the geometry type is `Polygon` or `MultiPolygon`. Non-geographic geometries are returned unchanged, and the `Sheet` stores `spatially_geographic` and `spatial_reason` so later workflows can make safer decisions.
+
+`OpenIndexMap.compute_bbox()` uses those flags when creating a collection-level geographic bounding box. It refuses to compute a geographic bbox for a `Sheet` marked as non-geographic, then uses Shapely's `shape(...).bounds` to accumulate `[west, south, east, north]` across the collection.
+
+The string output path also normalizes winding order. `Sheet.__str__()` serializes the feature with `geojson.dumps(..., indent=4)` and passes the result through `geojson_rewind.rewind()`. `OpenIndexMap.__str__()` does the same for the full feature collection.
 
 ## `MapSheet` and `PhotoFrame`
 
@@ -68,12 +93,12 @@ The default empty collection behavior is also tested in [`tests/test_openindexma
 
 ## Important Implementation Detail
 
-`OpenIndexMap.from_file()` rebuilds sheets from each feature's `properties`, not from the original input geometry. That means the current implementation assumes the necessary bounding fields are present in the properties.
+`OpenIndexMap.from_file()` rebuilds each feature as a `Sheet` by calling `Sheet.from_feature()`. That preserves the incoming feature geometry rather than forcing the sheet to be rebuilt from `west`, `east`, `south`, and `north` property values.
+
+This matters for imported OpenIndexMaps that contain complex footprints, antimeridian-split `MultiPolygon` geometries, or projected geometries from a declared collection CRS. In those cases, the geometry remains attached to the feature, while the feature's `properties` are still copied into the new `Sheet`.
 
 ## Follow-Up Items
 
-There are a few model-related details worth clarifying later:
-
-- `OpenIndexMap.default_oim()` returns a dictionary, while the constructor filters for feature objects; the empty default case still works in tests, but the constructor pattern is slightly unusual
-- the code imports `Path` in [`oimpy.py`](/Users/srappel/Documents/github/openindexmaps-py/src/openindexmaps_py/oimpy.py) without using it
-- the current API surface is module-level rather than a polished top-level package API
+- consider simplifying `OpenIndexMap.default_oim()` or the constructor default path so the empty collection case is more explicit
+- consider adding broader regression coverage around `OpenIndexMap.from_file()` preserving complex imported geometries
+- consider whether the package should expose a more polished top-level API. At the moment, users need to know which module contains each class or helper, such as importing `Sheet`, `MapSheet`, and `OpenIndexMap` from `openindexmaps_py.oimpy`. A cleaner public API could re-export the main classes and conversion helpers from `openindexmaps_py.__init__`, document those imports as stable, and leave lower-level implementation modules free to change over time.
